@@ -1,3 +1,6 @@
+import { LoginService } from './paginas/login/service/login.service';
+import { UsuarioService } from './usuario/usuario.service';
+import { CadastroService } from './paginas/cadastro/service/cadastro.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,6 +17,11 @@ import { ShortsComponent } from './paginas/shorts/shorts.component';
 import { TenisComponent } from './paginas/tenis/tenis.component';
 import { ContatoComponent } from './paginas/contato/contato.component';
 import { MenuComponent } from './paginas/menu/menu.component';
+import { FormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
 
 @NgModule({
   declarations: [
@@ -30,9 +38,13 @@ import { MenuComponent } from './paginas/menu/menu.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
+
   ],
-  providers: [],
+  providers: [CadastroService,UsuarioService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
