@@ -2,7 +2,7 @@ import { Usuario } from './model/usuarioModel';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
-
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +31,12 @@ export class UsuarioService {
   }
   RemoverUsuario(usuario:Usuario){
     this.database.object('usuarios/'+usuario.uid).remove();
+  }
+  PegarUsuarioProUid(uid){
+    return this.database.database.ref('/usuarios/' + uid).once('value').then(function(snapshot) {
+      return snapshot.val();
+      // ...
+    });
   }
 
 }

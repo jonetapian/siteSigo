@@ -6,49 +6,74 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column ">
 
-  <nav class="navbar navbar-expand-lg bg-menu py-0" >
-    <div class="rounded-circle bg-light p-2" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
-      <img src="../assets/imgs/img-perfil.png" alt="" class="mx-auto" height="25px">
-    </div>
-    <div class="collapse" id="collapseExample">
-      <div class="ml-2">
-          <button *ngIf="estaLogado" (click)="Deslogar()" >Sair</button>
-        <a  routerLinkActive="selecionado" class="nav-link text-white" *ngIf="estaLogado" (click)="Deslogar()" >Sair</a>
-            <a routerLink="/login" routerLinkActive="selecionado" class="nav-link text-white" *ngIf="!estaLogado" >Login</a>
-            <a routerLink="/cadastro" routerLinkActive="selecionado" class="nav-link text-white" *ngIf="!estaLogado" >Cadastre-se</a>
+  <nav class="navbar navbar-expand-lg bg-menu pt-2 pb-2 pl-0 pr-0 txtNome font-sub" >
+    <div class="row" style="width: 100%;">
+      <div class="col-auto">
+        <a routerLink="/"><img src="../assets/imgs/logo-sigo.jpeg" alt="logo" class="mx-2 my-0" height="60px"></a>
+
+      </div>
+      <div class="col-auto ">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item  navbar-text mx-2">
+            <a routerLink="/camisetas" routerLinkActive="selecionado" class="nav-link text-white">Camisetas</a>
+          </li>
+          <li class="nav-item  navbar-text mx-2">
+            <a routerLink="/tenis" routerLinkActive="selecionado" class="nav-link text-white">Tenis</a>
+          </li>
+          <li class="nav-item navbar-text mx-2">
+            <a routerLink="/contato" routerLinkActive="selecionado" class="nav-link text-white">Contato</a>
+          </li>
+          <li class="nav-item navbar-text mx-2">
+            <a routerLink="/shorts" routerLinkActive="selecionado" class="nav-link text-white">Shorts</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+
+      </div>
+      <div class="col-auto mt-2" *ngIf="estaLogado" >
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item mx-2 navbar-text">
+            <label class="txtNome">Bem vindo, {{usuarioAtual.nome}}</label>
+          </li>
+        </ul>
+      </div>
+      <div class="col-auto d-inline">
+        <img src="../assets/imgs/avatar.png" alt="" class="mx-auto" height="60px" (click)="toogleButtons()" >
+
+      </div>
+
+      <div class="col-auto mt-2 txtNomes"
+      *ngIf="showingButtons"
+      >
+        <ul class="navbar-nav mx-auto p-0"  >
+          <a routerLink="/login" routerLinkActive="selecionado" class="nav-link text-white" *ngIf="!estaLogado" >Login</a>
+          <a  class="nav-link text-white" *ngIf="estaLogado" (click)="Deslogar()" >Sair</a>
+
+          <a routerLink="/cadastro" routerLinkActive="selecionado" class="nav-link text-white" *ngIf="!estaLogado">Cadastre-se</a>
+      </ul>
+      </div>
+
+
+      <div class="col-auto mt-2">
+        <div class="rounded-circle bg-light p-2"  >
+          <img src="../assets/imgs/img-lupa.png" alt="" class="mx-auto" height="25px">
+        </div>
+
       </div>
     </div>
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item mx-2 navbar-text">
-        <a routerLink="/camisetas" routerLinkActive="selecionado" class="nav-link text-white">Camisetas</a>
-      </li>
-      <li class="nav-item mx-2 navbar-text">
-        <a routerLink="/tenis" routerLinkActive="selecionado" class="nav-link text-white">Tenis</a>
-      </li>
 
-      <a routerLink="/"><img src="../assets/imgs/logo-sigo.jpeg" alt="logo" class="mx-2 my-0" height="60px"></a>
-
-      <li class="nav-item mx-2 navbar-text">
-        <a routerLink="/shorts" routerLinkActive="selecionado" class="nav-link text-white">Shorts</a>
-      </li>
-      <li class="nav-item mx-2 navbar-text">
-        <a routerLink="/contato" routerLinkActive="selecionado" class="nav-link text-white">Contato</a>
-      </li>
-    </ul>
-    <div class="rounded-circle bg-light p-2" >
-      <img src="../assets/imgs/img-lupa.png" alt="" class="mx-auto" height="25px">
-    </div>
   </nav>
 
-  <div class="container">
-
-
-  </div>
-  <router-outlet></router-outlet>
-
-  <footer class="footer mt-auto p-3 bg-dark"></footer>
+  <div class="container-fluid pb-5" style="background-color: #000;">
+    <router-outlet></router-outlet>
+</div>
+  <footer class="footer bg-orange " style="height: 100px;"> 
+    <div class="" style="height: 100%;">
+    </div>
+  </footer>
 
 </body>
 </html>

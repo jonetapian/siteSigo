@@ -5,31 +5,46 @@ import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { resolve } from 'url';
 import { Usuario } from 'src/app/usuario/model/usuarioModel';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CadastroService {
 
-  constructor(private firebaseService: AngularFireAuth, private usuarioService:UsuarioService) { }
+  constructor(private firebaseService: AngularFireAuth) { }
   CreateAuth(userData){
-    return this.firebaseService.auth.createUserWithEmailAndPassword(userData.email,userData.senha).catch(function(error) {
+    return this.firebaseService.auth.createUserWithEmailAndPassword(userData.email,userData.senha).catch(error => {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      return "codigo de erro" + errorCode + " mensagem de erro" + errorMessage;
-      console.log();
+      console.log(error);
+
+      return error;
       // ...
-    }).then((val:any) => {
-      let user = new Usuario(val.user);
-      user.nome = userData.nome;
-      this.usuarioService.CriarUsuario(user);
-      this.usuarioService.ArmazenarLocal(user);
-      console.log(user);
-    }
-      );
+    }).then((val:any) => {return val});
   }
   DestroyAuth(){
-    this.firebaseService.auth.signOut();
+     return this.firebaseService.auth.signOut().then(val => {return val}).catch(error => console.log(error));
+  }
+  doGoogleLogin(){
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      this.firebaseService.auth
+      .signInWithPopup(provider)
+      .then((res:any) => {
+        console.log(res)
+        if(res.user){
+          let user = new Usuario (res.user);
+          user.nome = res.user.displayName;
+          resolve(user);
+        }else{
+          resolve(res);
+        }
+
+      });
+    });
   }
 }

@@ -20,6 +20,9 @@ import { MenuComponent } from './paginas/menu/menu.component';
 import { FormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormAlertComponent } from './shared/form-alert/form-alert.component';
+
 
 
 
@@ -32,7 +35,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     ShortsComponent,
     TenisComponent,
     ContatoComponent,
-    MenuComponent
+    MenuComponent,
+    FormAlertComponent,
+    FormAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFirestoreModule,
     FormsModule,
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService],

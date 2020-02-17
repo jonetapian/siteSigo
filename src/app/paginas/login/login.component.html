@@ -1,27 +1,63 @@
-<div class="container" style="height: 100%;"></div>
-<h1 class="text-center mt-3">Login</h1>
-
-  <div class="row justify-content-center mb-5 mt-5">
-    <div class="col-8">
-      <div class="card">
-        <div class="card-body">
-          <div class="alert alert-danger" role="alert" *ngIf="showAlert" >
-            Preencha todos os campos, por favor!
-          </div>
-            <div class="form-group">
-
-              <label for="txtEmail">Endereço de email</label>
-              <input type="email" class="form-control" id="txtEmail" [(ngModel)]="email">
-
-              <label for="txtSenha">Senha de segurança</label>
-              <input type="password" class="form-control" id="txtSenha" [(ngModel)]="senha">
-
-
-              <button class="form-control btn-light mt-3" id="btnConfirmar" (click)="Logar()">
-                Confirmar
-              </button>
-            </div>
+<div class="container-fluid  p-2">
+  <div style="height: 100%;" class="mt-5">
+    <div class="row font-title">
+      <div class="col">
+        <label class="text-white txtTitulo ">
+          Insira seus Dados de Login
+        </label>
       </div>
     </div>
+    <div class="row pl-3 pr-3 pt-0 pb-0   " >
+      <div class="col bg-light" style="height: 3px;"></div>
+    </div>
   </div>
+  <div class="font-sub">
+
+    <div class="row mt-5">
+      <div class="col text-center">
+        <label class="text-white txtSub">Preencha seus dados e faça seu login para retormar as compras conosco!</label>
+      </div>
+    </div>
+
+    <div class="row justify-content-center" *ngIf="showAlert" >
+      <div class="col-8">
+        <app-form-alert [text]="AlertText"></app-form-alert>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+      <div class="col-10">
+        <label class="txtHeader text-white">Email</label>
+      </div>
+    </div>
+    <div class="row mt-2 justify-content-center">
+      <div class="col-10">
+        <input type="text" [(ngModel)]="email" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+      </div>
+    </div>
+    <div class="row mt-3 justify-content-center">
+      <div class="col-10">
+        <label class="txtHeader text-white">Senha</label>
+      </div>
+    </div>
+    <div class="row mt-2 justify-content-center">
+      <div class="col-10">
+        <input type="password" [(ngModel)]="senha" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+      </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+      <div class="col-10">
+        <small class="text-white  ml-3">A senha deve ter no mínimo 8 caracteres</small>
+      </div>
+    </div>
+
+    <div class="row mt-4 justify-content-center">
+      <div class="col-6">
+        <button class="btn btn-block bg-orange" (click)="Logar()">
+          <label class="text-white txtbtn">
+            Confirmar
+          </label>
+        </button>
+    </div>
+  </div>
+  
 </div>

@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
 .selecionado{
     font-weight: bold;
-    
+
 }
 
 .bg-card-produto{
@@ -9,5 +10,27 @@
 }
 
 .bg-orange{
-    background-color: orange;
+  background-color: #FF8A2E;
+}
+.font-sub{
+  font-family: 'Raleway' , sans-serif;
+}
+.font-title{
+  font-family: 'Popins' , sans-serif;
+}
+.txtHeader{
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.txtTitulo{
+  font-size:24px;
+  letter-spacing: 1.5px;
+}
+.txtSub{
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.txtbtn{
+  font-size: 20px;
+  letter-spacing: 1.5px;
 }

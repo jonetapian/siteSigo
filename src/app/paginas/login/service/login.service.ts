@@ -9,7 +9,10 @@ export class LoginService {
   constructor(private firebaseAuth:AngularFireAuth) { }
 
   Login(email,senha){
-    this.firebaseAuth.auth.signInWithEmailAndPassword(email,senha).catch(error => console.log(error));
+    return this.firebaseAuth.auth.signInWithEmailAndPassword(email,senha).then(val =>{
+      return val;
+      console.log(val);
+    }).catch(error => {return error});
   }
 
 }
