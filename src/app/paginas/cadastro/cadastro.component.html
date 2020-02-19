@@ -1,0 +1,88 @@
+<div class="container-fluid  p-2">
+  <div style="height: 100%;" class="mt-5">
+    <div class="row font-title">
+      <div class="col">
+        <label class="text-white txtTitulo ">
+          Insira seus Dados de Cadastro
+        </label>
+      </div>
+    </div>
+    <div class="row pl-3 pr-3 pt-0 pb-0   " >
+      <div class="col bg-light" style="height: 3px;"></div>
+    </div>
+  </div>
+  <div class="font-sub">
+
+    <div class="row mt-5">
+      <div class="col text-center">
+        <label class="text-white txtSub">Preencha seus dados de cadastro, para iniciar sua jornada de compras!</label>
+      </div>
+    </div>
+
+    <div class="row justify-content-center" *ngIf="showAlert" >
+      <div class="col-8">
+        <app-form-alert [text]="AlertText"></app-form-alert>
+      </div>
+    </div>
+    <div class="row mt-3 justify-content-center">
+      <div class="col-10">
+        <label class="txtHeader text-white">Nome</label>
+      </div>
+    </div>
+    <div class="row mt-2 justify-content-center">
+      <div class="col-10">
+        <input type="text" [(ngModel)]="nome" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+      </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+      <div class="col-10">
+        <label class="txtHeader text-white">Email</label>
+      </div>
+    </div>
+    <div class="row mt-2 justify-content-center">
+      <div class="col-10">
+        <input type="text" [(ngModel)]="email" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+      </div>
+    </div>
+    <div class="row mt-3 justify-content-center">
+      <div class="col-10">
+        <label class="txtHeader text-white">Senha</label>
+      </div>
+    </div>
+    <div class="row mt-2 justify-content-center">
+      <div class="col-10">
+        <input type="password" (keyup.enter)="login()" [(ngModel)]="senha" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+      </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+      <div class="col-10">
+        <small class="text-white  ml-3">A senha deve ter no mínimo 8 caracteres</small>
+      </div>
+    </div>
+
+    <div class="row mt-4 justify-content-center">
+      <div class="col-6">
+        <button class="btn btn-block bg-orange" (click)="login()">
+          <label class="text-white txtbtn">
+            Confirmar
+          </label>
+        </button>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3 text-center">
+    <div class="col-6">
+      <button class="btn btn-block" style="background: white;" (click)="googleLogin()">
+        <div class="row m-0 p-0">
+          <div class="col-auto m-0 p-0">
+            <img src="../../../assets/imgs/icone-google.png">
+          </div>
+          <div class="col">
+            <label class="mt-2">
+              Faça login com o google
+            </label>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

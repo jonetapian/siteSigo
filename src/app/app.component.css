@@ -1,0 +1,16 @@
+.bg-menu{
+    background-color: #FF8A2E;
+}
+.collapse-class {
+  display: inline;
+
+}
+.pic-bg{
+  background-image: "../assets/imgs/img-perfil.png";
+}
+.txtNome{
+  color: white;
+  font-size: large;
+}
+
+
