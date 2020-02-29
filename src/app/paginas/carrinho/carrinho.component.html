@@ -1,0 +1,65 @@
+<div class="container my-3">
+    <h3>Carrinho</h3>
+    <div class="row">
+        <div class="col-8">
+            <table class="table  bg-card-produto text-white text-center">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><img src="../../../assets/imgs/img-camiseta.png" alt="" height="100px" class="bg-light rounded"></td>
+                        <td>Camiseta</td>
+                        <td>100</td>
+                        <td class="px-0"><input type="number" value="" min="1" max="10" width="10px"></td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><img src="../../../assets/imgs/img-tenis.png" alt="" height="100px" class="bg-light rounded"></td>
+                        <td>Tenis</td>
+                        <td>100</td>
+                        <td>1</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><img src="../../../assets/imgs/img-short.png" alt="" height="100px" class="bg-light rounded"></td>
+                        <td>Short</td>
+                        <td>100</td>
+                        <td>1</td>
+                        <td>100</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Total no carrinho</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Subtotal: R$100</li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <button class="btn">Calcular frete</button>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">Total: R$300</li>
+                  </ul>
+            </div>
+            <button class="btn btn-dark w-100 mt-2">Finalizar Compra</button>
+        </div>
+    </div>
+</div>

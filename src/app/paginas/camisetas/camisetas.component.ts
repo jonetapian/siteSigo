@@ -1,4 +1,8 @@
+import { Produtos } from './../../produtos/model/produtoModel';
+import { ProdutosDataService } from './../../produtos/service/produtos-data.service';
+import { ProdutosService } from './../../produtos/service/produtos.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-camisetas',
@@ -6,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./camisetas.component.css']
 })
 export class CamisetasComponent implements OnInit {
+  produtos: Observable<any>;
 
-  constructor() { }
+  constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService) { }
 
   ngOnInit() {
+    this.produtos = this.produtosService.buscar();
   }
 
+  deletar(key: string){
+
+  }
+
+  editar(produtos: Produtos, key: string){
+
+  }
+
+  
+  
+  
 }

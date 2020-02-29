@@ -1,3 +1,4 @@
+import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,6 +10,7 @@ import { CamisetasComponent } from './paginas/camisetas/camisetas.component';
 import { CadastroComponent } from './paginas/cadastro/cadastro.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { MenuComponent } from './paginas/menu/menu.component';
+import { AdicionarProdutoComponent } from './paginas/adicionar-produto/adicionar-produto.component';
 
 const routes: Routes = [
   {path: 'cadastro', component: CadastroComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'shorts', component: ShortsComponent},
   {path: 'tenis', component: TenisComponent},
+  {path: 'adicionar-produto', component: AdicionarProdutoComponent},
+  {path: 'carrinho', component: CarrinhoComponent},
   {path: '', component: MenuComponent}
 ];
 
