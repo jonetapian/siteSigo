@@ -1,3 +1,6 @@
+import { LoginService } from './paginas/login/service/login.service';
+import { UsuarioService } from './usuario/usuario.service';
+import { CadastroService } from './paginas/cadastro/service/cadastro.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +27,15 @@ import { UploadTaskComponent } from './paginas/upload-task/upload-task.component
 import { UploadTaskModule } from './paginas/upload-task/upload-task.module';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
+import { FormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormAlertComponent } from './shared/form-alert/form-alert.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +50,9 @@ import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
     DropzoneDirective,
     CarrinhoComponent,
     
-  ],
+
+    FormAlertComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,8 +62,11 @@ import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
     AngularFireStorageModule,
     FormsModule,
     UploadTaskModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule
+
   ],
-  providers: [],
+  providers: [CadastroService,UsuarioService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
