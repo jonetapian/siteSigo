@@ -2,7 +2,10 @@
 	
 
 	<div class="row my-4 p-2">
-		<p class="col-12 h2 text-center mb-4">Camisetas</p>
+		<div class="col-12">
+			<a routerLink="/adicionar-produto" class="btn btn-dark">Adicionar Camiseta</a>
+			<p class="h2 text-center mb-4">Camisetas</p>
+		</div>
 		<div class="col-3">
 			<div class="card">
 				<div class="card-header">
@@ -37,80 +40,22 @@
 					</li>
 					
 				</ul>
-			</div>
-			
-					
+			</div>		
 				
 		</div>
 		<div class="col-9">
 			<div class="row">
-				<div class="col-4 mb-3">
-					<div class="card bg-card-produto text-white">
+				<div class="col-4 mb-3" *ngFor="let produto of produtos | async">
+				<div class="card bg-card-produto text-white">
 						
-						<p class="h4 text-center">Nome</p>
-						<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
+						<p class="h4 text-center">{{produto.nome}}</p>
+						<img [src]="produto.foto " alt="" class="w-100">
 						<div class="card-body text-center">
-							<p class="h4">R$1,000.00</p>
+						<p class="h4">R${{produto.preco}}</p>
 							<button class="btn bg-orange">Adicionar ao carrinho</button>
 						</div>
 					</div>
 				</div>
-				<div class="col-4 mb-3">
-					<div class="card bg-card-produto text-white">
-						
-						<p class="h4 text-center">Nome</p>
-						<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-						<div class="card-body text-center">
-							<p class="h4">R$1,000.00</p>
-							<button class="btn bg-orange">Adicionar ao carrinho</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-4 mb-3">
-					<div class="card bg-card-produto text-white">
-						
-						<p class="h4 text-center">Nome</p>
-						<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-						<div class="card-body text-center">
-							<p class="h4">R$1,000.00</p>
-							<button class="btn bg-orange">Adicionar ao carrinho</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-4 mb-3">
-					<div class="card bg-card-produto text-white">
-						
-						<p class="h4 text-center">Nome</p>
-						<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-						<div class="card-body text-center">
-							<p class="h4">R$1,000.00</p>
-							<button class="btn bg-orange">Adicionar ao carrinho</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-4 mb-3">
-					<div class="card bg-card-produto text-white">
-						
-						<p class="h4 text-center">Nome</p>
-						<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-						<div class="card-body text-center">
-							<p class="h4">R$1,000.00</p>
-							<button class="btn bg-orange">Adicionar ao carrinho</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-4 mb-3">
-					<div class="card bg-card-produto text-white">
-						
-						<p class="h4 text-center">Nome</p>
-						<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-						<div class="card-body text-center">
-							<p class="h4">R$1,000.00</p>
-							<button class="btn bg-orange">Adicionar ao carrinho</button>
-						</div>
-					</div>
-				</div>
-				
 			</div>
 			
 		</div>
@@ -119,3 +64,70 @@
 	</div>
 </div>
 
+
+<!--<div class="col-4 mb-3">
+	<div class="card bg-card-produto text-white">
+		
+		<p class="h4 text-center">Nome</p>
+		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
+		<div class="card-body text-center">
+			<p class="h4">R$1,000.00</p>
+			<button class="btn bg-orange">Adicionar ao carrinho</button>
+		</div>
+	</div>
+</div>
+<div class="col-4 mb-3">
+	<div class="card bg-card-produto text-white">
+		
+		<p class="h4 text-center">Nome</p>
+		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
+		<div class="card-body text-center">
+			<p class="h4">R$1,000.00</p>
+			<button class="btn bg-orange">Adicionar ao carrinho</button>
+		</div>
+	</div>
+</div>
+<div class="col-4 mb-3">
+	<div class="card bg-card-produto text-white">
+		
+		<p class="h4 text-center">Nome</p>
+		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
+		<div class="card-body text-center">
+			<p class="h4">R$1,000.00</p>
+			<button class="btn bg-orange">Adicionar ao carrinho</button>
+		</div>
+	</div>
+</div>
+<div class="col-4 mb-3">
+	<div class="card bg-card-produto text-white">
+		
+		<p class="h4 text-center">Nome</p>
+		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
+		<div class="card-body text-center">
+			<p class="h4">R$1,000.00</p>
+			<button class="btn bg-orange">Adicionar ao carrinho</button>
+		</div>
+	</div>
+</div>
+<div class="col-4 mb-3">
+	<div class="card bg-card-produto text-white">
+		
+		<p class="h4 text-center">Nome</p>
+		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
+		<div class="card-body text-center">
+			<p class="h4">R$1,000.00</p>
+			<button class="btn bg-orange">Adicionar ao carrinho</button>
+		</div>
+	</div>
+</div>
+<div class="col-4 mb-3">
+	<div class="card bg-card-produto text-white">
+		
+		<p class="h4 text-center">Nome</p>
+		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
+		<div class="card-body text-center">
+			<p class="h4">R$1,000.00</p>
+			<button class="btn bg-orange">Adicionar ao carrinho</button>
+		</div>
+	</div>
+</div>-->

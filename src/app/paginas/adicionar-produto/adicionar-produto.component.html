@@ -1,0 +1,82 @@
+<p class="text-center h4 my-3">Adicionar novo Produto</p>
+
+<form (ngSubmit)="onSubmit()">
+    <div class="container my-3 bg-light border rounded p-3">
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="">Nome:</label>
+                <input class="form-control" type="text" [(ngModel)]="produtos.nome" name="nome"/>
+            </div>
+            <div class="form-group col-6">
+                <label for="">Tipo:</label>
+                <select class="form-control" [(ngModel)]="produtos.tipo" name="tipo">
+                    <option *ngFor="let item of tipo" [value]="item">{{item}}</option>
+                </select>
+                
+            </div>
+            <div class="form-group col-6">
+                <label for="">Marca:</label>
+                <input class="form-control" type="text" [(ngModel)]="produtos.marca" name="marca"/>
+            </div>
+            <div class="form-group col-6">
+                <label for="">Tamanho:</label>
+                <input class="form-control" type="text" [(ngModel)]="produtos.tamanho" name="tamanho"/>
+            </div>
+            <div class="form-group col-6">
+                <!--<label for="">Cores:</label>
+                <br>
+                <div class="form-check form-check-inline" *ngFor="let item of cor" >
+                    <input class="form-check-input" type="checkbox" [value]="item" [(ngModel)]="produtos.cor" name="cor" [id]="item">
+                    <label class="form-check-label" [for]="item">{{ item }}</label>
+
+                </div>-->
+                <label for="">Cor:</label>
+                <input class="form-control" type="text" [(ngModel)]="produtos.cor" name="cor"/>
+                
+                
+            </div>
+            <div class="form-group col-6">
+                <label for="">Preço:</label>
+                <input class="form-control " type="text" [(ngModel)]="produtos.preco" name="preco" data-mask="00/00/0000"/>
+            </div>
+            <div class="form-group col-6">
+                <label for="">Categoria:</label>
+                <select class="form-control" [(ngModel)]="produtos.categoria" name="categoria">
+                    <option *ngFor="let item of categoria" [value]="item">{{item}}</option>
+                </select>
+            </div>
+            <div class="form-group col-6">
+                <label for="">Foto:</label>
+                <div class="custom-file">
+                    <div class="form-control dropzone text-center" 
+                        dropzone
+                        (hovered)="toggleHover($event)"
+                        (dropped)="onDrop($event)">
+
+                        
+                        <h3 class="dz-message">Arraste as fotos até aqui</h3>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+            <div class="form-group col-12">
+                <h3>Fotos:</h3>
+                        
+                <div *ngFor="let file of files" class="float-left">
+                    
+                    <upload-task [file]="file" [recebeProdutos]="produtos" (enviarUrl)="receberUrl($event)"></upload-task>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-dark">Adicionar</button>
+        
+    
+        
+    </div>
+</form>
+
+
+
+
