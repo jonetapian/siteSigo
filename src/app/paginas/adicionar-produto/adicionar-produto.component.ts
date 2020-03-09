@@ -23,6 +23,7 @@ export class AdicionarProdutoComponent implements OnInit {
     this.isHovering = event;
   }
 
+  
   onDrop(files: FileList){
     for(let i = 0; i < files.length; i++){
       this.files.push(files.item(i));
@@ -33,6 +34,7 @@ export class AdicionarProdutoComponent implements OnInit {
   produtos: Produtos;
   key: string = '';
   url: any;
+  separadorUrl:string = "";
   
 
   constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService, private storage: AngularFireStorage) { }
@@ -42,7 +44,16 @@ export class AdicionarProdutoComponent implements OnInit {
   }
 
   receberUrl(url){
-    this.produtos.foto = url;
+
+    if(this.separadorUrl != ""){
+      this.separadorUrl += "|" + url;
+    }else{
+      this.separadorUrl = url;
+    }
+    
+
+    this.produtos.foto = this.separadorUrl.split("|");
+    
   }
   
   

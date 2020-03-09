@@ -6,5 +6,5 @@ export class Produtos{
     cor = '';
     preco = '';
     categoria = '';
-    foto = '';
+    foto:Array<string> = [];
 }

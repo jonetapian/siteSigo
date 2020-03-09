@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class CamisetasComponent implements OnInit {
   produtos: Observable<any>;
+  
 
   constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService) { }
 
@@ -26,7 +27,10 @@ export class CamisetasComponent implements OnInit {
 
   }
 
-  
+  adicionarCarrinho(produto){
+    this.produtosService.adicionarCarrinho(produto);
+    
+  }
   
   
 }

@@ -3,13 +3,11 @@ import { UsuarioService } from './usuario/usuario.service';
 import { CadastroService } from './paginas/cadastro/service/cadastro.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule} from '@angular/fire/storage';
 
 
@@ -61,7 +59,7 @@ import { FormAlertComponent } from './shared/form-alert/form-alert.component';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     FormsModule,
-    UploadTaskModule
+    UploadTaskModule,
     AngularFireAuthModule,
     BrowserAnimationsModule
 

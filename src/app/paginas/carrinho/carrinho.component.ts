@@ -1,3 +1,6 @@
+import { ProdutosService } from './../../produtos/service/produtos.service';
+import { Observable } from 'rxjs';
+import { Produtos } from './../../produtos/model/produtoModel';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarrinhoComponent implements OnInit {
 
-  constructor() { }
+  produtos: Observable<any>;
+  
+  constructor(private produtosService: ProdutosService) { }
 
   ngOnInit() {
+    this.produtos = this.produtosService.buscarCarrinho();
   }
 
 }

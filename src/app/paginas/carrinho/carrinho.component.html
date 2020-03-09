@@ -14,29 +14,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="../../../assets/imgs/img-camiseta.png" alt="" height="100px" class="bg-light rounded"></td>
-                        <td>Camiseta</td>
-                        <td>100</td>
+                    <tr *ngFor="let produto of produtos | async">
+                        <td>X</td>
+                        <td><img [src]="produto.foto" alt="" height="100px" class="bg-light rounded"></td>
+                        <td>{{produto.nome}}</td>
+                        <td>{{produto.preco}}</td>
                         <td class="px-0"><input type="number" value="" min="1" max="10" width="10px"></td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="../../../assets/imgs/img-tenis.png" alt="" height="100px" class="bg-light rounded"></td>
-                        <td>Tenis</td>
-                        <td>100</td>
-                        <td>1</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="../../../assets/imgs/img-short.png" alt="" height="100px" class="bg-light rounded"></td>
-                        <td>Short</td>
-                        <td>100</td>
-                        <td>1</td>
-                        <td>100</td>
+                        <td>{{produto.preco}}</td>
                     </tr>
                 </tbody>
             </table>
