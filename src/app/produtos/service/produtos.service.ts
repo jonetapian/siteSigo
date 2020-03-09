@@ -1,4 +1,4 @@
-import { Produtos } from './../model/produtoModel';
+import { Produto } from './../model/produtoModel';
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
@@ -11,20 +11,21 @@ export class ProdutosService {
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
-  adicionar(produtos: Produtos){
-    this.db.list('produtos').push(produtos)
+  adicionar(produtos: Produto){
+    return this.db.list('produtos').push(produtos)
       .then((result: any) => {
+        return new Produto(result);
         console.log(result.key);
       });
   }
 
-  alterar(produtos: Produtos, key: string){
+  alterar(produtos: Produto, key: string){
     this.db.list('produtos').update(key, produtos)
     .catch((error: any) => {
       console.error(error);
     });
   }
-     
+
 
   buscar(){
     return this.db.list('produtos')
@@ -40,14 +41,14 @@ export class ProdutosService {
     this.db.object(`produtos/${key}`).remove();
   }
 
-  adicionarFoto(files: string, produtos: Produtos){
+  adicionarFoto(files: string, produtos: Produto){
     this.db.list('fotos/' + produtos.nome).push(files)
       .then((result: any) => {
         console.log(result.key);
       });
   }
-  
-  deletarFoto(url, key: string, produtos: Produtos){
+
+  deletarFoto(url, key: string, produtos: Produto){
     return this.storage.storage.refFromURL(url).delete(),
     this.db.object('fotos/' + produtos.nome + `${key}`).remove();
   }

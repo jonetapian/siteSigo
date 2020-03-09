@@ -1,3 +1,4 @@
+import { TagsComponent } from './paginas/tags/tags.component';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
 import { NgModule } from '@angular/core';
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'tenis', component: TenisComponent},
   {path: 'adicionar-produto', component: AdicionarProdutoComponent},
   {path: 'carrinho', component: CarrinhoComponent},
+  {path: 'tags', component: TagsComponent},
   {path: '', component: MenuComponent}
 ];
 
