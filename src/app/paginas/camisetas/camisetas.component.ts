@@ -1,4 +1,4 @@
-import { Produtos } from './../../produtos/model/produtoModel';
+import { Produto } from './../../produtos/model/produtoModel';
 import { ProdutosDataService } from './../../produtos/service/produtos-data.service';
 import { ProdutosService } from './../../produtos/service/produtos.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,10 +23,10 @@ export class CamisetasComponent implements OnInit {
 
   }
 
-  editar(produtos: Produtos, key: string){
 
   }
 
+<<<<<<< HEAD
   adicionarCarrinho(produto){
     this.produtosService.adicionarCarrinho(produto);
     
@@ -34,3 +34,5 @@ export class CamisetasComponent implements OnInit {
   
   
 }
+=======
+>>>>>>> 08b934070ba324b212c9517e3503ec2673e85198

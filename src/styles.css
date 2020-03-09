@@ -10,7 +10,7 @@
 }
 
 .bg-orange{
-  background-color: #FF8A2E;
+  background-color: #FFA866;
 }
 .font-sub{
   font-family: 'Raleway' , sans-serif;
@@ -34,3 +34,10 @@
   font-size: 20px;
   letter-spacing: 1.5px;
 }
+.texto-branco-opaco{
+  color: rgb(255, 255, 255,0.87);
+}
+.bg-branco-opaco{
+  background-color: rgb(255, 255, 255,0.87);
+}
+

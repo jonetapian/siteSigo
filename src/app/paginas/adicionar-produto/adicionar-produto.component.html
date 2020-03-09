@@ -5,76 +5,99 @@
         <div class="form-row">
             <div class="form-group col-6">
                 <label for="">Nome:</label>
-                <input class="form-control" type="text" [(ngModel)]="produtos.nome" name="nome"/>
+                <input class="form-control" type="text" [(ngModel)]="produto.nome" name="nome"/>
             </div>
             <div class="form-group col-6">
                 <label for="">Tipo:</label>
-                <select class="form-control" [(ngModel)]="produtos.tipo" name="tipo">
-                    <option *ngFor="let item of tipo" [value]="item">{{item}}</option>
+                <select class="form-control" (change)="addTipo($event.target.value)" name="tipo" *ngIf="tags" >
+                  <option>Selecione um tipo</option>
+                  <option *ngFor="let tag of tags.tipo | keyvalue" [value]="tag.key">{{tag.key}}</option>
                 </select>
-                
+                <br *ngIf="produto.tipo.length > 0">
+                <small *ngIf="produto.tipo.length > 0" >{{produto.tipo.join(",")}}</small>
             </div>
             <div class="form-group col-6">
                 <label for="">Marca:</label>
-                <input class="form-control" type="text" [(ngModel)]="produtos.marca" name="marca"/>
+                <select class="form-control" [(ngModel)]="produto.marca" name="marca" *ngIf="tags" >
+                    <option>Selecione uma marca</option>
+                  <option *ngFor="let tag of tags.marca | keyvalue" [value]="tag.key">{{tag.key}}</option>
+                </select>
+                <br *ngIf="produto.marca">
+                <small *ngIf="produto.marca" >{{produto.marca}}</small>
             </div>
             <div class="form-group col-6">
                 <label for="">Tamanho:</label>
-                <input class="form-control" type="text" [(ngModel)]="produtos.tamanho" name="tamanho"/>
+                <select class="form-control"(change)="addTamanho($event.target.value)"  *ngIf="tags" name="tamanho" >
+                  <option>Selecione um tamanho</option>
+                  <option *ngFor="let tag of tags.tamanho | keyvalue" [value]="tag.key">{{tag.key}}</option>
+                </select>
+                <br *ngIf="produto.tamanho.length > 0">
+                <small *ngIf="produto.tamanho.length > 0" >{{produto.tamanho.join(",")}}</small>
             </div>
             <div class="form-group col-6">
                 <!--<label for="">Cores:</label>
                 <br>
                 <div class="form-check form-check-inline" *ngFor="let item of cor" >
-                    <input class="form-check-input" type="checkbox" [value]="item" [(ngModel)]="produtos.cor" name="cor" [id]="item">
+                    <input class="form-check-input" type="checkbox" [value]="item" [(ngModel)]="produto.cor" name="cor" [id]="item">
                     <label class="form-check-label" [for]="item">{{ item }}</label>
 
                 </div>-->
                 <label for="">Cor:</label>
-                <input class="form-control" type="text" [(ngModel)]="produtos.cor" name="cor"/>
-                
-                
+                <select class="form-control" (change)="addColor($event.target.value)"  *ngIf="tags" name="cor">
+                    <option>Selecione uma cor</option>
+                    <option *ngFor="let tag of tags.cor | keyvalue" [value]="tag.key" >{{tag.key}}</option>
+                </select>
+                <br *ngIf="produto.cor.length > 0">
+                <small *ngIf="produto.cor.length > 0" >{{produto.cor.join(",")}}</small>
+
+
+
             </div>
             <div class="form-group col-6">
                 <label for="">Preço:</label>
-                <input class="form-control " type="text" [(ngModel)]="produtos.preco" name="preco" data-mask="00/00/0000"/>
+                <input class="form-control " type="text" [(ngModel)]="produto.preco" name="preco" data-mask="00/00/0000"/>
             </div>
             <div class="form-group col-6">
                 <label for="">Categoria:</label>
-                <select class="form-control" [(ngModel)]="produtos.categoria" name="categoria">
+                <select class="form-control" [(ngModel)]="produto.categoria" name="categoria">
                     <option *ngFor="let item of categoria" [value]="item">{{item}}</option>
                 </select>
             </div>
             <div class="form-group col-6">
                 <label for="">Foto:</label>
                 <div class="custom-file">
-                    <div class="form-control dropzone text-center" 
+                    <div class="form-control dropzone text-center"
                         dropzone
                         (hovered)="toggleHover($event)"
                         (dropped)="onDrop($event)" id="dropzone">
 
+<<<<<<< HEAD
                         <label class="dz-message">Arraste as fotos até aqui</label>
                         <input type="file" name="" id="" multiple for="dropzone">
                         
+=======
+
+                        <h3 class="dz-message">Arraste as fotos até aqui</h3>
+>>>>>>> 08b934070ba324b212c9517e3503ec2673e85198
                     </div>
-                    
-                    
+
+
                 </div>
             </div>
 
             <div class="form-group col-12">
                 <h3>Fotos:</h3>
-                        
+
                 <div *ngFor="let file of files" class="float-left">
-                    
-                    <upload-task [file]="file" [recebeProdutos]="produtos" (enviarUrl)="receberUrl($event)"></upload-task>
+
+                    <upload-task [file]="file" [recebeProdutos]="produto" (enviarUrl)="receberUrl($event)"></upload-task>
                 </div>
             </div>
         </div>
         <button class="btn btn-dark">Adicionar</button>
-        
-    
-        
+
+
+
     </div>
 </form>
 

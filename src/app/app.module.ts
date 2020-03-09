@@ -1,3 +1,4 @@
+import { TagService } from './paginas/tags/service/tag.service';
 import { LoginService } from './paginas/login/service/login.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { CadastroService } from './paginas/cadastro/service/cadastro.service';
@@ -30,6 +31,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormAlertComponent } from './shared/form-alert/form-alert.component';
+import { BuyCardComponent } from './shared/buy-card/buy-card.component';
+import { TagsComponent } from './paginas/tags/tags.component';
 
 
 
@@ -47,9 +50,9 @@ import { FormAlertComponent } from './shared/form-alert/form-alert.component';
     AdicionarProdutoComponent,
     DropzoneDirective,
     CarrinhoComponent,
-    
-
-    FormAlertComponent
+    FormAlertComponent,
+    BuyCardComponent,
+    TagsComponent
    ],
   imports: [
     BrowserModule,
@@ -64,7 +67,7 @@ import { FormAlertComponent } from './shared/form-alert/form-alert.component';
     BrowserAnimationsModule
 
   ],
-  providers: [CadastroService,UsuarioService,LoginService],
+  providers: [CadastroService,UsuarioService,LoginService,TagService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
