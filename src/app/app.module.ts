@@ -1,15 +1,14 @@
+import { TagService } from './paginas/tags/service/tag.service';
 import { LoginService } from './paginas/login/service/login.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { CadastroService } from './paginas/cadastro/service/cadastro.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule} from '@angular/fire/storage';
 
 
@@ -32,6 +31,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormAlertComponent } from './shared/form-alert/form-alert.component';
+import { BuyCardComponent } from './shared/buy-card/buy-card.component';
+import { TagsComponent } from './paginas/tags/tags.component';
 
 
 
@@ -49,9 +50,9 @@ import { FormAlertComponent } from './shared/form-alert/form-alert.component';
     AdicionarProdutoComponent,
     DropzoneDirective,
     CarrinhoComponent,
-    
-
-    FormAlertComponent
+    FormAlertComponent,
+    BuyCardComponent,
+    TagsComponent
    ],
   imports: [
     BrowserModule,
@@ -61,12 +62,12 @@ import { FormAlertComponent } from './shared/form-alert/form-alert.component';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     FormsModule,
-    UploadTaskModule
+    UploadTaskModule,
     AngularFireAuthModule,
     BrowserAnimationsModule
 
   ],
-  providers: [CadastroService,UsuarioService,LoginService],
+  providers: [CadastroService,UsuarioService,LoginService,TagService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,78 +1,151 @@
-import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
-
-import { Produtos } from './../../produtos/model/produtoModel';
-import { ProdutosService } from './../../produtos/service/produtos.service';
-import { ProdutosDataService } from './../../produtos/service/produtos-data.service';
-import { AngularFireStorageModule, AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage';
-
-
+import { ErrorHandler } from './../../shared/error-handler/error_handler';
+import { Tag } from "./../tags/model/tag_model";
+import { ProdutosDataService } from "./../../produtos/service/produtos-data.service";
+import { Produto } from "./../../produtos/model/produtoModel";
+import { ProdutosService } from "./../../produtos/service/produtos.service";
+import { TagService } from "./../tags/service/tag.service";
+import { Observable } from "rxjs";
+import { Component, OnInit } from "@angular/core";
+import {
+  AngularFireStorageModule,
+  AngularFireUploadTask,
+  AngularFireStorage
+} from "@angular/fire/storage";
+import { error } from 'protractor';
 
 @Component({
-  selector: 'adicionar-produto',
-  templateUrl: './adicionar-produto.component.html',
-  styleUrls: ['./adicionar-produto.component.css']
+  selector: "adicionar-produto",
+  templateUrl: "./adicionar-produto.component.html",
+  styleUrls: ["./adicionar-produto.component.css"]
 })
 export class AdicionarProdutoComponent implements OnInit {
-
   isHovering: boolean;
   files: File[] = [];
+  tags: any;
 
-  
-  toggleHover(event: boolean){
+  toggleHover(event: boolean) {
     this.isHovering = event;
   }
 
-  onDrop(files: FileList){
-    for(let i = 0; i < files.length; i++){
+  onDrop(files: FileList) {
+    for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
-      
     }
   }
 
-  produtos: Produtos;
-  key: string = '';
+  produto: Produto = new Produto();
+  key: string = "";
   url: any;
-  
 
-  constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService, private storage: AngularFireStorage) { }
+  constructor(
+    private produtoService: ProdutosService,
+    private produtoDataService: ProdutosDataService,
+    private storage: AngularFireStorage,
+    private tags_service: TagService
+  ) {}
 
   ngOnInit() {
-    this.produtos = new Produtos();
+    this.getAllTags();
   }
 
-  receberUrl(url){
-    this.produtos.foto = url;
+  receberUrl(url) {
+    this.produto.foto = url;
   }
-  
-  
-  onSubmit(){
-    if(this.key){
-      
-    }else{
-      this.produtosService.adicionar(this.produtos);
-      
+
+  onSubmit() {
+    if (this.key) {
+    } else {
+      this.produtoService.adicionar(this.produto).then(product =>{
+        this.produto.key = product.key;
+        console.log(product);
+        this.sendTagsToDb(product.key);
+        alert("Seu produto foi adicionado com sucesso")
+        this.produto = new Produto();
+        this.files = [];
+      });
     }
-    
-    this.produtos = new Produtos();
-    this.files = [];
+
+
   }
-  
+  getAllTags() {
+    this.tags_service.getAllTags().then(tags => {
+      console.log(tags);
+      this.tags = tags;
+    });
+  }
+  addColor(value?) {
+    console.log(value);
+    if (!this.checkIfExist(value, this.produto.cor)) {
+      this.produto.cor.push(value);
+    }
+  }
+  addTamanho(value?) {
+    if (!this.checkIfExist(value, this.produto.tamanho)) {
+      this.produto.tamanho.push(value);
+    }
+  }
+  addTipo(value?) {
+    if (!this.checkIfExist(value, this.produto.tipo)) {
+      this.produto.tipo.push(value);
+    }
+  }
+  checkIfExist(value_to_check, array) {
+    for (let item of array) {
+      if (value_to_check === item) {
+        return true;
+      }
+    }
+    return false;
+  }
+  sendTagsToDb(produto_key) {
+    let marca_tag = new Tag();
+    marca_tag.nome = this.produto.marca;
+    marca_tag.tipo = "marca";
+    this.tags_service.createTaggedProduct(marca_tag,produto_key).catch(error =>{
+      console.log(error);
+      error? ErrorHandler.organizaErro(error):null;
+    }).then(res =>{
+      console.log(res);
+    });
+    for (let color of this.produto.cor) {
+      let color_tag = new Tag();
+      color_tag.nome = color;
+      color_tag.tipo = "cor";
+      this.tags_service.createTaggedProduct(color_tag,produto_key).catch(error =>{
+        console.log(error);
+        error? ErrorHandler.organizaErro(error):null;
+      }).then(res =>{
+        console.log(res);
+      });
+    }
 
-  tipo = [
-    'Camiseta',
-    'Shorts',
-    'Tênis'
-  ];
+    for(let tamanho of this.produto.tamanho){
+      let tamanho_tag = new Tag();
+      tamanho_tag.nome = tamanho;
+      tamanho_tag.tipo = "tamanho";
+      this.tags_service.createTaggedProduct(tamanho_tag,produto_key).catch(error =>{
+        console.log(error);
+        error? ErrorHandler.organizaErro(error):null;
+      }).then(res =>{
+        console.log(res);
+      });
+    }
+    for(let tipo of this.produto.tipo){
+      let tipo_tag = new Tag();
+      tipo_tag.nome = tipo;
+      tipo_tag.tipo = "tipo";
+      this.tags_service.createTaggedProduct(tipo_tag,produto_key).catch(error =>{
+        console.log(error);
+        error? ErrorHandler.organizaErro(error):null;
+      }).then(res =>{
+        console.log(res);
+      });
+    }
+  }
 
-  categoria = [
-    'Masculino',
-    'Feminino'
-  ];
+  tipo = ["Camiseta", "Shorts", "Tênis"];
 
-  cor = [
-    'azul',
-    'branco'
-  ]
-  
+  categoria = ["Masculino", "Feminino"];
+
+  cor = ["azul", "branco"];
 }

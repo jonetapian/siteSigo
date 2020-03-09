@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Produtos } from '../model/produtoModel';
+import { Produto } from '../model/produtoModel';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class ProdutosDataService {
 
   constructor() { }
 
-  changeContato(produtos: Produtos, key: string) {
+  changeContato(produtos: Produto, key: string) {
     this.produtosSource.next({ produtos: produtos, key: key });
   }
 }

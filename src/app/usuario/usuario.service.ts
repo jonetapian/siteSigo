@@ -27,7 +27,7 @@ export class UsuarioService {
   }
 
   CriarUsuario(usuario:Usuario){
-    this.database.object('usuarios/'+usuario.uid).set(usuario);
+    this.database.object('usuarios/'+ usuario.uid).set(usuario);
   }
   RemoverUsuario(usuario:Usuario){
     this.database.object('usuarios/'+usuario.uid).remove();
