@@ -1,0 +1,50 @@
+<div class="row">
+  <label class="font-title txtTitulo texto-branco-opaco">
+    Gerencia suas promoções
+  </label>
+
+</div>
+<div class="row justify-content-center">
+  <div class="col-auto">
+    <label class="font-sub texto-branco-opaco">
+      Crie sua promoção e adicione os produtos que receberam este desconto
+    </label>
+  </div>
+  <div class="col-auto">
+    <button class="btn bg-orange texto-branco-opaco" (click)="showInput()">
+      nova promoção
+    </button>
+  </div>
+</div>
+<div class="row justify-content-center mt-3" *ngIf="show_input" >
+  <div class="col-8">
+    <label class="font-sub texto-branco-opaco">Nome:</label>
+    <input type="text" [(ngModel)]="new_promotion.nome" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+  </div>
+</div>
+<div class="row justify-content-center mt-3" *ngIf="show_input" >
+  <div class="col-8">
+    <label class="font-sub texto-branco-opaco">Descrição:</label>
+    <input type="text" [(ngModel)]="new_promotion.descricao"  placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+  </div>
+</div>
+<div class="row justify-content-center mt-3" *ngIf="show_input" >
+  <div class="col-8">
+    <label class="font-sub texto-branco-opaco">Valor de desconto(insira a porcentagem que será abatida do valor do produto):</label>
+    <input type="text" [(ngModel)]="new_promotion.valor_porcentagem"  placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+  </div>
+</div>
+<div class="row justify-content-center mt-2" *ngIf="show_input">
+  <div class="col-auto">
+    <button class="btn bg-orange texto-branco-opaco" (click)="makePromotion()">
+      adicionar promoção
+    </button>
+  </div>
+</div>
+<div class="row" *ngIf="show_input" >
+  <div class="col-2" *ngFor="let produto of produtos; let i = index" >
+    <input type="checkbox" [value]="'produto.key'" (change)="getKey(i)">
+    <app-buy-card [produto]="produto"></app-buy-card>
+  </div>
+</div>
+

@@ -1,3 +1,4 @@
+import { PromocoesService } from './paginas/promocoes/service/promocoes.service';
 import { TagService } from './paginas/tags/service/tag.service';
 import { LoginService } from './paginas/login/service/login.service';
 import { UsuarioService } from './usuario/usuario.service';
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormAlertComponent } from './shared/form-alert/form-alert.component';
 import { BuyCardComponent } from './shared/buy-card/buy-card.component';
 import { TagsComponent } from './paginas/tags/tags.component';
+import { PromocoesComponent } from './paginas/promocoes/promocoes.component';
 
 
 
@@ -52,7 +54,8 @@ import { TagsComponent } from './paginas/tags/tags.component';
     CarrinhoComponent,
     FormAlertComponent,
     BuyCardComponent,
-    TagsComponent
+    TagsComponent,
+    PromocoesComponent
    ],
   imports: [
     BrowserModule,
@@ -67,7 +70,7 @@ import { TagsComponent } from './paginas/tags/tags.component';
     BrowserAnimationsModule
 
   ],
-  providers: [CadastroService,UsuarioService,LoginService,TagService],
+  providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
