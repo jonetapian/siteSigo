@@ -27,14 +27,9 @@ export class AdicionarProdutoComponent implements OnInit {
     this.isHovering = event;
   }
 
-<<<<<<< HEAD
-  
-  onDrop(files: FileList){
-    for(let i = 0; i < files.length; i++){
-=======
+
   onDrop(files: FileList) {
     for (let i = 0; i < files.length; i++) {
->>>>>>> 08b934070ba324b212c9517e3503ec2673e85198
       this.files.push(files.item(i));
     }
   }
@@ -42,11 +37,7 @@ export class AdicionarProdutoComponent implements OnInit {
   produto: Produto = new Produto();
   key: string = "";
   url: any;
-<<<<<<< HEAD
-  separadorUrl:string = "";
-  
-=======
->>>>>>> 08b934070ba324b212c9517e3503ec2673e85198
+
 
   constructor(
     private produtoService: ProdutosService,
@@ -59,22 +50,12 @@ export class AdicionarProdutoComponent implements OnInit {
     this.getAllTags();
   }
 
-<<<<<<< HEAD
+
   receberUrl(url){
-
-    if(this.separadorUrl != ""){
-      this.separadorUrl += "|" + url;
-    }else{
-      this.separadorUrl = url;
-    }
     
-
-    this.produtos.foto = this.separadorUrl.split("|");
+    this.produto.foto.push(url);
     
-=======
-  receberUrl(url) {
-    this.produto.foto = url;
->>>>>>> 08b934070ba324b212c9517e3503ec2673e85198
+    
   }
 
   onSubmit() {

@@ -1,4 +1,4 @@
-import { Produto } from './../model/produtoModel';
+import { Produto } from '../model/produtoModel';
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {map} from 'rxjs/operators';

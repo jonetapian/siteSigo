@@ -23,10 +23,6 @@ export class CamisetasComponent implements OnInit {
 
   }
 
-
-  }
-
-<<<<<<< HEAD
   adicionarCarrinho(produto){
     this.produtosService.adicionarCarrinho(produto);
     
@@ -34,5 +30,3 @@ export class CamisetasComponent implements OnInit {
   
   
 }
-=======
->>>>>>> 08b934070ba324b212c9517e3503ec2673e85198

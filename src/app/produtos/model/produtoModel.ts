@@ -6,11 +6,7 @@ export class Produto{
     cor:Array<string> = new Array<string>();
     preco = '';
     categoria = '';
-<<<<<<< HEAD
-    foto:Array<string> = [];
-}
-=======
-    foto = '';
+    foto:Array<string> = new Array<string>();
     key ='';
 
     constructor(json?){
@@ -31,4 +27,3 @@ export class Produto{
       this.key = val.key;
     }
 }
->>>>>>> 08b934070ba324b212c9517e3503ec2673e85198
