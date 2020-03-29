@@ -6,7 +6,7 @@ export class Produto{
     cor:Array<string> = new Array<string>();
     preco = '';
     categoria = '';
-    foto = '';
+    foto:Array<string> = new Array<string>();
     key ='';
 
     constructor(json?){

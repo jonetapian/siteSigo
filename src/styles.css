@@ -6,11 +6,11 @@
 }
 
 .bg-card-produto{
-    background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0,0,0,.7));
+  background: linear-gradient(to bottom, rgb(255, 138, 46), rgb(255, 114, 6));
 }
 
 .bg-orange{
-  background-color: #FFA866;
+  background-color: rgb(255, 138, 46);
 }
 .font-sub{
   font-family: 'Raleway' , sans-serif;

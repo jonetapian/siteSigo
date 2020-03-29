@@ -1,4 +1,4 @@
-import { Produto } from './../model/produtoModel';
+import { Produto } from '../model/produtoModel';
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
@@ -51,5 +51,22 @@ export class ProdutosService {
   deletarFoto(url, key: string, produtos: Produto){
     return this.storage.storage.refFromURL(url).delete(),
     this.db.object('fotos/' + produtos.nome + `${key}`).remove();
+  }
+
+  adicionarCarrinho(produto){
+    this.db.list('carrinho/').push(produto)
+      .then((result: any) => {
+        console.log(result.key);
+      });
+  }
+
+  buscarCarrinho(){
+    return this.db.list('carrinho')
+      .snapshotChanges()
+      .pipe(
+        map(changes => {
+          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+        })
+      );
   }
 }
