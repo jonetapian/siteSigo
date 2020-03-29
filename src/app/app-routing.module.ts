@@ -1,3 +1,4 @@
+import { FinalizarCompraComponent } from './paginas/finalizar-compra/finalizar-compra.component';
 import { TagsComponent } from './paginas/tags/tags.component';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'adicionar-produto', component: AdicionarProdutoComponent},
   {path: 'carrinho', component: CarrinhoComponent},
   {path: 'tags', component: TagsComponent},
+  {path: 'finalizar-compra', component: FinalizarCompraComponent},
   {path: '', component: MenuComponent}
 ];
 

@@ -1,6 +1,6 @@
 <div class="border border-dark p-2 rounded m-2" *ngIf="caminhoImagem as url">
   <div >
-    <span (click)="deletarFoto(url)">x</span>
+    <span (click)="deletarFoto(url, file)">x</span>
   </div>
   <div *ngIf="uploadPercent | async">
     {{file.name}}

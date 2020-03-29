@@ -11,11 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class CarrinhoComponent implements OnInit {
 
   produtos: Observable<any>;
+  contador: Produto;
   
   constructor(private produtosService: ProdutosService) { }
 
   ngOnInit() {
     this.produtos = this.produtosService.buscarCarrinho();
+    
   }
+
+  
 
 }

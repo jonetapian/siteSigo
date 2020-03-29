@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule} from '@angular/fire/storage';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 import { environment } from '../environments/environment';
@@ -33,6 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormAlertComponent } from './shared/form-alert/form-alert.component';
 import { BuyCardComponent } from './shared/buy-card/buy-card.component';
 import { TagsComponent } from './paginas/tags/tags.component';
+import { FinalizarCompraComponent } from './paginas/finalizar-compra/finalizar-compra.component';
+
 
 
 
@@ -52,7 +55,8 @@ import { TagsComponent } from './paginas/tags/tags.component';
     CarrinhoComponent,
     FormAlertComponent,
     BuyCardComponent,
-    TagsComponent
+    TagsComponent,
+    FinalizarCompraComponent
    ],
   imports: [
     BrowserModule,
@@ -64,7 +68,8 @@ import { TagsComponent } from './paginas/tags/tags.component';
     FormsModule,
     UploadTaskModule,
     AngularFireAuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTabsModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService],
