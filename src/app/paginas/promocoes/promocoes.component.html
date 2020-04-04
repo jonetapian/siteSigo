@@ -1,50 +1,100 @@
-<div class="row">
-  <label class="font-title txtTitulo texto-branco-opaco">
-    Gerencia suas promoções
-  </label>
-
-</div>
-<div class="row justify-content-center">
-  <div class="col-auto">
-    <label class="font-sub texto-branco-opaco">
-      Crie sua promoção e adicione os produtos que receberam este desconto
-    </label>
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col">
+      <label class="font-title txtTitulo texto-branco-opaco">
+        Gerencia suas promoções
+      </label>
+    </div>
   </div>
-  <div class="col-auto">
-    <button class="btn bg-orange texto-branco-opaco" (click)="showInput()">
-      nova promoção
-    </button>
+  <div class="row">
+    <div class="col font-sub ">
+      <p class=" texto-branco-opaco ">
+        Veja suas promoções já criadas
+      </p>
+    </div>
+  </div>
+  <div class="row" *ngIf="all_promotions" >
+    <div class="col-sm-4 col " *ngFor="let promotion of all_promotions ;let i = index">
+      <div class="card font-sub" >
+        <div class="card-body" >
+          <h5 class="card-title">{{promotion.nome}}</h5>
+          <p class="card-text">{{promotion.descricao}}</p>
+        </div>
+        <ul class="list-group list-group-flush" *ngFor="let produto of promotion.produtos" >
+          <li class="list-group-item">{{getProductName(produto)}}</li>
+        </ul>
+        <button class="bg-orange btn" (click)="updatePromotion(i)">Editar</button>
+        <button class="btn-danger btn" (click)="deletePromotion(i)"> deletar</button>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col font-sub ">
+      <p class=" texto-branco-opaco ">
+        Crie sua promoção e adicione os produtos que receberam este desconto
+      </p>
+      <br>
+      <button class="btn bg-orange texto-branco-opaco mx-auto" (click)="showInput()">
+        nova promoção
+      </button>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3" *ngIf="show_input">
+    <div class="col-sm-8 col-12">
+      <label class="font-sub texto-branco-opaco">Nome:</label>
+      <input
+        type="text"
+        [(ngModel)]="new_promotion.nome"
+        placeholder="digite aqui..."
+        style="background: transparent; border: solid 1px white;color: white;"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3" *ngIf="show_input">
+    <div class="col-sm-8 col-12">
+      <label class="font-sub texto-branco-opaco">Descrição:</label>
+      <input
+        type="text"
+        [(ngModel)]="new_promotion.descricao"
+        placeholder="digite aqui..."
+        style="background: transparent; border: solid 1px white;color: white;"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3" *ngIf="show_input">
+    <div class="col-sm-8 col-12">
+      <label class="font-sub texto-branco-opaco"
+        >Valor de desconto(insira a porcentagem que será abatida do valor do
+        produto):</label
+      >
+      <input
+        type="text"
+        [(ngModel)]="new_promotion.valor_porcentagem"
+        placeholder="digite aqui..."
+        style="background: transparent; border: solid 1px white;color: white;"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="row justify-content-center mt-2" *ngIf="show_input">
+    <div class="col-auto">
+      <button
+        class="btn bg-orange texto-branco-opaco"
+        (click)="makePromotion()"
+      >
+        adicionar promoção
+      </button>
+    </div>
+  </div>
+  <div class="row pl-1 pr-1 mt-3" *ngIf="show_input">
+    <div class="col-sm-2 col-6" *ngFor="let produto of produtos; let i = index">
+      <label class="btn-primary" style="width: 100%;" ngbButtonLabel>
+        <input type="checkbox"  (ngModel)="isChecked(produto.key)"  ngbButton (change)="getKey(i)">
+        Selecionar
+      </label>
+      <app-show-component (click)="getKey(i)" [produto]="produto"></app-show-component>
+    </div>
   </div>
 </div>
-<div class="row justify-content-center mt-3" *ngIf="show_input" >
-  <div class="col-8">
-    <label class="font-sub texto-branco-opaco">Nome:</label>
-    <input type="text" [(ngModel)]="new_promotion.nome" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
-  </div>
-</div>
-<div class="row justify-content-center mt-3" *ngIf="show_input" >
-  <div class="col-8">
-    <label class="font-sub texto-branco-opaco">Descrição:</label>
-    <input type="text" [(ngModel)]="new_promotion.descricao"  placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
-  </div>
-</div>
-<div class="row justify-content-center mt-3" *ngIf="show_input" >
-  <div class="col-8">
-    <label class="font-sub texto-branco-opaco">Valor de desconto(insira a porcentagem que será abatida do valor do produto):</label>
-    <input type="text" [(ngModel)]="new_promotion.valor_porcentagem"  placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
-  </div>
-</div>
-<div class="row justify-content-center mt-2" *ngIf="show_input">
-  <div class="col-auto">
-    <button class="btn bg-orange texto-branco-opaco" (click)="makePromotion()">
-      adicionar promoção
-    </button>
-  </div>
-</div>
-<div class="row" *ngIf="show_input" >
-  <div class="col-2" *ngFor="let produto of produtos; let i = index" >
-    <input type="checkbox" [value]="'produto.key'" (change)="getKey(i)">
-    <app-buy-card [produto]="produto"></app-buy-card>
-  </div>
-</div>
-

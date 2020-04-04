@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Promocao } from './../model/promocoes_model';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -25,9 +26,12 @@ export class PromocoesService {
      });
   }
   getAllPromotions(){
-    return this.db.database.ref('/promocoes').once('value').then(function(snapshot) {
-      return snapshot.val();
-      // ...
-    });
+    return this.db.list('promocoes')
+      .snapshotChanges()
+      .pipe(
+        map(changes => {
+          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+        })
+      );
   }
 }

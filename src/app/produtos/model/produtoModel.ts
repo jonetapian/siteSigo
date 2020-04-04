@@ -6,8 +6,8 @@ export class Produto{
     cor:Array<string> = new Array<string>();
     preco = '';
     categoria = '';
-    foto = '';
-    key ='';
+    foto :Array<string> = new Array<string>();
+    key:any;
 
     constructor(json?){
       if(json){

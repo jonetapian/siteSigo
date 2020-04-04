@@ -12,6 +12,8 @@ import {
   stagger,
   // ...
 } from '@angular/animations';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -49,9 +51,11 @@ import {
   })
 export class AppComponent {
   title = 'Sigo';
-  estaLogado: boolean = false;
+  estaLogado: boolean = true;
   showingButtons: boolean = false;
   usuarioAtual:Usuario;
+  menu_icon = faBars;
+
   constructor(private usuarioService:UsuarioService, private cadastroService:CadastroService, private router:Router){
     this.EstaLogado();
   }

@@ -1,10 +1,13 @@
 <div class="container-fluid  p-2">
   <div style="height: 100%;" class="mt-5">
-    <label  class="texto-branco-opaco font-title txtTitulo mt-3">Gerencie suas Tags para organização de seus produtos, você pode
+    <label  class="texto-branco-opaco font-title txtTitulo mt-3">
+      Gerencie suas Tags para organização de seus produtos, você pode
       adicionar novas cores, uma nova marca, ou até mesmo
       um novo tipo de roupa</label>
       <div class="row font-sub texto-branco-opaco mt-2">
-        Adicione uma nova tag
+        <div class="col">
+          Adicione uma nova tag
+        </div>
       </div>
     <div class="font-sub texto-branco-opaco row justify-content-center">
       <div class="col-auto mt-2">
@@ -25,7 +28,7 @@
         <p >
           Insira um nome
         </p>
-        <input type="text" [(ngModel)]="tag_name"  placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+        <input type="text" [(ngModel)]="tag_name"  placeholder="digite aqui, para mais de uma utilize ','" style="background: transparent; border: solid 1px white;color: white;" class="form-control">
       </div>
     </div>
     <div class="row font-sub mt-3 justify-content-center" *ngIf="show_insert">
@@ -34,34 +37,45 @@
       </div>
     </div>
     <div class="row mt-2 font-sub texto-branco-opaco">
-      <label> Veja todas as suas Tags</label>
+      <div class="col"> Veja todas as suas Tags</div>
       <br>
 
     </div>
     <div class="row font-sub " *ngIf="tags_in_db" >
-      <label class="texto-branco-opaco">
-        marcas:
-      </label>
-      <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.marca | keyvalue" >{{tag.key}}</span>
+      <div class="col">
+        <label class="texto-branco-opaco">
+          marcas:
+        </label>
+        <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.marca | keyvalue" >{{tag.key}}</span>
+      </div>
+
 
     </div>
     <div class="row font-sub mt-2" *ngIf="tags_in_db">
-      <label class="texto-branco-opaco">
-        cores:
-      </label>
-      <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.cor | keyvalue" >{{tag.key}}</span>
+      <div class="col">
+        <label class="texto-branco-opaco">
+          cores:
+        </label>
+        <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.cor | keyvalue" >{{tag.key}}</span>
+      </div>
     </div>
     <div class="row font-sub mt-2" *ngIf="tags_in_db">
-      <label class="texto-branco-opaco">
-        tipo de roupa:
-      </label>
-      <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.tipo | keyvalue" >{{tag.key}}</span>
+      <div class="col">
+        <label class="texto-branco-opaco">
+          tipo de roupa:
+        </label>
+        <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.tipo | keyvalue" >{{tag.key}}</span>
+      </div>
+
     </div>
     <div class="row font-sub mt-2" *ngIf="tags_in_db">
-      <label class="texto-branco-opaco">
-        tamanhos:
-      </label>
-      <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.tamanho | keyvalue" >{{tag.key}}</span>
+      <div class="col">
+        <label class="texto-branco-opaco">
+          tamanhos:
+        </label>
+        <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.tamanho | keyvalue" >{{tag.key}}</span>
+      </div>
+
     </div>
   </div>
 </div>

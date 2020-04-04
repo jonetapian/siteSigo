@@ -14,8 +14,8 @@ export class ProdutosService {
   adicionar(produtos: Produto){
     return this.db.list('produtos').push(produtos)
       .then((result: any) => {
-        return new Produto(result);
         console.log(result.key);
+        return new Produto(result);
       });
   }
 

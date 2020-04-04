@@ -1,60 +1,49 @@
-<div class="row justify-content-center">
-  <div class="col-10">
-    <div
-      id="slidePrincipal"
-      class="carousel slide carousel-fade mt-3"
-      data-ride="carousel"
-    >
-      <div class="carousel-inner">
-        <div class="carousel-item " [ngClass]="first? 'active' : 'null'" *ngFor="let model of corrousel_photos; let first = first">
-          <div class="row justify-content-center">
-            <div class="col">
-              <img
-                class="img-fluid rounded mx-auto d-block"
-                src="{{ model }}"
-                alt="Primeiro Slide"
-              />
-            </div>
-          </div>
+  <app-carousel style="width: 100%;"  [images]="corrousel_photos"></app-carousel>
+
+<div *ngIf="produtos_promocao[0][0]"  >
+  <div class="container-fluid mt-5 p-0" *ngFor="let promocao of promocoes;let i = index">
+    <div class="row">
+      <div class="col">
+        <h1 class="txtOrange text-center mb-3 font-sub">
+          Promoção -
+          {{ promocao.nome }}
+        </h1>
+      </div>
+    </div>
+
+
+<app-white-divider></app-white-divider>
+    <div>
+      <div class="row px-1">
+        <div class="col text-center">
+          <label class="font-sub txtSub texto-branco-opaco ">{{
+            promocao.descricao
+          }}</label>
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-1">
+        <div class="col-md-3 mt-2 col-sm-10 "   *ngFor="let produto of produtos_promocao[i]">
+          <app-buy-card   [produto]="produto" [promocao]='promocao'></app-buy-card>
         </div>
       </div>
     </div>
-    <a
-      class="carousel-control-prev"
-      href="#slidePrincipal"
-      role="button"
-      data-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Anterior</span>
-    </a>
-    <a
-      class="carousel-control-next"
-      href="#slidePrincipal"
-      role="button"
-      data-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Próximo</span>
-    </a>
-  </div>
-</div>
+    </div>
 
-<div class="container my-5" *ngIf="promocoes['Dia dos homens']">
-  <p class="h1 txtOrange text-center mb-3 font-sub">
-    Promoção -
-    {{ promocoes["Dia dos homens"].nome }}
-  </p>
-
-  <div class="row  pt-0 pb-0   mb-3">
-    <div class="col bg-branco-opaco" style="height: 3px;"></div>
-  </div>
-  <label class="font-sub txtSub texto-branco-opaco">{{
-    promocoes["Dia dos homens"].descricao
-  }}</label>
-  <div class="row">
-    <div class="col-4 mt-2" *ngFor="let produto of produtos_promocao">
-      <app-buy-card [produto]="produto" [promocao]='promocoes["Dia dos homens"]'></app-buy-card>
+  <div class="row mt-5" *ngIf="destaques" >
+    <div class="col">
+      <h1 class="txtOrange text-center mb-3 font-sub">
+        Destaques
+      </h1>
     </div>
   </div>
+  <app-white-divider></app-white-divider>
+
+  <div class="row justify-content-center px-1" *ngIf="destaques">
+    <div class="col-md-3 mt-2 col-sm-10 "   *ngFor="let produto of produtos_em_destaque">
+      <app-buy-card  [produto]="produto" ></app-buy-card>
+    </div>
+  </div>
+
 </div>
+

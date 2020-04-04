@@ -35,6 +35,14 @@ import { FormAlertComponent } from './shared/form-alert/form-alert.component';
 import { BuyCardComponent } from './shared/buy-card/buy-card.component';
 import { TagsComponent } from './paginas/tags/tags.component';
 import { PromocoesComponent } from './paginas/promocoes/promocoes.component';
+import { ShowComponentComponent } from './shared/show-product-component/show-component.component';
+import { DestaquesComponent } from './paginas/destaques/destaques/destaques.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CarouselComponent } from './shared/carousel/carousel.component';
+import { WhiteDividerComponent } from './shared/white-divider/white-divider.component';
+import { FilterComponent } from './shared/filter/filter.component';
+import { SelectedFilterComponent } from './shared/filter/selected-filter/selected-filter.component';
 
 
 
@@ -55,7 +63,13 @@ import { PromocoesComponent } from './paginas/promocoes/promocoes.component';
     FormAlertComponent,
     BuyCardComponent,
     TagsComponent,
-    PromocoesComponent
+    PromocoesComponent,
+    ShowComponentComponent,
+    DestaquesComponent,
+    CarouselComponent,
+    WhiteDividerComponent,
+    FilterComponent,
+    SelectedFilterComponent
    ],
   imports: [
     BrowserModule,
@@ -67,7 +81,9 @@ import { PromocoesComponent } from './paginas/promocoes/promocoes.component';
     FormsModule,
     UploadTaskModule,
     AngularFireAuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    NgbModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],

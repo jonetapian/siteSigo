@@ -12,7 +12,7 @@ export class TagService {
   constructor(private db:AngularFireDatabase) { }
 
   createTag(tag:Tag){
-    return this.db.object('tags/'+ tag.tipo + "/" + tag.nome + "/dados da tag").set(tag);
+    return this.db.object('tags/'+ tag.tipo + "/" + tag.nome).set(tag);
   }
   deleteTag(tag:Tag){
     this.db.object('tags/'+ tag.tipo + "/" + tag.nome).remove();
@@ -33,7 +33,7 @@ export class TagService {
       // ...
     });
   }
-  createTaggedProduct(tag:Tag,produto_key:any){
-    return this.db.object('tags/'+ tag.tipo + "/" + tag.nome + "/produtos/" + produto_key ).set(produto_key);
+  createTaggedProduct(tag:Tag){
+    return this.db.object('tags/'+ tag.tipo + "/" + tag.nome + "/produtos/").set(tag.produtos);
   }
 }

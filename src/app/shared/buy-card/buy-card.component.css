@@ -1,4 +1,27 @@
-.card:hover {
-  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  background-color: white;
+
+@media (min-width: 768px) {
+  .card:hover {
+    transform: scale(1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    background-color: white;
+  }
+  .fontSize{
+    font-size: 1rem !important;
+  }
 }
+.img-wrap {
+  height: 100px;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+}
+.img-fluid {
+  max-height: 100%;
+}
+.badge{
+  float:right;
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
