@@ -8,3 +8,17 @@
 	align-items: center !important;
 }
 
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+@media (min-width: 768px) {
+  .foto-grande{
+    height: 40rem;
+  }
+}
+

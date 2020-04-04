@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col font-title txtTitulo txtOrange">
+      Gerencie seus destaque, geralmente são selecionados os produtos que mais são vendidos
+    </div>
+  </div>
+  <div class="row">
+    <div class="col font-sub texto-branco-opaco">
+      Produtos que estão em destaque agora
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="produtos_em_destaque.length > 0" >
+    <div class="col-sm-4 col" >
+      <div class="card font-sub" >
+        <ul class="list-group list-group-flush"  >
+          <li class="list-group-item" *ngFor="let produto of produtos_em_destaque;let i = index" >{{produto.nome}}</li>
+        </ul>
+        <button class="btn-danger btn" (click)="deleteDestaques()">Deletar tudo
+          <fa-icon [icon]="delete_icon" class="ml-2"></fa-icon>
+
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 justify-content-end">
+    <div class="col-auto">
+      <button class="bg-orange text-white font-sub btn btn-lg" (click)="createDestaques()">Salvar
+        <fa-icon [icon]="save_icon"></fa-icon>
+      </button>
+    </div>
+  </div>
+  <div class="row mt-3" *ngIf="produtos.length > 0" >
+    <div class="col-md-6 col-sm-4 col-6" *ngFor="let produto of produtos; let i = index">
+      <label class="btn-primary" style="width: 100%;" ngbButtonLabel>
+        <input type="checkbox"  (ngModel)="isChecked(produto.key)"  ngbButton (change)="getKey(i)">
+        Selecionar
+      </label>
+      <app-show-component  [produto]="produto"></app-show-component>
+    </div>
+  </div>
+</div>

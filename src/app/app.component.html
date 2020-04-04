@@ -1,88 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body class="d-flex flex-column ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body class="d-flex flex-column "  style="background-color: #121212;overflow-x: hidden;">
+      <nav class="navbar navbar-expand-lg bg-orange  font-sub">
+        <a routerLink="/"
+          ><img
+            src="../assets/imgs/logo-sigo.jpeg"
+            alt="logo"
+            class="mx-2 my-0"
+            height="60px"
+        /></a>
 
-  <nav class="navbar navbar-expand-lg bg-orange pt-2 pb-2 pl-0 pr-0 txtNome font-sub" >
-    <div class="row" style="width: 100%;">
-      <div class="col-auto">
-        <a routerLink="/"><img src="../assets/imgs/logo-sigo.jpeg" alt="logo" class="mx-2 my-0" height="60px"></a>
+          <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
 
-      </div>
-      <div class="col-auto ">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item  navbar-text mx-2">
-            <a routerLink="/camisetas" routerLinkActive="selecionado" class="nav-link text-white">Camisetas</a>
-          </li>
-          <li class="nav-item  navbar-text mx-2">
-            <a routerLink="/tenis" routerLinkActive="selecionado" class="nav-link text-white">Tenis</a>
-          </li>
-          <li class="nav-item navbar-text mx-2">
-            <a routerLink="/shorts" routerLinkActive="selecionado" class="nav-link text-white">Shorts</a>
-          </li>
-          <li class="nav-item navbar-text mx-2">
-            <a routerLink="/contato" routerLinkActive="selecionado" class="nav-link text-white">Contato</a>
-          </li>
-          <li class="nav-item navbar-text mx-2">
-            <a routerLink="/tags" routerLinkActive="selecionado" class="nav-link text-white">Gerenciar Tags</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col">
-
-      </div>
-      <div class="col-auto mt-2" *ngIf="estaLogado" >
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item mx-2 navbar-text">
-            <label class="txtNome">Bem vindo, {{usuarioAtual.nome}}</label>
-          </li>
-        </ul>
-      </div>
-      <div class="col-auto d-inline">
-        <img src="../assets/imgs/avatar.png" alt="" class="mx-auto" height="60px" (click)="toogleButtons()" >
-
-      </div>
-
-      <div class="col-auto mt-2 txtNomes"
-      *ngIf="showingButtons"
-      >
-        <ul class="navbar-nav mx-auto p-0"  >
-          <a routerLink="/login" routerLinkActive="selecionado" class="nav-link text-white" *ngIf="!estaLogado" >Login</a>
-          <a  class="nav-link text-white" *ngIf="estaLogado" (click)="Deslogar()" >Sair</a>
-
-          <a routerLink="/cadastro" routerLinkActive="selecionado" class="nav-link text-white" *ngIf="!estaLogado">Cadastre-se</a>
-      </ul>
-      </div>
+        >
+        <fa-icon [icon]="menu_icon"></fa-icon>
 
 
-      <div class="col-auto mt-2">
-        <div class="rounded-circle bg-light p-2"  >
-          <img src="../assets/imgs/img-lupa.png" alt="" class="mx-auto" height="25px">
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item  navbar-text mx-2">
+              <a
+                routerLink="/camisetas"
+                routerLinkActive="selecionado"
+                class="nav-link text-white"
+                >Camisetas</a
+              >
+            </li>
+            <li class="nav-item  navbar-text mx-2">
+              <a
+                routerLink="/tenis"
+                routerLinkActive="selecionado"
+                class="nav-link text-white"
+                >Tenis</a
+              >
+            </li>
+
+            <li class="nav-item navbar-text mx-2">
+              <a
+                routerLink="/shorts"
+                routerLinkActive="selecionado"
+                class="nav-link text-white"
+                >Shorts</a
+              >
+            </li>
+            <li class="nav-item navbar-text mx-2">
+              <a
+                routerLink="/contato"
+                routerLinkActive="selecionado"
+                class="nav-link text-white"
+                >Contato</a
+              >
+            </li>
+            <li class="nav-item navbar-text dropdown mx-2">
+              <a
+                class="nav-link text-white dropdown-toggle"
+                data-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Gerencia</a
+              >
+              <div class="dropdown-menu">
+                <a
+                  routerLink="/tags"
+                  routerLinkActive="selecionado"
+                  class="nav-link  dropdown-item"
+                  >Gerenciar Tags</a
+                >
+                <a
+                  routerLink="/promocoes"
+                  routerLinkActive="selecionado"
+                  class="nav-link dropdown-item"
+                  >Gerenciar Promoções</a
+                >
+                <a
+                  routerLink="/adicionar-produto"
+                  routerLinkActive="selecionado"
+                  class="nav-link dropdown-item"
+                  >Gerenciar produtos</a
+                >
+                <a
+                routerLink="/destaques"
+                routerLinkActive="selecionado"
+                class="nav-link dropdown-item"
+                >Gerenciar Destaques</a
+              >
+              </div>
+            </li>
+            <li class="nav-item navbar-text dropdown mx-2">
+              <a
+                class="nav-link dropdown-toggle text-white"
+                data-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                *ngIf="estaLogado"
+                >Bem vindo, {{ usuarioAtual.nome }}
+              </a>
+              <a
+              class="nav-link dropdown-toggle"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              *ngIf="!estaLogado"
+              >Faça seu login
+            </a>
+              <div class="dropdown-menu">
+                <a
+                  routerLink="/login"
+                  routerLinkActive="selecionado"
+                  class="nav-link dropdown-item"
+                  *ngIf="!estaLogado"
+                  >Login</a
+                >
+                <a
+                  class="nav-link dropdown-item "
+                  *ngIf="estaLogado"
+                  (click)="Deslogar()"
+                  >Sair</a
+                >
+                <a
+                  routerLink="/cadastro"
+                  routerLinkActive="selecionado"
+                  class="nav-link  dropdown-item"
+                  *ngIf="!estaLogado"
+                  >Cadastre-se</a
+                >
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
         </div>
+      </nav>
+      <router-outlet></router-outlet>
+      <footer class="footer bg-orange mt-3 " style="height: 100px;">
+        <div class="" style="height: 100%;"></div>
+      </footer>
+  </body>
 
-      </div>
-      <div class="col-auto mt-2">
-        <div routerLink="/carrinho" class="rounded-circle bg-light p-2">
-          <img src="../assets/imgs/img-carrinho.png" alt="" class="mx-auto" height="25px">
-        </div>
-
-      </div>
-    </div>
-
-  </nav>
-
-  <div class="container-fluid pb-5 px-0" style="background-color: #121212;">
-    <router-outlet></router-outlet>
-</div>
-  <footer class="footer bg-orange " style="height: 100px;">
-    <div class="" style="height: 100%;">
-    </div>
-  </footer>
-
-</body>
 </html>

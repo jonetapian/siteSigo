@@ -1,3 +1,5 @@
+import { DestaquesComponent } from './paginas/destaques/destaques/destaques.component';
+import { PromocoesComponent } from './paginas/promocoes/promocoes.component';
 import { TagsComponent } from './paginas/tags/tags.component';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
@@ -23,6 +25,9 @@ const routes: Routes = [
   {path: 'adicionar-produto', component: AdicionarProdutoComponent},
   {path: 'carrinho', component: CarrinhoComponent},
   {path: 'tags', component: TagsComponent},
+  {path: 'promocoes', component: PromocoesComponent},
+  {path: 'destaques', component: DestaquesComponent},
+
   {path: '', component: MenuComponent}
 ];
 
