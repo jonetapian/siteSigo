@@ -15,6 +15,7 @@ export class CamisetasComponent implements OnInit {
   showing_products:  Array<Produto> = new Array<Produto>();
 
 
+
   constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService) { }
 
   ngOnInit() {
@@ -52,3 +53,10 @@ export class CamisetasComponent implements OnInit {
   }
   }
 
+  adicionarCarrinho(produto){
+    this.produtosService.adicionarCarrinho(produto);
+    
+  }
+  
+  
+}

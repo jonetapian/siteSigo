@@ -27,6 +27,7 @@ export class AdicionarProdutoComponent implements OnInit {
     this.isHovering = event;
   }
 
+
   onDrop(files: FileList) {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
@@ -37,6 +38,7 @@ export class AdicionarProdutoComponent implements OnInit {
   produto: Produto = new Produto();
   key: string = "";
   url: any;
+
 
   constructor(
     private produtoService: ProdutosService,
