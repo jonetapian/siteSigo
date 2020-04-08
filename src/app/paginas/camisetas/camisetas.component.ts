@@ -24,8 +24,11 @@ export class CamisetasComponent implements OnInit {
   }
 
   adicionarCarrinho(produto){
-    this.produtosService.adicionarCarrinho(produto);
-    
+    let addProduto: Produto[] = [];
+    addProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
+    addProduto.push(produto);
+    console.log(addProduto);
+    localStorage.setItem("carrinho", JSON.stringify(addProduto));
   }
   
   

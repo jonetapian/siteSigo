@@ -4,10 +4,11 @@ export class Produto{
     marca: string;
     tamanho:Array<string> = new Array<string>();
     cor:Array<string> = new Array<string>();
-    preco = '';
+    preco: number = 0;
     categoria = '';
     foto:Array<string> = new Array<string>();
     key ='';
+    quantidadeCarrinho = 1;
 
     constructor(json?){
       if(json){
@@ -25,5 +26,6 @@ export class Produto{
       this.categoria = val.categoria;
       this.foto = val.foto;
       this.key = val.key;
+      this.quantidadeCarrinho = val.quantidade;
     }
 }

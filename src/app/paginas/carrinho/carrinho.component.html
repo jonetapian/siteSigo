@@ -1,7 +1,8 @@
 <div class="container text-white my-3">
     <h3>Carrinho</h3>
+    <button (click)="limparCarrinho()"></button>
     <div class="row">
-        <div class="col-8">
+        <div class="col-md-8 table-responsive">
             <table class="table bg-card-produto text-center">
                 <thead>
                     <tr>
@@ -14,25 +15,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let produto of produtos | async">
+                    <tr *ngFor="let produto of listaProdutos">
                         <td>X</td>
                         <td><img [src]="produto.foto" alt="" height="100px" class="bg-light rounded"></td>
                         <td>{{produto.nome}}</td>
-                        <td>{{produto.preco}}</td>
-                        <td class="px-0"><input type="number" value="" min="1" max="10" width="10px"></td>
-                        <td>{{produto.preco}}</td>
+                        <td>{{produto.preco * 1}}</td>
+                        <td class="px-0">
+                            <button class="col-3 btn btn-outline-light" (click)="decrement(produto)">-</button>
+                            <span class="col">{{produto.quantidadeCarrinho}}</span>
+                            <button class="col-3 btn btn-outline-light" (click)="increment(produto)">+</button>
+                        </td>
+                        <td>{{produto.preco * produto.quantidadeCarrinho}}</td>
                     </tr>
                 </tbody>
             </table>
         
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card text-dark">
                 <div class="card-header">
                     <h3>Total no carrinho</h3>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Subtotal: R$100</li>
+                    <li class="list-group-item">Subtotal: R$:{{precoTotal}}</li>
                     <li class="list-group-item">
                         <div class="input-group">
                             <input type="text" class="form-control">
@@ -40,7 +45,7 @@
 
                         </div>
                     </li>
-                    <li class="list-group-item">Total: R$300</li>
+                    <li class="list-group-item">Total: {{precoTotal}} + FRETE</li>
                   </ul>
             </div>
             <a routerLink="/finalizar-compra" class="btn btn-dark w-100 mt-2">Finalizar Compra</a>

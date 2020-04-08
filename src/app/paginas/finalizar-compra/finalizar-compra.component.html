@@ -14,7 +14,7 @@
         <div id="enderecoId" class="tab-pane fade show active">
             <h3 >Confirmação de endereço</h3>
             <div class="p-3 bg-card-produto mt-3 rounded">
-                <form action="">
+                <form action="../../calcular-frete/calcular-frete.php" method="POST">
                     <div class="form-row">
                         <div class="form-group col-2">
                             <label for="">CEP</label>
@@ -50,7 +50,7 @@
                             <input type="text" class="form-control" placeholder="">
                         </div>
                     </div>
-                    
+                    <button type="submit" formmethod="POST">enviar</button>
                     
                 </form>
             </div>
@@ -59,13 +59,13 @@
         <div id="pagamentoId" class="tab-pane fade">
             <h3 >Escolha a forma de pagamento</h3>
             <div class="p-3 bg-card-produto mt-3 rounded">
-                <form action="/processar_pagamento" method="POST">
+                <!--<form action="/processar_pagamento" method="POST">
                     <script
                      src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
                      data-preference-id="$$id$$">
                     </script>
                     <a href="$$init_point$$" target="_blank">Pagar</a>
-                </form>
+                </form>-->
                 
                 
                 
