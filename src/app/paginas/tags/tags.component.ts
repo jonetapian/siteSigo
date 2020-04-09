@@ -20,16 +20,32 @@ export class TagsComponent implements OnInit {
     this.getTags();
   }
   newTag(){
-    let new_tag = new Tag();
-    new_tag.tipo = this.tag_type;
-    new_tag.nome = this.tag_name;
-    this.tag_service.createTag(new_tag).catch(error =>{
-      error? ErrorHandler.organizaErro(error):null;
-    }).then(val =>{
-      alert("Nova " + new_tag.tipo + " " + new_tag.nome + " adicionada");
-      this.tag_name = '';
-      this.getTags();
-    });
+    let check_index = this.tag_name.indexOf(",");
+    let tag_array:Array<Tag> = new Array<Tag>();
+    if(check_index !== -1){
+      let tag_name_array = this.tag_name.split(",");
+      for(let tag_name of tag_name_array ){
+        tag_array.push(this.createTag(tag_name,this.tag_type));
+      }
+    }else{
+      tag_array.push(this.createTag(this.tag_name,this.tag_type));
+    }
+    for(let tag of tag_array){
+      this.tag_service.createTag(tag).catch(error =>{
+        error? ErrorHandler.organizaErro(error):null;
+      }).then(val =>{
+        alert("Nova " + tag.tipo + " " + tag.nome + " adicionada");
+        this.tag_name = '';
+        this.getTags();
+      });
+    }
+
+  }
+  createTag(tag_name,tag_type){
+    let tag = new Tag();
+    tag.nome = tag_name;
+    tag.tipo = tag_type;
+    return tag;
   }
   showInput(code){
     this.show_insert  = !this.show_insert;

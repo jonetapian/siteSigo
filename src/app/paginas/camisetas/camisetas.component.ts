@@ -1,3 +1,4 @@
+import { Tag } from './../tags/model/tag_model';
 import { Produto } from './../../produtos/model/produtoModel';
 import { ProdutosDataService } from './../../produtos/service/produtos-data.service';
 import { ProdutosService } from './../../produtos/service/produtos.service';
@@ -10,26 +11,47 @@ import { Observable } from 'rxjs';
   styleUrls: ['./camisetas.component.css']
 })
 export class CamisetasComponent implements OnInit {
-  produtos: Observable<any>;
-  
+  products: Array<Produto> = new Array<Produto>();
+  showing_products:  Array<Produto> = new Array<Produto>();
+
+
 
   constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService) { }
 
   ngOnInit() {
-    this.produtos = this.produtosService.buscar();
+    this.getProducts();
   }
 
   deletar(key: string){
 
   }
-
-  adicionarCarrinho(produto){
-    let addProduto: Produto[] = [];
-    addProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
-    addProduto.push(produto);
-    console.log(addProduto);
-    localStorage.setItem("carrinho", JSON.stringify(addProduto));
+  getProducts(){
+    this.produtosService.buscar().subscribe((res:any) =>{
+      this.products = res;
+      this.showing_products = res;
+    });
   }
+
+  filterSelected(tag){
+    console.log(tag);
+    this.getTagByFilter(tag);
+  }
+  filterRemoved(tag){
+
+  }
+  getTagByFilter(filter){
+    console.log(filter);
+    let filtered_array:any =[];
+    for(let filtered_product of filter.produtos){
+      for(let product of this.products){
+        if(filtered_product === product.key){
+          filtered_array.push(product);
+        }
+      }
+    }
+    this.showing_products = filtered_array;
+  }
+
   
-  
+
 }

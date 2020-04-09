@@ -1,16 +1,53 @@
-<div class="card bg-branco-opaco" >
-  <div class="card-body">
-    <div class="row justify-content-center" >
-      <div class="col">
-        <img src="{{produto.foto}}" class="img-fluid">
+<div class="card fontSize px-1 pt-1 m-0" style="background-color: rgb(39, 39, 39);">
+  <ngb-carousel>
+    <ng-template ngbSlide *ngFor="let img of produto.foto">
+      <span *ngIf="promocao"  class="badge bg-orange p-2 texto-branco-opaco">
+        - {{ promocao.valor_porcentagem }} %</span
+      >
+      <div class="picsum-img-wrapper" >
+        <img class="card-img-top" style="border-radius: 10px;"   [src]="img" alt="Random first slide">
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <div class="card-body" *ngIf="promocao">
 
+    <div class="row justify-content-center text-white">
+      <div class="col-auto">
+        <h5 class="card-title font-title text-white text-center">{{ produto.nome }}</h5>
+        <h6 class="card-subtitle mb-2 font-sub texto-branco-opaco">
+          <s>De - R$ {{ produto.preco }}</s>
+        </h6>
+        <h6 class="card-subtitle mb-2 font-sub texto-branco-opaco">
+          Por - R$ {{ getDiscount() }}
+        </h6>
       </div>
     </div>
-    <div class="row">
-      <div class="col-8">
-        <label class=" font-title">{{produto.nome}}</label>
-        <br>
-        <label class="font-sub">{{produto.preco}}</label>
+
+    <div class="row justify-content-center">
+      <div class="col-auto px-2">
+        <button class="btn  bg-orange texto-branco-opaco font-title" style="white-space: normal;" (click)="adicionarCarrinho()">
+          Adicionar ao Carrinho
+          <fa-icon [icon]="buy_icon"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body " *ngIf="!promocao">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <h5 class="card-title font-title text-white">{{ produto.nome }}</h5>
+        <h6 class="card-subtitle mb-2 font-sub texto-branco-opaco">
+          Por - R$ {{ produto.preco }}
+        </h6>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-10 px-2">
+        <button  class="btn  bg-orange texto-branco-opaco font-title" style="white-space: normal;" (click)="adicionarCarrinho()">
+          Adicionar ao Carrinho
+          <fa-icon [icon]="buy_icon"></fa-icon>
+        </button>
       </div>
     </div>
   </div>

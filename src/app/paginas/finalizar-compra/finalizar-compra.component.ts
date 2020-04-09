@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 
+
 @Component({
   selector: 'app-finalizar-compra',
   templateUrl: './finalizar-compra.component.html',
@@ -46,4 +47,19 @@ export class FinalizarCompraComponent implements OnInit {
       console.log(error);
     });*/
   }
+
+  buscarCep(){
+    
+    //let correios = new Correios();
+
+    /*correios.consultaCEP({ cep: '08226022' })
+    .then(result => {
+      console.log(result);
+    })
+    .catch(error => {
+      console.log(error);
+    });*/
+  }
+  
+
 }

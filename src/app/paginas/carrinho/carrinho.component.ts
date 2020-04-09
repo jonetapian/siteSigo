@@ -19,24 +19,10 @@ export class CarrinhoComponent implements OnInit {
   constructor(private produtosService: ProdutosService) { }
 
   ngOnInit() {
-    /*this.produtos = this.produtosService.buscarCarrinho();
-    this.produtos.subscribe(prods =>{
-      console.log(prods);
-      prods.map(prod => {
-        this.precoTotal += parseInt(prod.preco);
-        console.log(this.precoTotal);
-      });
-    })
-    console.log(this.produtos);*/
-    this.produtos = JSON.parse(localStorage.getItem("carrinho"));
-    for(let i = 0; i < this.produtos.length; i++){
-      this.produtos[i].quantidadeCarrinho = 1;
-      this.precoTotal += this.produtos[i].preco * 1;
-      this.produtos[i].preco = this.produtos[i].preco;
-      this.listaProdutos.push(this.produtos[i]);
-    }
-
     
+    this.atualizarCarrinho();
+
+
   }
 
   increment(produto: Produto){
@@ -58,4 +44,27 @@ export class CarrinhoComponent implements OnInit {
     localStorage.clear();
   }
 
+  deletar(produto){
+    let deletarProduto: Produto[] = [];
+
+    deletarProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
+    deletarProduto.splice(produto, 1);
+
+    console.log("produto" + deletarProduto);
+
+    localStorage.setItem("carrinho", JSON.stringify(deletarProduto));
+    this.listaProdutos.splice(produto, 1);
+  }
+
+  atualizarCarrinho(){
+    this.produtos = JSON.parse(localStorage.getItem("carrinho"));
+
+    for(let i = 0; i < this.produtos.length; i++){
+
+      this.produtos[i].quantidadeCarrinho = 1;
+      this.precoTotal += this.produtos[i].preco * 1;
+
+      this.listaProdutos.push(this.produtos[i]);
+    }
+  }
 }

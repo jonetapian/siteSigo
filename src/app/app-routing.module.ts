@@ -1,4 +1,6 @@
 import { FinalizarCompraComponent } from './paginas/finalizar-compra/finalizar-compra.component';
+import { DestaquesComponent } from './paginas/destaques/destaques/destaques.component';
+import { PromocoesComponent } from './paginas/promocoes/promocoes.component';
 import { TagsComponent } from './paginas/tags/tags.component';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
@@ -25,6 +27,9 @@ const routes: Routes = [
   {path: 'carrinho', component: CarrinhoComponent},
   {path: 'tags', component: TagsComponent},
   {path: 'finalizar-compra', component: FinalizarCompraComponent},
+  {path: 'promocoes', component: PromocoesComponent},
+  {path: 'destaques', component: DestaquesComponent},
+
   {path: '', component: MenuComponent}
 ];
 

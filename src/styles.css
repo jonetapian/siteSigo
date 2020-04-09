@@ -23,15 +23,15 @@
   letter-spacing: 1px;
 }
 .txtTitulo{
-  font-size:24px;
+  font-size: 1.5rem;
   letter-spacing: 1.5px;
 }
 .txtSub{
-  font-size: 20px;
+  font-size: 1.5rem;
   letter-spacing: 1px;
 }
 .txtbtn{
-  font-size: 20px;
+  font-size: 5rem;
   letter-spacing: 1.5px;
 }
 .texto-branco-opaco{
@@ -40,6 +40,31 @@
 .bg-branco-opaco{
   background-color: rgb(255, 255, 255,0.87);
 }
+.txtOrange{
+  color: #FFA866;
+}
+html {
+  font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
 
 
 html, body { height: 100%; }

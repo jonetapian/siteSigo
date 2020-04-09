@@ -10,7 +10,7 @@
             <div class="form-group col-6">
                 <label for="">Tipo:</label>
                 <select class="form-control" (change)="addTipo($event.target.value)" name="tipo" *ngIf="tags" >
-                  <option>Selecione um tipo</option>
+                  <option value="default">Selecione um tipo</option>
                   <option *ngFor="let tag of tags.tipo | keyvalue" [value]="tag.key">{{tag.key}}</option>
                 </select>
                 <br *ngIf="produto.tipo.length > 0">
@@ -28,7 +28,7 @@
             <div class="form-group col-6">
                 <label for="">Tamanho:</label>
                 <select class="form-control"(change)="addTamanho($event.target.value)"  *ngIf="tags" name="tamanho" >
-                  <option>Selecione um tamanho</option>
+                  <option value="default">Selecione um tamanho</option>
                   <option *ngFor="let tag of tags.tamanho | keyvalue" [value]="tag.key">{{tag.key}}</option>
                 </select>
                 <br *ngIf="produto.tamanho.length > 0">
@@ -44,7 +44,7 @@
                 </div>-->
                 <label for="">Cor:</label>
                 <select class="form-control" (change)="addColor($event.target.value)"  *ngIf="tags" name="cor">
-                    <option>Selecione uma cor</option>
+                    <option value="default">Selecione uma cor</option>
                     <option *ngFor="let tag of tags.cor | keyvalue" [value]="tag.key" >{{tag.key}}</option>
                 </select>
                 <br *ngIf="produto.cor.length > 0">

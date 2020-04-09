@@ -1,5 +1,7 @@
 import { Produto } from './../../produtos/model/produtoModel';
 import { Component, OnInit, Input } from '@angular/core';
+import { Promocao } from 'src/app/paginas/promocoes/model/promocoes_model';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-buy-card',
@@ -9,11 +11,23 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BuyCardComponent implements OnInit {
 
   @Input() produto:Produto;
-
+  @Input() promocao:Promocao;
+  buy_icon = faCartPlus;
   constructor() { }
 
   ngOnInit() {
-    console.log(this.produto);
+    console.log(this.promocao);
+  }
+  getDiscount(){
+    return ((this.produto.preco) - (this.produto.preco) * parseInt(this.promocao.valor_porcentagem)  / 100).toFixed(2);
+  }
+
+  adicionarCarrinho(){
+    let addProduto: Produto[] = [];
+    addProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
+    addProduto.push(this.produto);
+    console.log("produto" + addProduto);
+    localStorage.setItem("carrinho", JSON.stringify(addProduto));
   }
 
 }
