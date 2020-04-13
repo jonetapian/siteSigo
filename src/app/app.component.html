@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
-  <body class="d-flex flex-column "  style="background-color: #121212;overflow-x: hidden;">
-      <nav class="navbar navbar-expand-lg bg-orange  font-sub">
+  <body class="d-flex flex-column pic-bg "  style="">
+      <nav class="navbar navbar-expand-lg bg-orange  font-sub" style="position: absolute;z-index: 100;width: 100%;">
         <a routerLink="/"
           ><img
             src="../assets/imgs/logo-sigo.jpeg"
@@ -31,123 +31,126 @@
 
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item  navbar-text mx-2">
-              <a
-                routerLink="/camisetas"
-                routerLinkActive="selecionado"
-                class="nav-link text-white"
-                >Camisetas</a
-              >
-            </li>
-            <li class="nav-item  navbar-text mx-2">
-              <a
-                routerLink="/tenis"
-                routerLinkActive="selecionado"
-                class="nav-link text-white"
-                >Tenis</a
-              >
-            </li>
+        <div class="collapse navbar-collapse" style="width: 100%;" id="navbarNav">
+          <div data-toggle = "collapse" data-target="#navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item  navbar-text mx-2">
+                <a
+                  routerLink="/camisetas"
+                  routerLinkActive="selecionado"
+                  class="nav-link text-white"
+                  >Camisetas</a
+                >
+              </li>
+              <li class="nav-item  navbar-text mx-2">
+                <a
+                  routerLink="/tenis"
+                  routerLinkActive="selecionado"
+                  class="nav-link text-white"
+                  >Tenis</a
+                >
+              </li>
 
-            <li class="nav-item navbar-text mx-2">
-              <a
-                routerLink="/shorts"
-                routerLinkActive="selecionado"
-                class="nav-link text-white"
-                >Shorts</a
-              >
-            </li>
-            <li class="nav-item navbar-text mx-2">
-              <a
-                routerLink="/contato"
-                routerLinkActive="selecionado"
-                class="nav-link text-white"
-                >Contato</a
-              >
-            </li>
-            <li class="nav-item navbar-text dropdown mx-2">
-              <a
-                class="nav-link text-white dropdown-toggle"
-                data-toggle="dropdown"
-                href="#"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Gerencia</a
-              >
-              <div class="dropdown-menu">
+              <li class="nav-item navbar-text mx-2">
                 <a
-                  routerLink="/tags"
+                  routerLink="/shorts"
                   routerLinkActive="selecionado"
-                  class="nav-link  dropdown-item"
-                  >Gerenciar Tags</a
+                  class="nav-link text-white"
+                  >Shorts</a
                 >
+              </li>
+              <li class="nav-item navbar-text mx-2">
                 <a
-                  routerLink="/promocoes"
+                  routerLink="/contato"
                   routerLinkActive="selecionado"
-                  class="nav-link dropdown-item"
-                  >Gerenciar Promoções</a
+                  class="nav-link text-white"
+                  >Contato</a
                 >
+              </li>
+              <li class="nav-item navbar-text dropdown mx-2">
                 <a
-                  routerLink="/adicionar-produto"
-                  routerLinkActive="selecionado"
-                  class="nav-link dropdown-item"
-                  >Gerenciar produtos</a
+                  class="nav-link text-white dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Gerencia</a
                 >
-                <a
-                routerLink="/destaques"
-                routerLinkActive="selecionado"
-                class="nav-link dropdown-item"
-                >Gerenciar Destaques</a
-              >
-              </div>
-            </li>
-            <li class="nav-item navbar-text dropdown mx-2">
-              <a
-                class="nav-link dropdown-toggle text-white"
-                data-toggle="dropdown"
-                href="#"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-                *ngIf="estaLogado"
-                >Bem vindo, {{ usuarioAtual.nome }}
-              </a>
-              <a
-              class="nav-link dropdown-toggle"
-              data-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-              *ngIf="!estaLogado"
-              >Faça seu login
-            </a>
-              <div class="dropdown-menu">
-                <a
-                  routerLink="/login"
+                <div class="dropdown-menu">
+                  <a
+                    routerLink="/tags"
+                    routerLinkActive="selecionado"
+                    class="nav-link  dropdown-item"
+                    >Gerenciar Tags</a
+                  >
+                  <a
+                    routerLink="/promocoes"
+                    routerLinkActive="selecionado"
+                    class="nav-link dropdown-item"
+                    >Gerenciar Promoções</a
+                  >
+                  <a
+                    routerLink="/adicionar-produto"
+                    routerLinkActive="selecionado"
+                    class="nav-link dropdown-item"
+                    >Gerenciar produtos</a
+                  >
+                  <a
+                  routerLink="/destaques"
                   routerLinkActive="selecionado"
                   class="nav-link dropdown-item"
-                  *ngIf="!estaLogado"
-                  >Login</a
+                  >Gerenciar Destaques</a
                 >
+                </div>
+              </li>
+              <li class="nav-item navbar-text dropdown mx-2">
                 <a
-                  class="nav-link dropdown-item "
+                  class="nav-link dropdown-toggle text-white"
+                  data-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                   *ngIf="estaLogado"
-                  (click)="Deslogar()"
-                  >Sair</a
-                >
+                  >Bem vindo, {{ usuarioAtual.nome }}
+                </a>
                 <a
-                  routerLink="/cadastro"
-                  routerLinkActive="selecionado"
-                  class="nav-link  dropdown-item"
-                  *ngIf="!estaLogado"
-                  >Cadastre-se</a
-                >
-              </div>
-            </li>
-          </ul>
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                *ngIf="!estaLogado"
+                >Faça seu login
+              </a>
+                <div class="dropdown-menu">
+                  <a
+                    routerLink="/login"
+                    routerLinkActive="selecionado"
+                    class="nav-link dropdown-item"
+                    *ngIf="!estaLogado"
+                    >Login</a
+                  >
+                  <a
+                    class="nav-link dropdown-item "
+                    *ngIf="estaLogado"
+                    (click)="Deslogar()"
+                    >Sair</a
+                  >
+                  <a
+                    routerLink="/cadastro"
+                    routerLinkActive="selecionado"
+                    class="nav-link  dropdown-item"
+                    *ngIf="!estaLogado"
+                    >Cadastre-se</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+
           <form class="form-inline my-2 my-lg-0">
             <input
               class="form-control mr-sm-2"

@@ -51,12 +51,10 @@ export class CamisetasComponent implements OnInit {
     }
     this.showing_products = filtered_array;
   }
-  }
 
   adicionarCarrinho(produto){
     this.produtosService.adicionarCarrinho(produto);
-    
   }
-  
-  
+
+
 }
