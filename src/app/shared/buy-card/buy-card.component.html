@@ -1,5 +1,5 @@
 <div class="card fontSize px-1 pt-1 m-0" style="background-color: rgb(39, 39, 39);">
-  <ngb-carousel  >
+  <ngb-carousel>
     <ng-template ngbSlide *ngFor="let img of produto.foto">
       <span *ngIf="promocao"  class="badge bg-orange p-2 texto-branco-opaco">
         - {{ promocao.valor_porcentagem }} %</span
@@ -25,7 +25,7 @@
 
     <div class="row justify-content-center">
       <div class="col-auto px-2">
-        <button  class="btn  bg-orange texto-branco-opaco font-title" style="white-space: normal;">
+        <button class="btn  bg-orange texto-branco-opaco font-title" style="white-space: normal;" (click)="adicionarCarrinho()">
           Adicionar ao Carrinho
           <fa-icon [icon]="buy_icon"></fa-icon>
         </button>
@@ -44,7 +44,7 @@
 
     <div class="row justify-content-center">
       <div class="col-10 px-2">
-        <button  class="btn  bg-orange texto-branco-opaco font-title" style="white-space: normal;">
+        <button  class="btn  bg-orange texto-branco-opaco font-title" style="white-space: normal;" (click)="adicionarCarrinho()">
           Adicionar ao Carrinho
           <fa-icon [icon]="buy_icon"></fa-icon>
         </button>

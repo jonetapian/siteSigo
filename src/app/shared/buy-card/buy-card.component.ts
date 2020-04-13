@@ -19,6 +19,15 @@ export class BuyCardComponent implements OnInit {
     console.log(this.promocao);
   }
   getDiscount(){
-    return (parseInt(this.produto.preco) - (parseInt(this.produto.preco) * parseInt(this.promocao.valor_porcentagem)  / 100)).toFixed(2);
+    return ((this.produto.preco) - (this.produto.preco) * parseInt(this.promocao.valor_porcentagem)  / 100).toFixed(2);
   }
+
+  adicionarCarrinho(){
+    let addProduto: Produto[] = [];
+    addProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
+    addProduto.push(this.produto);
+    console.log("produto" + addProduto);
+    localStorage.setItem("carrinho", JSON.stringify(addProduto));
+  }
+
 }

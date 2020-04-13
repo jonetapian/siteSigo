@@ -55,8 +55,9 @@ export class UploadTaskComponent implements OnInit {
     
   }
 
-  deletarFoto(url){
+  deletarFoto(url, file: File){
     this.produtosService.deletarFoto(url, this.key, this.recebeProdutos);
+    console.log("deletado")
     
   }
   
