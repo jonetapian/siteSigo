@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule} from '@angular/fire/storage';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 import { environment } from '../environments/environment';
@@ -34,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormAlertComponent } from './shared/form-alert/form-alert.component';
 import { BuyCardComponent } from './shared/buy-card/buy-card.component';
 import { TagsComponent } from './paginas/tags/tags.component';
+import { FinalizarCompraComponent } from './paginas/finalizar-compra/finalizar-compra.component';
+
 import { PromocoesComponent } from './paginas/promocoes/promocoes.component';
 import { ShowComponentComponent } from './shared/show-product-component/show-component.component';
 import { DestaquesComponent } from './paginas/destaques/destaques/destaques.component';
@@ -63,6 +66,7 @@ import { SelectedFilterComponent } from './shared/filter/selected-filter/selecte
     FormAlertComponent,
     BuyCardComponent,
     TagsComponent,
+    FinalizarCompraComponent,
     PromocoesComponent,
     ShowComponentComponent,
     DestaquesComponent,
