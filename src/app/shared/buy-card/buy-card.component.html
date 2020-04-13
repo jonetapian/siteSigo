@@ -1,4 +1,4 @@
-<div class="card fontSize px-1 pt-1 m-0" style="background-color:#332E2E">
+<div class="card fontSize px-1 pt-1 m-0 bg-branco-opaco">
   <ngb-carousel  >
     <ng-template ngbSlide *ngFor="let img of produto.foto">
       <span *ngIf="promocao"  class="badge bg-orange p-2 texto-branco-opaco">
@@ -11,14 +11,16 @@
   </ngb-carousel>
   <div class="card-body" *ngIf="promocao">
 
-    <div class="row justify-content-center text-white">
+    <div class="row justify-content-center">
       <div class="col-auto">
-        <h5 class="card-title font-title text-white text-center">{{ produto.nome }}</h5>
-        <h6 class="card-subtitle mb-2 font-sub texto-branco-opaco">
+        <h5 class="card-title font-title  text-center">{{ produto.nome }}</h5>
+        <h6 class="card-subtitle mb-2 font-sub text-danger">
           <s>De - R$ {{ produto.preco }}</s>
         </h6>
-        <h6 class="card-subtitle mb-2 font-sub texto-branco-opaco">
-          Por - R$ {{ getDiscount() }}
+        <h6 class="card-subtitle mb-2 font-sub text-success">
+          <strong>
+            Por - R$ {{ getDiscount() }}
+          </strong>
         </h6>
       </div>
     </div>
@@ -35,9 +37,12 @@
   <div class="card-body " *ngIf="!promocao">
     <div class="row justify-content-center">
       <div class="col-auto">
-        <h5 class="card-title font-title text-white">{{ produto.nome }}</h5>
-        <h6 class="card-subtitle mb-2 font-sub texto-branco-opaco">
-          Por - R$ {{ produto.preco }}
+        <h5 class="card-title font-title text-center">{{ produto.nome }}</h5>
+        <h6 class="card-subtitle mb-2 font-sub">
+          <strong>
+            Por - R$ {{ produto.preco }}
+          </strong>
+
         </h6>
       </div>
     </div>
