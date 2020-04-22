@@ -12,7 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule} from '@angular/fire/storage';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
 import { LoginComponent } from './paginas/login/login.component';
@@ -46,6 +46,8 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { WhiteDividerComponent } from './shared/white-divider/white-divider.component';
 import { FilterComponent } from './shared/filter/filter.component';
 import { SelectedFilterComponent } from './shared/filter/selected-filter/selected-filter.component';
+import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
+import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
 
 
 
@@ -73,7 +75,9 @@ import { SelectedFilterComponent } from './shared/filter/selected-filter/selecte
     CarouselComponent,
     WhiteDividerComponent,
     FilterComponent,
-    SelectedFilterComponent
+    SelectedFilterComponent,
+    CampoControlErroComponent,
+    CalcularFreteComponent
    ],
   imports: [
     BrowserModule,
@@ -87,7 +91,8 @@ import { SelectedFilterComponent } from './shared/filter/selected-filter/selecte
     AngularFireAuthModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
