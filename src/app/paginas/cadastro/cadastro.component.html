@@ -2,22 +2,26 @@
   <div style="height: 100%;" class="mt-5">
     <div class="row font-title">
       <div class="col">
-        <label class="text-white txtTitulo ">
-          Insira seus Dados de Cadastro
+        <label class="text-dark">
+          <h1>
+            Insira seus Dados de Cadastro
+          </h1>
+
         </label>
       </div>
     </div>
-    <div class="row pl-3 pr-3 pt-0 pb-0   " >
-      <div class="col bg-light" style="height: 3px;"></div>
-    </div>
+    <app-white-divider></app-white-divider>
   </div>
-  <div class="font-sub">
 
     <div class="row mt-5">
       <div class="col text-center">
-        <label class="text-white txtSub">Preencha seus dados de cadastro, para iniciar sua jornada de compras!</label>
+        <label class="text-dark font-title ">
+          <h2>Preencha seus dados de cadastro, para iniciar sua jornada de compras!</h2>
+        </label>
       </div>
     </div>
+    <div class="font-sub">
+
 
     <div class="row justify-content-center" *ngIf="showAlert" >
       <div class="col-8">
@@ -26,55 +30,55 @@
     </div>
     <div class="row mt-3 justify-content-center">
       <div class="col-10">
-        <label class="txtHeader text-white">Nome</label>
+        <label class="txtHeader text-dark">Nome</label>
       </div>
     </div>
     <div class="row mt-2 justify-content-center">
       <div class="col-10">
-        <input type="text" [(ngModel)]="nome" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+        <input type="text" [(ngModel)]="nome" placeholder="digite aqui..." style="background: transparent; border: solid 1px black;" class="form-control">
       </div>
     </div>
     <div class="row justify-content-center mt-2">
       <div class="col-10">
-        <label class="txtHeader text-white">Email</label>
+        <label class="txtHeader text-dark">Email</label>
       </div>
     </div>
     <div class="row mt-2 justify-content-center">
       <div class="col-10">
-        <input type="text" [(ngModel)]="email" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+        <input type="text" [(ngModel)]="email" placeholder="digite aqui..." style="background: transparent; border: solid 1px black;" class="form-control">
       </div>
     </div>
     <div class="row mt-3 justify-content-center">
       <div class="col-10">
-        <label class="txtHeader text-white">Senha</label>
+        <label class="txtHeader text-dark">Senha</label>
       </div>
     </div>
     <div class="row mt-2 justify-content-center">
       <div class="col-10">
-        <input type="password" (keyup.enter)="login()" [(ngModel)]="senha" placeholder="digite aqui..." style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+        <input type="password" (keyup.enter)="login()" [(ngModel)]="senha" placeholder="digite aqui..." style="background: transparent; border: solid 1px black;" class="form-control">
       </div>
     </div>
     <div class="row justify-content-center mt-2">
       <div class="col-10">
-        <small class="text-white  ml-3">A senha deve ter no mínimo 8 caracteres</small>
+        <small class="text-dark  ml-3">A senha deve ter no mínimo 8 caracteres</small>
       </div>
     </div>
 
     <div class="row mt-4 justify-content-center">
-      <div class="col-6">
-        <button class="btn btn-block bg-orange" (click)="login()">
-          <label class="text-white txtbtn">
+      <div class="col-8">
+        <button class="btn btn-block bg-preto-opaco" (click)="login()">
+          <label class="text-dark">
             Confirmar
           </label>
         </button>
     </div>
   </div>
   <div class="row justify-content-center mt-3 text-center">
-    <div class="col-6">
-      <button class="btn btn-block" style="background: white;" (click)="googleLogin()">
+    <div class="col-8">
+      <button class="btn btn-block bg-preto-opaco"  (click)="googleLogin()">
         <div class="row m-0 p-0">
           <div class="col-auto m-0 p-0">
-            <img src="../../../assets/imgs/icone-google.png">
+            <img src="../../../assets/imgs/icone-google.png" style="">
           </div>
           <div class="col">
             <label class="mt-2">
