@@ -46,6 +46,11 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { WhiteDividerComponent } from './shared/white-divider/white-divider.component';
 import { FilterComponent } from './shared/filter/filter.component';
 import { SelectedFilterComponent } from './shared/filter/selected-filter/selected-filter.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule } from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -73,7 +78,8 @@ import { SelectedFilterComponent } from './shared/filter/selected-filter/selecte
     CarouselComponent,
     WhiteDividerComponent,
     FilterComponent,
-    SelectedFilterComponent
+    SelectedFilterComponent,
+    NavBarComponent
    ],
   imports: [
     BrowserModule,
@@ -87,8 +93,11 @@ import { SelectedFilterComponent } from './shared/filter/selected-filter/selecte
     AngularFireAuthModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    NgbModule
-
+    NgbModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
   bootstrap: [AppComponent]
