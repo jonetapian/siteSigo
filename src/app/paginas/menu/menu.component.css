@@ -22,3 +22,13 @@
   }
 }
 
+.testimonial-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+
+}
+.testimonial-group > .row > .col-md-2 {
+  display: inline-block;
+  float: none;
+}

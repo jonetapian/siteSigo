@@ -46,6 +46,11 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { WhiteDividerComponent } from './shared/white-divider/white-divider.component';
 import { FilterComponent } from './shared/filter/filter.component';
 import { SelectedFilterComponent } from './shared/filter/selected-filter/selected-filter.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule } from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
 import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
 
@@ -76,6 +81,7 @@ import { CalcularFreteComponent } from './calcular-frete/calcular-frete.componen
     WhiteDividerComponent,
     FilterComponent,
     SelectedFilterComponent,
+    NavBarComponent
     CampoControlErroComponent,
     CalcularFreteComponent
    ],
@@ -92,6 +98,10 @@ import { CalcularFreteComponent } from './calcular-frete/calcular-frete.componen
     BrowserAnimationsModule,
     FontAwesomeModule,
     NgbModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule
     HttpClientModule
 
   ],

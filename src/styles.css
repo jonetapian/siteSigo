@@ -16,7 +16,7 @@
   font-family: 'Raleway' , sans-serif;
 }
 .font-title{
-  font-family: 'Popins' , sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 .txtHeader{
   font-size: 20px;
@@ -46,6 +46,9 @@
 
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,176 @@
+
+<mat-sidenav-container class="example-container"  >
+  <mat-sidenav fullscreen   fixedInViewport="true" #sidenav mode="side" position="end" [(opened)]="opened" (opened)="events.push('open!')"
+  (closed)="events.push('close!')">
+  <mat-list class="fontSub">
+    <mat-list-item >
+      <mat-icon matListIcon><fa-icon [icon]="signIn"></fa-icon></mat-icon>
+      <h3 matLine>{{usuarioAtual.nome}}</h3>
+      <p matLine>
+        <span> Ver Configuração da conta</span>
+      </p>
+    </mat-list-item>
+    <mat-list-item >
+      <mat-icon matListIcon><fa-icon [icon]="bag"></fa-icon></mat-icon>
+      <h3 matLine>Minhas compras</h3>
+    </mat-list-item>
+    <mat-list-item *ngIf="!estaLogado" (click)="Deslogar()" >
+      <mat-icon matListIcon><fa-icon [icon]="signIn"></fa-icon></mat-icon>
+      <h3 matLine>Entrar</h3>
+    </mat-list-item>
+    <mat-list-item *ngIf="estaLogado" (click)="Deslogar()" >
+      <mat-icon matListIcon><fa-icon [icon]="signOut"></fa-icon></mat-icon>
+      <h3 matLine>Sair</h3>
+    </mat-list-item>
+  </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <nav class="navbar navbar-expand-lg bg-white  font-sub p-1 p-md-auto" style="box-shadow: 0 1px 2px 0 #818391;
+    ">
+  <div class="row p-0 m-0 w-100 justify-content-center text-center ">
+    <div class="col">
+      <div class="navbar-brand" style="width: 5rem;">
+        <a routerLink="/">
+          <img
+          src="../assets/imgs/logo-sigo.png"
+          alt="logo"
+          class="mx-2 my-0 img-fluid"
+      />
+        </a>
+
+      </div>
+    </div>
+
+    <div class="col">
+      <button class="navbar-toggler float-right align-self-center mt-4" style="font-size: 20px;" type="button" (click)="isMenuCollapsed = !isMenuCollapsed;">
+        &#9776;
+      </button>
+    </div>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+      <div class="col-md-10 col-sm-auto col-8 my-auto">
+        <div class="row">
+          <div class="col-md col-sm-8 col- mr-0 pr-0">
+            <input
+            class="input-text form-control border-left-0 border-top-0 border-right-0"
+            type="search"
+            placeholder="Diga o que está pensando..."
+            aria-label="Search"
+          />
+          </div>
+          <div class="col-auto ml-0 pl-0">
+            <span class="navbar-text">
+              <fa-icon [icon]="search"></fa-icon>
+            </span>
+
+          </div>
+          <div class="col-auto">
+            <span class="navbar-text">
+              <fa-icon [icon]="bag"></fa-icon>
+            </span>
+          </div>
+          <div class="col-auto my-auto" *ngIf="!estaLogado" >
+            <a class="navbar-link text-dark" routerLink="/login">Fazer Login !</a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-auto my-auto" *ngIf="estaLogado" >
+      <button mat-icon-button (click)="sidenav.toggle()"><fa-icon [icon]="menu_icon"></fa-icon></button>
+
+    </div>
+
+
+    </div>
+
+</nav>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+
+      <div class="row font-title justify-content-center" style="background-color: #121212;color: white !important;">
+        <div class="col-md-2 col-sm-auto col-auto my-auto">
+          <label class="navbar-text">
+            <a
+            routerLink="/camisetas"
+            routerLinkActive="selecionado"
+            class="text-white"
+            >Camisetas</a
+          >
+          </label>
+
+        </div>
+        <div class="col-md-2 col-sm-auto col-auto my-auto">
+          <label class="navbar-text">
+            <a
+            routerLink="/tenis"
+            routerLinkActive="selecionado"
+            class="text-white"
+            >
+            Tênis
+            </a>
+          </label>
+        </div>
+        <div class="col-md-2 col-sm-auto col-auto my-auto">
+          <label class="navbar-text">
+            <a
+            routerLink="/camisetas"
+            routerLinkActive="selecionado"
+            class="text-white"
+            >
+            Masculino
+            </a>
+          </label>
+        </div>
+        <div class="col-md-2 col-sm-auto col-auto my-auto">
+          <label class="navbar-text">
+            <a
+            routerLink="/camisetas"
+            routerLinkActive="selecionado"
+            class="text-white"
+            >
+            Feminino
+            </a>
+          </label>
+        </div>
+        <div class="col-md-2 col-sm-auto col-auto my-auto font-title">
+          <label *ngIf="usuarioAtual.manager"  class="dropdown navbar-text">
+            <a
+              class="text-white dropdown-toggle"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Gerenciar</a>
+
+            <div class="dropdown-menu">
+              <a
+                routerLink="/tags"
+                routerLinkActive="selecionado"
+                class="nav-link  dropdown-item"
+                >Gerenciar Tags</a
+              >
+              <a
+                routerLink="/promocoes"
+                routerLinkActive="selecionado"
+                class="nav-link dropdown-item"
+                >Gerenciar Promoções</a
+              >
+              <a
+                routerLink="/adicionar-produto"
+                routerLinkActive="selecionado"
+                class="nav-link dropdown-item"
+                >Gerenciar produtos</a
+              >
+              <a
+              routerLink="/destaques"
+              routerLinkActive="selecionado"
+              class="nav-link dropdown-item"
+              >Gerenciar Destaques</a
+            >
+            </div>
+          </label>
+        </div>
+    </div>
