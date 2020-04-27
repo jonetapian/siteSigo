@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { CadastroService } from './../../paginas/cadastro/service/cadastro.service';
 import { UsuarioService } from './../../usuario/usuario.service';
 import { Usuario } from 'src/app/usuario/model/usuarioModel';
-import { faBars,faSearch, faTshirt,faSignInAlt,faShoppingBag,faUser,faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBars,faSearch, faTshirt,faSignInAlt,faShoppingBag,faUser,faSignOutAlt, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -21,6 +21,7 @@ export class NavBarComponent implements OnInit {
   signIn = faUser;
   signOut = faSignOutAlt;
   bag = faShoppingBag;
+  buyCart = faCartPlus;
   isMenuCollapsed:boolean = true;
   events: string[] = [];
   opened: boolean;
