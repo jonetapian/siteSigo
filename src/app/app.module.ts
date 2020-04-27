@@ -12,7 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule} from '@angular/fire/storage';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
 import { LoginComponent } from './paginas/login/login.component';
@@ -51,6 +51,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
+import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
 
 
 
@@ -80,6 +82,8 @@ import {MatIconModule} from '@angular/material/icon';
     FilterComponent,
     SelectedFilterComponent,
     NavBarComponent
+    CampoControlErroComponent,
+    CalcularFreteComponent
    ],
   imports: [
     BrowserModule,
@@ -98,6 +102,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatListModule,
     MatIconModule
+    HttpClientModule
+
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
   bootstrap: [AppComponent]
