@@ -32,7 +32,7 @@
   <div class="row mt-3" *ngIf="produtos.length > 0" >
     <div class="col-md-6 col-sm-4 col-6" *ngFor="let produto of produtos; let i = index">
       <label class="btn-primary" style="width: 100%;" ngbButtonLabel>
-        <input type="checkbox"  (ngModel)="isChecked(produto.key)"  ngbButton (change)="getKey(i)">
+        <input type="checkbox"  [ngModel]="isChecked(produto.key)"  ngbButton (change)="getKey(i)">
         Selecionar
       </label>
       <app-show-component  [produto]="produto"></app-show-component>

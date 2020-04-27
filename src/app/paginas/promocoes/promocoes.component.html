@@ -91,7 +91,7 @@
   <div class="row pl-1 pr-1 mt-3" *ngIf="show_input">
     <div class="col-sm-2 col-6" *ngFor="let produto of produtos; let i = index">
       <label class="btn-primary" style="width: 100%;" ngbButtonLabel>
-        <input type="checkbox"  (ngModel)="isChecked(produto.key)"  ngbButton (change)="getKey(i)">
+        <input type="checkbox"  [ngModel]="isChecked(produto.key)"  ngbButton (change)="getKey(i)">
         Selecionar
       </label>
       <app-show-component (click)="getKey(i)" [produto]="produto"></app-show-component>
