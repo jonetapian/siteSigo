@@ -1,6 +1,6 @@
-<div class="container text-white my-3">
+<div class="container text-white my-3" *ngIf="!carrinhoVazio">
     <h3>Carrinho</h3>
-    <button (click)="limparCarrinho()"></button>
+    
     <div class="row">
         <div class="col-md-8 table-responsive">
             <table class="table bg-card-produto text-center">
@@ -57,7 +57,12 @@
                     <li class="list-group-item">Total: {{precoTotal}} + FRETE</li>
                   </ul>
             </div>
-            <a routerLink="/finalizar-compra" class="btn btn-dark w-100 mt-2">Finalizar Compra</a>
+            <a routerLink="/finalizar-compra" class="btn btn-dark w-100 mt-2" >Finalizar Compra</a>
         </div>
     </div>
+</div>
+
+<div class="container text-white my-3" *ngIf="carrinhoVazio">
+    <div class="alert alert-danger">Seu carrinho está vazio, volte para à loja e selecione algum produto.</div>
+    <a class="btn btn-light" routerLink="/camisetas">Voltar às compras</a>
 </div>

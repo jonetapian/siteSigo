@@ -15,14 +15,15 @@ export class CarrinhoComponent implements OnInit {
   contador = 1;
   produto: string;
   precoTotal: number = 0;
+  carrinhoVazio = true;
   
   constructor(private produtosService: ProdutosService) { }
 
   ngOnInit() {
     
     this.atualizarCarrinho();
-
-
+    this.onCarrinhoVazio();
+    console.log(this.produtos);
   }
 
   increment(produto: Produto){
@@ -32,7 +33,7 @@ export class CarrinhoComponent implements OnInit {
 
   decrement(produto: Produto){
     
-    if(produto.quantidadeCarrinho < 1){
+    if(produto.quantidadeCarrinho < 2){
      
     }else{
       produto.quantidadeCarrinho--;
@@ -67,4 +68,13 @@ export class CarrinhoComponent implements OnInit {
       this.listaProdutos.push(this.produtos[i]);
     }
   }
+
+  onCarrinhoVazio(){
+    if(this.produtos.length > 0){
+      this.carrinhoVazio = false;
+    }else{
+      this.carrinhoVazio = true;
+    }
+  }
+
 }

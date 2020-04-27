@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
-
+import { HttpClient } from '@angular/common/http';
+import { MercadoPago } from 'mercadopago';
+import $ from 'jquery';
 
 @Component({
   selector: 'app-finalizar-compra',
@@ -11,7 +12,7 @@ export class FinalizarCompraComponent implements OnInit {
   
   encapsulation: ViewEncapsulation.None
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
 
@@ -21,10 +22,11 @@ export class FinalizarCompraComponent implements OnInit {
 
   bola = false;
 
-  MercadoPago(){
-    /*let mercadopago = require('mercadopago');
+  mercadoPago(){
+    console.log("entrei");
+    //const mercadopago = new MercadoPago;
 
-    mercadopago.configure({
+    /*mercadopago.configure({
       access_token: 'PROD_ACCESS_TOKEN'
     });
     
@@ -42,24 +44,59 @@ export class FinalizarCompraComponent implements OnInit {
     mercadopago.preferences.create(preference)
     .then(function(response){
     // Este valor substituirá a string "$$init_point$$" no seu HTML
-    //  global.init_point = response.body.init_point;
+    // global.init_point = response.body.init_point;
     }).catch(function(error){
       console.log(error);
     });*/
   }
 
-  buscarCep(){
+  
+  onSubmit(form){
     
-    //let correios = new Correios();
-
-    /*correios.consultaCEP({ cep: '08226022' })
-    .then(result => {
-      console.log(result);
-    })
-    .catch(error => {
-      console.log(error);
-    });*/
   }
   
+  verificaValidTouched(campo){
+    return !campo.valid && campo.touched;
+  }
 
+  aplicaCssErro(campo){
+    return{
+      'was-validated': this.verificaValidTouched(campo)
+    }
+  }
+  
+  buscarCEP(cep, form){
+    
+    console.log(cep);
+
+    //Nova variável "cep" somente com dígitos.
+    cep = cep.replace(/\D/g, '');
+
+    //Verifica se campo cep possui valor informado.
+    if (cep != "") {
+      //Expressão regular para validar o CEP.
+      var validacep = /^[0-9]{8}$/;
+
+      //Valida o formato do CEP.
+      if(validacep.test(cep)) {
+
+        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
+          .subscribe(dados => this.populaDadosForm(dados, form));
+          
+      }
+    }
+
+  }
+
+  populaDadosForm(dados, formulario){
+    
+    formulario.form.patchValue({
+      rua: dados.logradouro,
+      complemento: dados.complemento,
+      bairro: dados.bairro,
+      cidade: dados.localidade,
+      estado: dados.uf
+    });
+  }
+  
 }
