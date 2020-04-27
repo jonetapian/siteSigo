@@ -81,7 +81,7 @@ import { CalcularFreteComponent } from './calcular-frete/calcular-frete.componen
     WhiteDividerComponent,
     FilterComponent,
     SelectedFilterComponent,
-    NavBarComponent
+    NavBarComponent,
     CampoControlErroComponent,
     CalcularFreteComponent
    ],
@@ -101,7 +101,7 @@ import { CalcularFreteComponent } from './calcular-frete/calcular-frete.componen
     MatSidenavModule,
     MatButtonModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
     HttpClientModule
 
   ],

@@ -30,7 +30,7 @@
     ">
   <div class="row p-0 m-0 w-100 justify-content-center text-center ">
     <div class="col">
-      <div class="navbar-brand" style="width: 5rem;">
+      <div class="navbar-brand float-left" style="width: 5rem;">
         <a routerLink="/">
           <img
           src="../assets/imgs/logo-sigo.png"
@@ -38,17 +38,10 @@
           class="mx-2 my-0 img-fluid"
       />
         </a>
-
       </div>
     </div>
 
-    <div class="col">
-      <button class="navbar-toggler float-right align-self-center mt-4" style="font-size: 20px;" type="button" (click)="isMenuCollapsed = !isMenuCollapsed;">
-        &#9776;
-      </button>
-    </div>
-    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-      <div class="col-md-10 col-sm-auto col-8 my-auto">
+      <div class="col-md col-sm-auto col-8 my-auto">
         <div class="row">
           <div class="col-md col-sm-8 col- mr-0 pr-0">
             <input
@@ -65,17 +58,20 @@
 
           </div>
           <div class="col-auto">
-            <span class="navbar-text">
-              <fa-icon [icon]="bag"></fa-icon>
-            </span>
+            <a class="navbar-link text-dark" routerLink="/carrinho" title="ir para o carrinho">
+              <span class="navbar-text">
+                <fa-icon [icon]="buyCart"             routerLinkActive="selecionado"
+                ></fa-icon>
+              </span>
+            </a>
+
           </div>
           <div class="col-auto my-auto" *ngIf="!estaLogado" >
-            <a class="navbar-link text-dark" routerLink="/login">Fazer Login !</a>
+            <a class="navbar-link text-dark" routerLink="/login"             routerLinkActive="selecionado"
+            >Fazer Login !</a>
 
           </div>
         </div>
-
-      </div>
     </div>
     <div class="col-auto my-auto" *ngIf="estaLogado" >
       <button mat-icon-button (click)="sidenav.toggle()"><fa-icon [icon]="menu_icon"></fa-icon></button>
@@ -134,8 +130,8 @@
             </a>
           </label>
         </div>
-        <div class="col-md-2 col-sm-auto col-auto my-auto font-title">
-          <label *ngIf="usuarioAtual.manager"  class="dropdown navbar-text">
+        <div class="col-md-2 col-sm-auto col-auto my-auto font-title" *ngIf="estaLogado &&usuarioAtual.manager" >
+          <label   class="dropdown navbar-text">
             <a
               class="text-white dropdown-toggle"
               data-toggle="dropdown"
