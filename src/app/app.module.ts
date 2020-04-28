@@ -54,6 +54,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
 import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {LayoutModule} from '@angular/cdk/layout';
 
 
 
@@ -105,6 +107,8 @@ import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
     MatIconModule,
     HttpClientModule,
     MatFabMenuModule,
+    MatExpansionModule,
+    LayoutModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
