@@ -1,79 +1,79 @@
 <div class="container-fluid  p-2">
   <div style="height: 100%;" class="mt-5">
-    <label  class="texto-branco-opaco font-title txtTitulo mt-3">
+    <label  class=" font-title  ">
       Gerencie suas Tags para organização de seus produtos, você pode
       adicionar novas cores, uma nova marca, ou até mesmo
       um novo tipo de roupa</label>
-      <div class="row font-sub texto-branco-opaco mt-2">
+      <div class="row font-sub  mt-2">
         <div class="col">
           Adicione uma nova tag
         </div>
       </div>
-    <div class="font-sub texto-branco-opaco row justify-content-center">
+    <div class="font-sub  row justify-content-center">
       <div class="col-auto mt-2">
-        <button class="btn bg-orange " (click)="showInput(1)">Nova marca</button>
+        <button mat-raised-button class="btn bg-preto-opaco text-white" (click)="showInput(1)">Nova marca</button>
       </div>
       <div class="col-auto  mt-2">
-        <button class="btn bg-orange " (click)="showInput(2)">Nova Cor</button>
+        <button mat-raised-button class="btn bg-preto-opaco text-white" (click)="showInput(2)">Nova Cor</button>
       </div>
       <div class="col-auto mt-2">
-        <button class="btn bg-orange" (click)="showInput(3)">Nova Tipo</button>
+        <button mat-raised-button class="btn bg-preto-opaco text-white" (click)="showInput(3)">Nova Tipo</button>
       </div>
       <div class="col-auto mt-2">
-        <button class="btn bg-orange" (click)="showInput(4)">Novo Tamanho</button>
+        <button mat-raised-button class="btn bg-preto-opaco text-white" (click)="showInput(4)">Novo Tamanho</button>
       </div>
     </div>
-    <div class="row mt-3 font-sub texto-branco-opaco " *ngIf="show_insert" >
+    <div class="row mt-3 font-sub  " *ngIf="show_insert" >
       <div class="col">
         <p >
           Insira um nome
         </p>
-        <input type="text" [(ngModel)]="tag_name"  placeholder="digite aqui, para mais de uma utilize ','" style="background: transparent; border: solid 1px white;color: white;" class="form-control">
+        <input type="text" [(ngModel)]="tag_name"  placeholder="digite aqui, para mais de uma utilize ','" style="background: transparent; border: solid 1px black" class="form-control">
       </div>
     </div>
     <div class="row font-sub mt-3 justify-content-center" *ngIf="show_insert">
       <div class="col-auto">
-        <button class="btn" (click)="newTag()">Adicionar Tag</button>
+        <button mat-raised-button class="btn bg-preto-opaco text-white" (click)="newTag()">Adicionar Tag</button>
       </div>
     </div>
-    <div class="row mt-2 font-sub texto-branco-opaco">
+    <div class="row mt-2 font-sub ">
       <div class="col"> Veja todas as suas Tags</div>
       <br>
 
     </div>
-    <div class="row font-sub " *ngIf="tags_in_db" >
+    <div class="row font-title " *ngIf="tags_in_db" >
       <div class="col">
-        <label class="texto-branco-opaco">
+        <label class="">
           marcas:
         </label>
-        <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.marca | keyvalue" >{{tag.key}}</span>
+        <span class="badge bg-preto-opaco text-white shadow-sm p-2 ml-2" *ngFor="let tag of tags_in_db.marca | keyvalue" >{{tag.key}}  <span (click)="deleteTag(tag.value)">  <fa-icon class="ml-2"  [icon]="trash_icon"></fa-icon></span></span>
       </div>
 
 
     </div>
-    <div class="row font-sub mt-2" *ngIf="tags_in_db">
+    <div class="row font-title mt-2" *ngIf="tags_in_db">
       <div class="col">
-        <label class="texto-branco-opaco">
+        <label class="">
           cores:
         </label>
-        <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.cor | keyvalue" >{{tag.key}}</span>
+        <span class="badge bg-preto-opaco text-white shadow-sm p-2 ml-2" *ngFor="let tag of tags_in_db.cor | keyvalue" >{{tag.key}}  <span (click)="deleteTag(tag.value)">  <fa-icon class="ml-2"  [icon]="trash_icon"></fa-icon></span></span>
       </div>
     </div>
-    <div class="row font-sub mt-2" *ngIf="tags_in_db">
+    <div class="row font-title mt-2" *ngIf="tags_in_db">
       <div class="col">
-        <label class="texto-branco-opaco">
+        <label class="">
           tipo de roupa:
         </label>
-        <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.tipo | keyvalue" >{{tag.key}}</span>
+        <span class="badge bg-preto-opaco text-white shadow-sm p-2 ml-2" *ngFor="let tag of tags_in_db.tipo | keyvalue" >{{tag.key}} <span (click)="deleteTag(tag.value)">  <fa-icon class="ml-2"  [icon]="trash_icon"></fa-icon></span></span>
       </div>
 
     </div>
-    <div class="row font-sub mt-2" *ngIf="tags_in_db">
+    <div class="row font-title mt-2" *ngIf="tags_in_db">
       <div class="col">
-        <label class="texto-branco-opaco">
+        <label class="">
           tamanhos:
         </label>
-        <span class="badge bg-orange p-2 ml-2" *ngFor="let tag of tags_in_db.tamanho | keyvalue" >{{tag.key}}</span>
+        <span class="badge bg-preto-opaco text-white shadow-sm p-2 ml-2" *ngFor="let tag of tags_in_db.tamanho | keyvalue" >{{tag.key}} <span (click)="deleteTag(tag.value)">  <fa-icon class="ml-2"  [icon]="trash_icon"></fa-icon></span></span>
       </div>
 
     </div>

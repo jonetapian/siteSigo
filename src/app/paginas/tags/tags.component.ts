@@ -2,7 +2,7 @@ import { ErrorHandler } from './../../shared/error-handler/error_handler';
 import { Tag } from './model/tag_model';
 import { TagService } from './service/tag.service';
 import { Component, OnInit } from '@angular/core';
-
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-tags',
   templateUrl: './tags.component.html',
@@ -14,6 +14,7 @@ export class TagsComponent implements OnInit {
   tag_name:string;
   tag_type:string;
   tags_in_db:any;
+  trash_icon = faTrashAlt;
   constructor(private tag_service:TagService) { }
 
   ngOnInit() {
@@ -69,4 +70,9 @@ export class TagsComponent implements OnInit {
       this.tags_in_db = val;
     });
   }
+  deleteTag(tag){
+   this.tag_service.deleteTag(tag);
+   delete this.tags_in_db.tamanho[tag.nome];
+  }
+
 }
