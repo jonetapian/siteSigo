@@ -10,7 +10,8 @@ import { Promocao } from '../promocoes/model/promocoes_model';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+
 })
 export class MenuComponent implements OnInit {
   produtos:Array<Produto> = new Array<Produto>();
