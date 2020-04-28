@@ -1,5 +1,4 @@
-<div class="card px-1 pt-1 m-0 bg-branco-opaco shadow">
-  <fa-icon [icon]="buy_icon" class="float-right"></fa-icon>
+<div class="card px-1 py-2 m-0 bg-branco-opaco shadow">
   <ngb-carousel  >
     <ng-template ngbSlide *ngFor="let img of produto.foto">
       <div class="picsum-img-wrapper" >
@@ -16,6 +15,7 @@
           Por - R$ {{ getDiscount() }}
         </strong>
     </p>
+
   </div>
   <div class="card-body " *ngIf="!promocao">
 
@@ -24,4 +24,18 @@
         Por - R$ {{ produto.preco }}
     </p>
   </div>
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <button mat-raised-button class="bg-preto-opaco text-white  " (click)="adicionarCarrinho()">
+        Carrinho
+        <span>
+          <fa-icon [icon]="buy_icon" class="float-right" ></fa-icon>
+        </span>
+
+
+      </button>
+    </div>
+  </div>
+
+
 </div>
