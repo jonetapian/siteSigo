@@ -1,0 +1,40 @@
+<div class="container-fluid py-3">
+  <div class="row justify-content-center" *ngIf="product"  >
+    <div class="col-md-6">
+      <ngb-carousel style="width: 400px;" >
+        <ng-template  ngbSlide *ngFor="let foto of product.foto" >
+          <div class="picsum-img-wrapper" >
+
+            <img [src]="foto" class="img-fluid rounded"  alt="Random first slide">
+            </div>
+        </ng-template>
+
+      </ngb-carousel>
+
+    </div>
+    <div class="col-md-6 font-sub " >
+      <h1 class="font-title text-center">{{product.nome}}</h1>
+      <div class="row ">
+        <div class="col-md">
+          <mat-list>
+            <mat-list-item>Cor: {{product.cor.join()}}</mat-list-item>
+            <mat-list-item>Marca: {{product.marca}}</mat-list-item>
+            <mat-list-item>
+              <label>Tamanho:</label>
+              <select class="form-control ml-3" [ngModel]="size">
+                <option value="default">Selecione o tamanho</option>
+                <option [value]="tamanho" *ngFor="let tamanho of product.tamanho" >{{tamanho}}</option>
+              </select>
+            </mat-list-item>
+           </mat-list>
+        </div>
+      </div>
+      <div class="row mt-5 px-2 font-title">
+        <button  class="btn bg-preto-opaco shadow-sm btn-block text-white " (click)="buttonClicked()"  >
+          <label class="float-left ">{{button_string}}</label>
+          <label class="float-right ">R${{product.preco}}</label>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

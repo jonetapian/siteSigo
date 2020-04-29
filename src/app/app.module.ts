@@ -54,6 +54,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
 import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
+import { ViewProductComponent } from './paginas/view-product/view-product.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {LayoutModule} from '@angular/cdk/layout';
 
@@ -86,7 +87,8 @@ import {LayoutModule} from '@angular/cdk/layout';
     SelectedFilterComponent,
     NavBarComponent,
     CampoControlErroComponent,
-    CalcularFreteComponent
+    CalcularFreteComponent,
+    ViewProductComponent
    ],
   imports: [
     BrowserModule,

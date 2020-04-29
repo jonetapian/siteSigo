@@ -1,4 +1,4 @@
-import { Produto } from '../model/produtoModel';
+import { Produto } from './../model/produtoModel';
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
@@ -26,13 +26,26 @@ export class ProdutosService {
     });
   }
 
-
+  buscarPorid(produto_key){
+    return this.db.database.ref('/produtos/' + produto_key).once('value').then(function(snapshot) {
+      let product = new Produto(snapshot.val());
+      product.key = snapshot.key;
+      return product;
+      // ...
+    });
+  }
   buscar(){
     return this.db.list('produtos')
       .snapshotChanges()
       .pipe(
         map(changes => {
-          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+          return changes.map(c => {
+            const key = c.payload.key;
+            const val = c.payload.val();
+            let product = new Produto(val);
+            product.key = key
+            return product
+          });
         })
       );
   }
@@ -60,13 +73,5 @@ export class ProdutosService {
       });
   }
 
-  buscarCarrinho(){
-    return this.db.list('carrinho')
-      .snapshotChanges()
-      .pipe(
-        map(changes => {
-          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-        })
-      );
-  }
+
 }
