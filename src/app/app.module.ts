@@ -55,6 +55,8 @@ import { CampoControlErroComponent } from './shared/campo-control-erro/campo-con
 import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { ViewProductComponent } from './paginas/view-product/view-product.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {LayoutModule} from '@angular/cdk/layout';
 
 
 
@@ -107,6 +109,8 @@ import { ViewProductComponent } from './paginas/view-product/view-product.compon
     MatIconModule,
     HttpClientModule,
     MatFabMenuModule,
+    MatExpansionModule,
+    LayoutModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
