@@ -107,6 +107,7 @@ export class AdicionarProdutoComponent implements OnInit {
     if(this.tags.marca[this.produto.marca].produtos){
       marca_tag.produtos = this.tags.marca[this.produto.marca].produtos;
     }
+    console.log(marca_tag.produtos);
     marca_tag.produtos.push(produto_key);
     this.tags_service.createTaggedProduct(marca_tag).catch(error =>{
       console.log(error);
