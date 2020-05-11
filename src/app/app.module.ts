@@ -47,7 +47,7 @@ import { WhiteDividerComponent } from './shared/white-divider/white-divider.comp
 import { FilterComponent } from './shared/filter/filter.component';
 import { SelectedFilterComponent } from './shared/filter/selected-filter/selected-filter.component';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
-import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
+import { CalcularFreteComponent } from './shared/calcular-frete/calcular-frete.component';
 
 
 

@@ -1,4 +1,3 @@
-import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
 import { FinalizarCompraComponent } from './paginas/finalizar-compra/finalizar-compra.component';
 import { DestaquesComponent } from './paginas/destaques/destaques/destaques.component';
 import { PromocoesComponent } from './paginas/promocoes/promocoes.component';
@@ -30,7 +29,6 @@ const routes: Routes = [
   {path: 'finalizar-compra', component: FinalizarCompraComponent},
   {path: 'promocoes', component: PromocoesComponent},
   {path: 'destaques', component: DestaquesComponent},
-  {path: 'calcular-frete', component: CalcularFreteComponent},
   {path: '', component: MenuComponent}
 ];
 

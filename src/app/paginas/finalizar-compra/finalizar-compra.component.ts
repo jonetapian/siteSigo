@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MercadoPago } from 'mercadopago';
 import $ from 'jquery';
 
@@ -21,33 +21,10 @@ export class FinalizarCompraComponent implements OnInit {
   }
 
   bola = false;
+  corsHeaders;
 
   mercadoPago(){
-    console.log("entrei");
-    //const mercadopago = new MercadoPago;
-
-    /*mercadopago.configure({
-      access_token: 'PROD_ACCESS_TOKEN'
-    });
     
-    // Cria um objeto de preferência
-    let preference = {
-      items: [
-        {
-          title: 'Meu produto',
-          unit_price: 100,
-          quantity: 1,
-        }
-      ]
-    };
-    
-    mercadopago.preferences.create(preference)
-    .then(function(response){
-    // Este valor substituirá a string "$$init_point$$" no seu HTML
-    // global.init_point = response.body.init_point;
-    }).catch(function(error){
-      console.log(error);
-    });*/
   }
 
   
@@ -83,10 +60,14 @@ export class FinalizarCompraComponent implements OnInit {
         this.http.get(`https://viacep.com.br/ws/${cep}/json`)
           .subscribe(dados => this.populaDadosForm(dados, form));
           
+
+          
       }
     }
 
   }
+
+  
 
   populaDadosForm(dados, formulario){
     
