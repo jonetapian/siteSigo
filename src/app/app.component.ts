@@ -1,3 +1,4 @@
+import { MatFabMenu } from '@angular-material-extensions/fab-menu';
 import { Router } from '@angular/router';
 import { CadastroService } from './paginas/cadastro/service/cadastro.service';
 import { UsuarioService } from './usuario/usuario.service';
@@ -12,7 +13,7 @@ import {
   stagger,
   // ...
 } from '@angular/animations';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSearch, faTshirt, faUser, faSignOutAlt, faShoppingBag, faCartPlus, faTools } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -55,6 +56,19 @@ export class AppComponent {
   showingButtons: boolean = false;
   usuarioAtual:Usuario;
   menu_icon = faBars;
+  search = faSearch;
+  shirt = faTshirt;
+  signIn = faUser;
+  signOut = faSignOutAlt;
+  bag = faShoppingBag;
+  buyCart = faCartPlus;
+  tools = faTools;
+  isMenuCollapsed:boolean = true;
+
+  isSearchCollapsed:boolean = true;
+  events: string[] = [];
+  opened: boolean;
+
 
   constructor(private usuarioService:UsuarioService, private cadastroService:CadastroService, private router:Router){
     this.EstaLogado();
@@ -89,4 +103,25 @@ export class AppComponent {
   toogleButtons(){
     this.showingButtons = !this.showingButtons;
   }
-}
+  fabButtonsRandom: MatFabMenu[] = [
+    {
+      id: 1,
+      icon: 'whatsApp'
+    },
+    {
+      id: 2,
+      icon: 'mail'
+    },
+    {
+      id: 3,
+      icon: 'file_copy'
+    },
+    {
+      id: 4,
+      icon: 'phone'
+    },
+  ];
+  clicked(){
+    console.log("foi")
+  }
+  }

@@ -10,7 +10,8 @@ import { Promocao } from '../promocoes/model/promocoes_model';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+
 })
 export class MenuComponent implements OnInit {
   produtos:Array<Produto> = new Array<Produto>();
@@ -22,13 +23,16 @@ export class MenuComponent implements OnInit {
   constructor(private produto_service:ProdutosService,private promotion_service:PromocoesService,private destaque_service:DestaquesService) { }
 
   ngOnInit() {
-    this.produto_service.buscar().subscribe((res:Array<Produto>) => {
+    this.produto_service.buscar().subscribe((res:any) => {
       console.log(res);
       this.produtos = res;
       this.getPromotedProducts();
       this.destaque_service.getDestaques().then((res:any) =>{
         this.destaques = res;
-        this.getDestaqueProducts();
+        if(res){
+          this.getDestaqueProducts();
+
+        }
 
       });
 

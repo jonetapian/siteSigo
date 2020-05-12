@@ -10,13 +10,13 @@
 }
 
 .bg-orange{
-  background-color: rgb(255, 138, 46);
+  background-color: #FFA866;
 }
 .font-sub{
   font-family: 'Raleway' , sans-serif;
 }
 .font-title{
-  font-family: 'Popins' , sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 .txtHeader{
   font-size: 20px;
@@ -43,29 +43,15 @@
 .txtOrange{
   color: #FFA866;
 }
-html {
-  font-size: 1rem;
-}
-
-@include media-breakpoint-up(sm) {
-  html {
-    font-size: 1.2rem;
-  }
-}
-
-@include media-breakpoint-up(md) {
-  html {
-    font-size: 1.4rem;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  html {
-    font-size: 1.6rem;
-  }
+.bg-preto-opaco{
+  background-color: #121212;
 }
 
 
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

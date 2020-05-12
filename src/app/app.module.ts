@@ -46,8 +46,18 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { WhiteDividerComponent } from './shared/white-divider/white-divider.component';
 import { FilterComponent } from './shared/filter/filter.component';
 import { SelectedFilterComponent } from './shared/filter/selected-filter/selected-filter.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule } from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
 import { CalcularFreteComponent } from './shared/calcular-frete/calcular-frete.component';
+import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
+import { ViewProductComponent } from './paginas/view-product/view-product.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {LayoutModule} from '@angular/cdk/layout';
+import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
 
 
 
@@ -76,8 +86,11 @@ import { CalcularFreteComponent } from './shared/calcular-frete/calcular-frete.c
     WhiteDividerComponent,
     FilterComponent,
     SelectedFilterComponent,
+    NavBarComponent,
     CampoControlErroComponent,
-    CalcularFreteComponent
+    CalcularFreteComponent,
+    ViewProductComponent,
+    PagseguroComponent
    ],
   imports: [
     BrowserModule,
@@ -92,7 +105,14 @@ import { CalcularFreteComponent } from './shared/calcular-frete/calcular-frete.c
     BrowserAnimationsModule,
     FontAwesomeModule,
     NgbModule,
-    HttpClientModule
+    MatSidenavModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    HttpClientModule,
+    MatFabMenuModule,
+    MatExpansionModule,
+    LayoutModule,
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],

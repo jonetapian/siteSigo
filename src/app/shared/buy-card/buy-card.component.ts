@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Produto } from './../../produtos/model/produtoModel';
 import { Component, OnInit, Input } from '@angular/core';
 import { Promocao } from 'src/app/paginas/promocoes/model/promocoes_model';
@@ -13,10 +14,10 @@ export class BuyCardComponent implements OnInit {
   @Input() produto:Produto;
   @Input() promocao:Promocao;
   buy_icon = faCartPlus;
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit() {
-    console.log(this.promocao);
+    console.log(this.produto);
   }
   getDiscount(){
     return ((this.produto.preco) - (this.produto.preco) * parseInt(this.promocao.valor_porcentagem)  / 100).toFixed(2);
@@ -28,6 +29,9 @@ export class BuyCardComponent implements OnInit {
     addProduto.push(this.produto);
     console.log("produto" + addProduto);
     localStorage.setItem("carrinho", JSON.stringify(addProduto));
+  }
+  goToProductPage(){
+    this.route.navigate(["ver-produto" , this.produto.key]);
   }
 
 }

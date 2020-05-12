@@ -1,3 +1,9 @@
-<p class="">A entrega será realizada em: {{frete}}</p>
 
-<input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000" ngModel required #cep="ngModel" (blur)="calcularFrete($event.target.value)" >
+<div class="input-group">
+    <input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000" ngModel required #cep="ngModel">
+    <div class="input-group-append">
+        <button class="btn" (click)="calcularFrete(cep.viewModel)">Cacular frete</button>
+    </div>
+</div>
+
+<p *ngIf="frete">A entrega será realizada em até {{frete}} dias úteis</p>

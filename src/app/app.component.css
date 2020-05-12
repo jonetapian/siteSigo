@@ -5,8 +5,14 @@
   display: inline;
 
 }
+
 .pic-bg{
-  background-image: "../assets/imgs/img-perfil.png";
+  background: #121212 url('../assets/imgs/grafite.png') no-repeat center center fixed;
+  overflow-x: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .txtNome{
   color: white;
