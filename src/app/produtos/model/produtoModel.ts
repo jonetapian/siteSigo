@@ -26,6 +26,6 @@ export class Produto{
       this.categoria = val.categoria;
       this.foto = val.foto;
       this.key = val.key;
-      this.quantidadeCarrinho = val.quantidade;
+      val.quantidadeCarrinho ? this.quantidadeCarrinho = val.quantidadeCarrinho : null;
     }
 }

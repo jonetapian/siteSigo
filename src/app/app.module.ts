@@ -57,6 +57,7 @@ import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { ViewProductComponent } from './paginas/view-product/view-product.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {LayoutModule} from '@angular/cdk/layout';
+import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 
 
 
@@ -88,7 +89,8 @@ import {LayoutModule} from '@angular/cdk/layout';
     NavBarComponent,
     CampoControlErroComponent,
     CalcularFreteComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    CarrinhoCardComponent
    ],
   imports: [
     BrowserModule,
