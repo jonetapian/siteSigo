@@ -1,3 +1,4 @@
+import { MercadoPago } from 'mercadopago';
 import { PromocoesService } from './paginas/promocoes/service/promocoes.service';
 import { TagService } from './paginas/tags/service/tag.service';
 import { LoginService } from './paginas/login/service/login.service';
@@ -115,8 +116,7 @@ import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho
     HttpClientModule,
     MatFabMenuModule,
     MatExpansionModule,
-    LayoutModule,
-
+    LayoutModule
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
   bootstrap: [AppComponent]

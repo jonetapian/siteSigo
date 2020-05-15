@@ -1,7 +1,10 @@
+import { PagSeguroService } from './services/pag-seguro.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MercadoPago } from 'mercadopago';
 import $ from 'jquery';
+
+declare var  PagSeguroDirectPayment : any;
 
 @Component({
   selector: 'app-finalizar-compra',
@@ -9,14 +12,15 @@ import $ from 'jquery';
   styleUrls: ['./finalizar-compra.component.css']
 })
 export class FinalizarCompraComponent implements OnInit {
-  
+
   encapsulation: ViewEncapsulation.None
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private pag_service:PagSeguroService) { }
 
   ngOnInit() {
+    this.SendToPagSeguro();
 
-    
 
   }
 
@@ -24,14 +28,14 @@ export class FinalizarCompraComponent implements OnInit {
   corsHeaders;
 
   mercadoPago(){
-    
+
   }
 
-  
+
   onSubmit(form){
-    
+
   }
-  
+
   verificaValidTouched(campo){
     return !campo.valid && campo.touched;
   }
@@ -41,9 +45,9 @@ export class FinalizarCompraComponent implements OnInit {
       'was-validated': this.verificaValidTouched(campo)
     }
   }
-  
+
   buscarCEP(cep, form){
-    
+
     console.log(cep);
 
     //Nova variável "cep" somente com dígitos.
@@ -59,18 +63,18 @@ export class FinalizarCompraComponent implements OnInit {
 
         this.http.get(`https://viacep.com.br/ws/${cep}/json`)
           .subscribe(dados => this.populaDadosForm(dados, form));
-          
 
-          
+
+
       }
     }
 
   }
 
-  
+
 
   populaDadosForm(dados, formulario){
-    
+
     formulario.form.patchValue({
       rua: dados.logradouro,
       complemento: dados.complemento,
@@ -79,5 +83,11 @@ export class FinalizarCompraComponent implements OnInit {
       estado: dados.uf
     });
   }
-  
+  SendToPagSeguro(){
+    console.log(PagSeguroDirectPayment)
+    // PagSeguroDirectPayment.setSessionId('ID_DA_SESSÃO_OBTIDO_NO_PASSO_1');
+    this.pag_service.GetAuthToken("victorhenriquediniz@gmail.com" ,"9999BE8F2BA14EDB9802AEDF83FA61F9" );
+
+  }
+
 }
