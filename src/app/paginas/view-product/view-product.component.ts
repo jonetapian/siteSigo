@@ -1,3 +1,4 @@
+import { SizedProduct } from './../../produtos/model/sizedProduct';
 import { ProdutosService } from './../../produtos/service/produtos.service';
 import { Produto } from './../../produtos/model/produtoModel';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class ViewProductComponent implements OnInit {
   product_key:string;
-  product:Produto;
+  product: SizedProduct = new SizedProduct();
   produtos_carrinho:Array<Produto>;
   size:string = "default";
   button_string:string = "Adicionar o carrinho";
@@ -27,14 +28,15 @@ export class ViewProductComponent implements OnInit {
   }
   getProduct(){
     this.produto_service.buscarPorid(this.product_key).then(res =>{
-      console.log(res);
-      this.product = res;
+      this.product.fromJson(res);
+      console.log(this.product.selected_size);
+
     });
   }
 
   getCarrinhoProducts(){
     this.produtos_carrinho = JSON.parse(localStorage.getItem("carrinho"));
-    console.log(this.produtos_carrinho)
+    console.log(this.produtos_carrinho);
   }
   checkIfIsInCarrinho(){
     for(let produto of this.produtos_carrinho){

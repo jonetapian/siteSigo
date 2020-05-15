@@ -106,22 +106,20 @@ export class AppComponent {
   fabButtonsRandom: MatFabMenu[] = [
     {
       id: 1,
-      icon: 'whatsApp'
+      imgUrl: '../assets/fab/whatsapp.svg'
     },
     {
       id: 2,
-      icon: 'mail'
-    },
-    {
-      id: 3,
-      icon: 'file_copy'
-    },
-    {
-      id: 4,
-      icon: 'phone'
-    },
+      imgUrl: '../assets/fab/instagram.svg'
+    }
   ];
-  clicked(){
-    console.log("foi")
+  clicked(value){
+    console.log(value);
+    if(value == 1){
+      window.open('https://wa.me/5511959006519');
+    }
+    if(value == 2){
+      window.open('https://www.instagram.com/sigo.style/?hl=pt-br');
+    }
   }
   }

@@ -208,13 +208,14 @@
 
 
       <router-outlet (click)="clicked()">
-        <mat-fab-menu color="primary" style="bottom: 0px;position: fixed; right: 10px;z-index: 1010;"
-        [fabButtons]="fabButtonsRandom">
-</mat-fab-menu>
+
       </router-outlet>
+      <mat-fab-menu (onFabMenuItemSelected)="clicked($event)" color="primary" icon="chat" style="bottom: 0px;position: fixed; right: 10px;z-index: 1010;"
+      [fabButtons]="fabButtonsRandom">
+</mat-fab-menu>
 
 
-      <footer class="footer bg-orange mt-auto " style="height: 100px;">
+      <footer class="footer bg-preto-opaco  mt-auto " style="height: 100px;bottom: 0px;">
         <div class="" style="height: 100%;"></div>
       </footer>
       </mat-sidenav-content>
