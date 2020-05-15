@@ -10,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CarrinhoComponent implements OnInit {
 
-  frete;
+  frete = 0;
   produtos: Produto[];
   listaProdutos: Array<Produto> = [];
   contador = 1;
@@ -29,7 +29,7 @@ export class CarrinhoComponent implements OnInit {
 
   receberFrete(frete){
     console.log(frete);
-    this.frete = frete.Valor[0];
+    this.frete = parseFloat(frete.Valor[0]);
   }
 
   increment(produto: Produto){

@@ -4,6 +4,5 @@
     <div class="input-group-append">
         <button class="btn" (click)="calcularFrete(cep.viewModel)">Cacular frete</button>
     </div>
+    <p class="h6 mb-0 mt-1" *ngIf="frete">A entrega será realizada em até {{frete}} dias úteis</p>
 </div>
-
-<p *ngIf="frete">A entrega será realizada em até {{frete}} dias úteis</p>
