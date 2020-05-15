@@ -1,19 +1,11 @@
-<div class="container text-white my-3">
+<div class="container my-3">
 
-    <ul class="nav nav-tabs nav-justified">
-        
-        <li class="nav-item active">
-            <a class="nav-link active" data-toggle="tab" role="tab" href="#enderecoId" aria-controls="enderecoId">Endereço</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" role="tab" href="#pagamentoId" aria-controls="pagamentoId">Pagamento</a>
-        </li>
-    </ul>
+    
 
     <div class="tab-content my-3">
         <div id="enderecoId" class="tab-pane fade show active">
             <h3 >Confirmação de endereço</h3>
-            <div class="p-3 bg-card-produto mt-3 rounded">
+            <div class="p-3 mt-3 rounded bg-white border border-dark">
                 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
                     <div class="form-row">
                         <div class="form-group col-2" [ngClass]="aplicaCssErro(cep)">
@@ -27,7 +19,7 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="">Rua/Avenida/Travessa</label>
-                            <input type="text" class="form-control" name="rua" id="rua" placeholder="" ngModel required readonly disabled #rua="ngModel">
+                            <input type="text" class="form-control" name="rua" id="rua" placeholder="" ngModel required  #rua="ngModel">
                         </div>
                         <div class="form-group col-2" [ngClass]="aplicaCssErro(numero)">
                             <label for="">Número</label>
@@ -42,40 +34,23 @@
                     <div class="form-row">
                         <div class="form-group col-5">
                             <label for="">Bairro</label>
-                            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="" ngModel required readonly disabled #bairro="ngModel">
+                            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="" ngModel required  #bairro="ngModel">
                         </div>
                         <div class="form-group col-4">
                             <label for="">Cidade</label>
-                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="" ngModel required readonly disabled #cidade="ngModel">
+                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="" ngModel required  #cidade="ngModel">
                         </div>
                         <div class="form-group col-3">
                             <label for="">Estado</label>
-                            <input type="text" class="form-control" name="estado" id="estado" placeholder="" ngModel required readonly disabled #estado="ngModel">
+                            <input type="text" class="form-control" name="estado" id="estado" placeholder="" ngModel required  #estado="ngModel">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-dark" [disabled]="!f.valid">Realizar pagamento</button>
+                    <button routerLink="/pagseguro" type="submit" class="btn btn-dark" [disabled]="!f.valid">Realizar pagamento</button>
                     
                 </form>
             </div>
     
         </div>
-        <div id="pagamentoId" class="tab-pane fade">
-            <h3 >Escolha a forma de pagamento</h3>
-            <div class="p-3 bg-card-produto mt-3 rounded">
-                <form #f2="ngForm" (ngSubmit)="mercadoPago()" action="/processar_pagamento" method="POST">
-                    
-                        <script
-                         [src]="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
-                         [data-preference-id]="$$id$$">
-                        </script>
-                      
-                    <button type="submit" class="btn btn-dark">Pagar</button>
-                </form>
-                
-                
-                
-            </div>
-    
-        </div>
+        
     </div>
 </div>

@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md">
+      <app-carousel [images]="produto.foto"></app-carousel>
+    </div>
+    <div class="col text-center">
+      <div class="row">
+        <div class="col">
+          <a class="text-dark" [routerLink]="'/ver-produto/' + produto.key">
+            <strong>
+              {{produto.nome}}
+            </strong>
+          </a>
+
+        </div>
+       <div class="col-auto " (click)="removeProduct()">
+        <span class="float-right"><fa-icon [icon]="delete_icon "></fa-icon></span>
+       </div>
+      </div>
+      <div class="row">
+        R$ {{produto.preco}}
+      </div>
+      <div class="row" *ngIf="isSizedProduct()" >
+        Tamanho :{{produto.selected_size}}
+      </div>
+      <div class="row" *ngIf="show_size_alert && !isSizedProduct()" >
+        <div class="col">
+          <select class="form-control " [(ngModel)]="produto.selected_size" (change)="emitUpdate()">
+            <option value="">tamanho</option>
+            <option [value]="tamanho" *ngFor="let tamanho of produto.tamanho" >{{tamanho}}</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="row">
+        Marca : {{produto.marca}}
+      </div>
+      <div class="row ">
+          Quantidade :
+          <div class="ml-1">
+            <button class="btn-sm btn btn-outline-dark" (click)="emitDecrese()">-</button>
+          <span class="mx-1">{{produto.quantidadeCarrinho}}</span>
+          <button class="btn btn-sm btn-outline-dark" (click)="emitIncrise()">+</button>
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+</div>

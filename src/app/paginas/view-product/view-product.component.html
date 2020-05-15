@@ -21,8 +21,8 @@
             <mat-list-item>Marca: {{product.marca}}</mat-list-item>
             <mat-list-item>
               <label>Tamanho:</label>
-              <select class="form-control ml-3" [ngModel]="size">
-                <option value="default">Selecione o tamanho</option>
+              <select class="form-control ml-3" [(ngModel)]="product.selected_size">
+                <option value="">Selecione o tamanho</option>
                 <option [value]="tamanho" *ngFor="let tamanho of product.tamanho" >{{tamanho}}</option>
               </select>
             </mat-list-item>

@@ -5,8 +5,8 @@
 
 }
 
-.bg-card-produto{
-  background: linear-gradient(to bottom, rgb(255, 138, 46), rgb(255, 114, 6));
+.bg-white{
+  background-color: white;
 }
 
 .bg-orange{
@@ -45,6 +45,15 @@
 }
 .bg-preto-opaco{
   background-color: #121212;
+}
+.scroll-horizontal > .row {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+
+}
+.scroll-horizontal > .row > .col-md-2 {
+  display: inline-block;
+  float: none;
 }
 
 

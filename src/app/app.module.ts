@@ -58,6 +58,7 @@ import { ViewProductComponent } from './paginas/view-product/view-product.compon
 import {MatExpansionModule} from '@angular/material/expansion';
 import {LayoutModule} from '@angular/cdk/layout';
 import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
+import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 
 
 
@@ -90,7 +91,8 @@ import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
     CampoControlErroComponent,
     CalcularFreteComponent,
     ViewProductComponent,
-    PagseguroComponent
+    PagseguroComponent,
+    CarrinhoCardComponent
    ],
   imports: [
     BrowserModule,

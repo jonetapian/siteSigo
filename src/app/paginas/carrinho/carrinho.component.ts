@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { SizedProduct } from './../../produtos/model/sizedProduct';
 import { ProdutosService } from './../../produtos/service/produtos.service';
 import { Observable } from 'rxjs';
 import { Produto } from './../../produtos/model/produtoModel';
@@ -12,16 +14,17 @@ export class CarrinhoComponent implements OnInit {
 
   frete = 0;
   produtos: Produto[];
-  listaProdutos: Array<Produto> = [];
+  listaProdutos: Array<SizedProduct> = [];
   contador = 1;
   produto: string;
   precoTotal: number = 0;
   carrinhoVazio = true;
-  
-  constructor(private produtosService: ProdutosService) { }
+  show_size_alert:boolean = false;
+
+  constructor(private produtosService: ProdutosService,private router:Router) { }
 
   ngOnInit() {
-    
+
     this.atualizarCarrinho();
     this.onCarrinhoVazio();
     console.log(this.produtos);
@@ -38,9 +41,9 @@ export class CarrinhoComponent implements OnInit {
   }
 
   decrement(produto: Produto){
-    
+
     if(produto.quantidadeCarrinho < 2){
-     
+
     }else{
       produto.quantidadeCarrinho--;
       this.precoTotal -= produto.preco * 1;
@@ -51,16 +54,16 @@ export class CarrinhoComponent implements OnInit {
     localStorage.clear();
   }
 
-  deletar(produto){
+  deletar(index){
     let deletarProduto: Produto[] = [];
 
     deletarProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
-    deletarProduto.splice(produto, 1);
+    deletarProduto.splice(index, 1);
 
     console.log("produto" + deletarProduto);
 
     localStorage.setItem("carrinho", JSON.stringify(deletarProduto));
-    this.listaProdutos.splice(produto, 1);
+    this.listaProdutos.splice(index, 1);
   }
 
   atualizarCarrinho(){
@@ -71,7 +74,7 @@ export class CarrinhoComponent implements OnInit {
       this.produtos[i].quantidadeCarrinho = 1;
       this.precoTotal += this.produtos[i].preco * 1;
 
-      this.listaProdutos.push(this.produtos[i]);
+      this.listaProdutos.push(new SizedProduct(this.produtos[i]));
     }
   }
 
@@ -81,6 +84,22 @@ export class CarrinhoComponent implements OnInit {
     }else{
       this.carrinhoVazio = true;
     }
+  }
+  checkIfAllHaveSize(){
+    for(let product of this.listaProdutos){
+      if(!product.selected_size){
+        this.show_size_alert = true;
+        return;
+      }
+    }
+    console.log(this.listaProdutos);
+    this.router.navigate(['finalizar-compra']);
+  }
+
+  UpdateCarrinho(produto, index){
+    this.listaProdutos[index] = produto;
+    localStorage.setItem("carrinho", JSON.stringify(this.listaProdutos));
+    this.show_size_alert = false;
   }
 
 }

@@ -1,9 +1,21 @@
-<div class="container text-white my-3" *ngIf="!carrinhoVazio">
-    <h3>Carrinho</h3>
-    
+<div class="container  my-3" *ngIf="!carrinhoVazio">
+    <h1 class="font-title">Carrinho</h1>
+
     <div class="row">
         <div class="col-md-8 table-responsive">
-            <table class="table bg-card-produto text-center">
+          <div class="row" *ngIf="show_size_alert" >
+            <div class="alert alert-primary" role="alert">
+                Para finalizar a compra você de selecionar o tamanho para todos os seus produtos no carrinho
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2" *ngFor="let produto of listaProdutos; let i = index" >
+              <app-carrinho-card [show_size_alert]="show_size_alert" [produto]="produto"
+              (decrese)="decrement($event)" (increse)="increment($event)"
+              (remove)="deletar(i)" (update_in_local)="UpdateCarrinho(produto,i)"></app-carrinho-card>
+            </div>
+          </div>
+            <!-- <table class="table bg-card-produto text-center">
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -20,7 +32,7 @@
                         <td>
                             <ngb-carousel>
                               <ng-template ngbSlide *ngFor="let img of produto.foto">
-                                
+
                                 <div class="picsum-img-wrapper" >
                                   <img class="card-img-top" style="border-radius: 10px; height: 100px; width: 100px;" [src]="img" >
                                 </div>
@@ -37,12 +49,12 @@
                         <td>{{produto.preco * produto.quantidadeCarrinho}}</td>
                     </tr>
                 </tbody>
-            </table>
-        
+            </table> -->
+
         </div>
         <div class="col-md-4">
             <div class="card text-dark">
-                <div class="card-header">
+                <div class="card-header font-sub">
                     <h3>Total no carrinho</h3>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -58,7 +70,7 @@
                     <li class="list-group-item">Total: {{precoTotal + frete}}</li>
                   </ul>
             </div>
-            <a routerLink="/finalizar-compra" class="btn btn-dark w-100 mt-2" >Finalizar Compra</a>
+            <button class="btn btn-dark w-100 mt-2" (click)="checkIfAllHaveSize()" >Finalizar Compra</button>
         </div>
     </div>
 </div>

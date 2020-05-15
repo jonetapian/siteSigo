@@ -23,84 +23,20 @@
             <app-filter (filter_removed)="filterRemoved($event)" (filter_selected)="filterSelected($event)"></app-filter>
           </div>
           <div class="col-md-9 col-12">
-            <div class="row">
-              <div class="col-md-4 col-sm-12   mb-3" *ngFor="let produto of showing_products">
-                <app-buy-card [produto]="produto"></app-buy-card>
+            <div class="container  " [ngClass]="{'scroll-horizontal' : isSmallScreen == true}" style="z-index: 1000;" >
+
+              <div class="row    " >
+                <div class="col-md-3 mt-2 col-sm-10 col-10"   *ngFor="let produto of products">
+                  <div class="card-group"   >
+                    <app-buy-card   [produto]="produto" ></app-buy-card>
+
+                  </div>
+                  </div>
+              </div>
             </div>
+          </div>
 
           </div>
-        </div>
-
-        </div>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-
-
-<!--<div class="col-4 mb-3">
-	<div class="card bg-card-produto ">
-
-		<p class="h4 text-center">Nome</p>
-		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-		<div class="card-body text-center">
-			<p class="h4">R$1,000.00</p>
-			<button class="btn bg-orange">Adicionar ao carrinho</button>
-		</div>
-	</div>
-</div>
-<div class="col-4 mb-3">
-	<div class="card bg-card-produto ">
-
-		<p class="h4 text-center">Nome</p>
-		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-		<div class="card-body text-center">
-			<p class="h4">R$1,000.00</p>
-			<button class="btn bg-orange">Adicionar ao carrinho</button>
-		</div>
-	</div>
-</div>
-<div class="col-4 mb-3">
-	<div class="card bg-card-produto ">
-
-		<p class="h4 text-center">Nome</p>
-		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-		<div class="card-body text-center">
-			<p class="h4">R$1,000.00</p>
-			<button class="btn bg-orange">Adicionar ao carrinho</button>
-		</div>
-	</div>
-</div>
-<div class="col-4 mb-3">
-	<div class="card bg-card-produto ">
-
-		<p class="h4 text-center">Nome</p>
-		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-		<div class="card-body text-center">
-			<p class="h4">R$1,000.00</p>
-			<button class="btn bg-orange">Adicionar ao carrinho</button>
-		</div>
-	</div>
-</div>
-<div class="col-4 mb-3">
-	<div class="card bg-card-produto ">
-
-		<p class="h4 text-center">Nome</p>
-		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-		<div class="card-body text-center">
-			<p class="h4">R$1,000.00</p>
-			<button class="btn bg-orange">Adicionar ao carrinho</button>
-		</div>
-	</div>
-</div>
-<div class="col-4 mb-3">
-	<div class="card bg-card-produto ">
-
-		<p class="h4 text-center">Nome</p>
-		<img src="../../../assets/imgs/img-camiseta.png" alt="" class="w-100">
-		<div class="card-body text-center">
-			<p class="h4">R$1,000.00</p>
-			<button class="btn bg-orange">Adicionar ao carrinho</button>
-		</div>
-	</div>
-</div>-->
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
