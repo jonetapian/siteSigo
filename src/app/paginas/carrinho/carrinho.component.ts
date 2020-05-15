@@ -92,7 +92,7 @@ export class CarrinhoComponent implements OnInit {
         return;
       }
     }
-    console.log(this.listaProdutos);
+
     this.router.navigate(['finalizar-compra']);
   }
 
