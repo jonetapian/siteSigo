@@ -13,7 +13,7 @@ import {
   stagger,
   // ...
 } from '@angular/animations';
-import { faBars, faSearch, faTshirt, faUser, faSignOutAlt, faShoppingBag, faCartPlus, faTools } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSearch, faTshirt, faUser, faSignOutAlt, faShoppingBag, faCartPlus, faTools, faCreditCard, faTruck, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -64,7 +64,9 @@ export class AppComponent {
   buyCart = faCartPlus;
   tools = faTools;
   isMenuCollapsed:boolean = true;
-
+  creditCard = faCreditCard;
+  truck = faTruck;
+  shieldAlt = faShieldAlt;
   isSearchCollapsed:boolean = true;
   events: string[] = [];
   opened: boolean;

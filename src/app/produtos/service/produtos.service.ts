@@ -73,5 +73,11 @@ export class ProdutosService {
       });
   }
 
+  salvarCarrinho(produto){
+    this.db.list('usuarios/').push(produto)
+      .then((result: any) => {
+        
+      })
+  }
 
 }

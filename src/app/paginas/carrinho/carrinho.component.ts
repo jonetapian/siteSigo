@@ -3,7 +3,7 @@ import { SizedProduct } from './../../produtos/model/sizedProduct';
 import { ProdutosService } from './../../produtos/service/produtos.service';
 import { Observable } from 'rxjs';
 import { Produto } from './../../produtos/model/produtoModel';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-carrinho',
@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarrinhoComponent implements OnInit {
 
+  frete = 0;
   produtos: Produto[];
   listaProdutos: Array<SizedProduct> = [];
   contador = 1;
@@ -27,6 +28,11 @@ export class CarrinhoComponent implements OnInit {
     this.atualizarCarrinho();
     this.onCarrinhoVazio();
     console.log(this.produtos);
+  }
+
+  receberFrete(frete){
+    console.log(frete);
+    this.frete = parseFloat(frete.Valor[0]);
   }
 
   increment(produto: Produto){
@@ -86,6 +92,7 @@ export class CarrinhoComponent implements OnInit {
         return;
       }
     }
+
     this.router.navigate(['finalizar-compra']);
   }
 

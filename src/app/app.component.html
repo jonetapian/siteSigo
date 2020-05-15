@@ -7,7 +7,7 @@
     <title>Document</title>
   </head>
   <body class="d-flex flex-column bg-branco-opaco" style="overflow-x: hidden;">
-    <mat-sidenav-container class="example-container">
+    <mat-sidenav-container class="example-container" style="overflow: initial;">
       <mat-sidenav
         fullscreen
         fixedInViewport="true"
@@ -160,66 +160,97 @@
             </div>
           </div>
         </nav>
-        <div
-      class="row font-title justify-content-center"
-      style="background-color: #121212; color: white !important;"
-    >
-      <div class="col-md-2 col-sm-auto col-auto my-auto">
-        <label class="navbar-text">
-          <a
-            routerLink="/camisetas"
-            routerLinkActive="selecionado"
-            class="text-white"
-            >Camisetas</a
-          >
-        </label>
-      </div>
-      <div class="col-md-2 col-sm-auto col-auto my-auto">
-        <label class="navbar-text">
-          <a routerLink="/tenis" routerLinkActive="selecionado" class="text-white">
-            Tênis
-          </a>
-        </label>
-      </div>
-      <div class="col-md-2 col-sm-auto col-auto my-auto">
-        <label class="navbar-text">
-          <a
-            routerLink="/camisetas"
-            routerLinkActive="selecionado"
-            class="text-white"
-          >
-            Masculino
-          </a>
-        </label>
-      </div>
-      <div class="col-md-2 col-sm-auto col-auto my-auto">
-        <label class="navbar-text">
-          <a
-            routerLink="/camisetas"
-            routerLinkActive="selecionado"
-            class="text-white"
-          >
-            Feminino
-          </a>
-        </label>
-      </div>
+        <div class="row font-title justify-content-center" style="background-color: #121212; color: white !important;">
+          <div class="col-md-2 col-sm-auto col-auto my-auto">
+            <label class="navbar-text">
+              <a
+                routerLink="/camisetas"
+                routerLinkActive="selecionado"
+                class="text-white"
+                >Camisetas</a
+              >
+            </label>
+          </div>
+          <div class="col-md-2 col-sm-auto col-auto my-auto">
+            <label class="navbar-text">
+              <a routerLink="/tenis" routerLinkActive="selecionado" class="text-white">
+                Tênis
+              </a>
+            </label>
+          </div>
+          <div class="col-md-2 col-sm-auto col-auto my-auto">
+            <label class="navbar-text">
+              <a
+                routerLink="/camisetas"
+                routerLinkActive="selecionado"
+                class="text-white"
+              >
+                Masculino
+              </a>
+            </label>
+          </div>
+          <div class="col-md-2 col-sm-auto col-auto my-auto">
+            <label class="navbar-text">
+              <a
+                routerLink="/camisetas"
+                routerLinkActive="selecionado"
+                class="text-white"
+              >
+                Feminino
+              </a>
+            </label>
+          </div>
 
-    </div>
+        </div>
 
 
-      <router-outlet (click)="clicked()">
+        <router-outlet (click)="clicked()">
 
-      </router-outlet>
-      <mat-fab-menu (onFabMenuItemSelected)="clicked($event)" color="primary" icon="chat" style="bottom: 0px;position: fixed; right: 10px;z-index: 1010;"
-      [fabButtons]="fabButtonsRandom">
-</mat-fab-menu>
+        </router-outlet>
+        <mat-fab-menu (onFabMenuItemSelected)="clicked($event)" color="primary" icon="chat" style="bottom: 0px;position: fixed; right: 10px;z-index: 1010;"
+        [fabButtons]="fabButtonsRandom">
+        </mat-fab-menu>
 
 
-      <footer class="footer bg-preto-opaco  mt-auto " style="height: 100px;bottom: 0px;">
-        <div class="" style="height: 100%;"></div>
-      </footer>
+
       </mat-sidenav-content>
     </mat-sidenav-container>
+    <footer class="footer bg-preto-opaco  mt-auto py-3 text-white">
+      <div class="container" style="height: 100%;">
+        <div class="row">
+          <div class="col-4">
+            <div class="row justify-content-center">
+              <mat-icon matListIcon><fa-icon [icon]="creditCard" style="color: white; height: 100px;"></fa-icon></mat-icon>
+            </div>
+            <h3 class="text-center">Formas de pagamento</h3>
+            <div class="row justify-content-center">
+              <img src="../assets/imgs/bandeiras-pagseguro.png" alt="" class="col">
+
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="row justify-content-center">
+              <mat-icon matListIcon><fa-icon [icon]="truck" style="color: white; height: 100px;"></fa-icon></mat-icon>
+            </div>
+            <h3 class="text-center">Frete Grátis</h3>
+            <p>Entrega grátis para todo Brasil, realizadas pelos Correios</p>
+          </div>
+          <div class="col-4">
+            <div class="row justify-content-center">
+              <mat-icon matListIcon><fa-icon [icon]="shieldAlt" style="color: white; height: 100px;"></fa-icon></mat-icon>
+            </div>
+            <h3 class="text-center">Segurança</h3>
+            <div class="justify-content-center">
+              <img src="../assets/imgs/icone-ssl.png" alt="" class="col-6">
+              <img src="../assets/imgs/icone-pagseguro.png" alt="" class="col-6">
+
+            </div>
+          </div>
+        </div>
+        <hr class="my-3" style="height: 1px; color: white;">
+        <div class="row justify-content-center">&#169; Sigo Supply</div>
+      </div>
+    </footer>
 
 
   </body>

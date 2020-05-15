@@ -52,11 +52,13 @@ import {MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
-import { CalcularFreteComponent } from './calcular-frete/calcular-frete.component';
+import { CalcularFreteComponent } from './shared/calcular-frete/calcular-frete.component';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { ViewProductComponent } from './paginas/view-product/view-product.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {LayoutModule} from '@angular/cdk/layout';
+import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
+
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 
 
@@ -90,6 +92,7 @@ import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho
     CampoControlErroComponent,
     CalcularFreteComponent,
     ViewProductComponent,
+    PagseguroComponent,
     CarrinhoCardComponent
    ],
   imports: [
@@ -112,7 +115,7 @@ import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho
     HttpClientModule,
     MatFabMenuModule,
     MatExpansionModule,
-    LayoutModule
+    LayoutModule,
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
