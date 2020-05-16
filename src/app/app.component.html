@@ -93,7 +93,72 @@
           class="navbar navbar-expand-lg bg-white font-sub p-1 p-md-auto"
           style="box-shadow: 0 1px 2px 0 #818391;"
         >
-          <div class="row p-0 m-0 w-100 justify-content-center text-center">
+        <div class=" ml-2   row justify-content-center w-100">
+          <div class="col-6" >
+            <div class="text-center" >
+              <a routerLink="/">
+                <img
+                  src="../assets/imgs/LETREIRO (1).png"
+                  alt="logo"
+                  class=" my-0 img-fluid"
+                  style="max-width: 100px;"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="row ">
+            <div
+              [ngbCollapse]="isSearchCollapsed"
+              class="collapse navbar-collapse"
+              style="min-width: 10rem;"
+            >
+              <div class="col-md- col-sm-8 col-12 mr-0 pr-0">
+                <input
+                  class="input-text form-control border-left-0 border-top-0 border-right-0"
+                  type="search"
+                  placeholder="Diga o que está pensando..."
+                  aria-label="Search"
+                />
+              </div>
+            </div>
+            <div class="col-auto ml-0 pl-0">
+              <button
+                mat-icon-button
+                (click)="isSearchCollapsed = !isSearchCollapsed"
+                type="button"
+                data-toggle="collapse"
+              >
+                <fa-icon [icon]="search"></fa-icon>
+              </button>
+            </div>
+            <div class="col-auto">
+              <button mat-icon-button                 routerLink="/carrinho"
+              >
+
+                  <fa-icon
+                    [icon]="buyCart"
+                    routerLinkActive="selecionado"
+                  ></fa-icon>
+              </button>
+
+            </div>
+            <div class="col-auto my-auto" *ngIf="!estaLogado">
+              <a
+                class="navbar-link text-dark"
+                routerLink="/login"
+                routerLinkActive="selecionado"
+                >Fazer Login !</a
+              >
+            </div>
+            <div class="col-auto my-auto" *ngIf="estaLogado">
+              <button mat-icon-button (click)="sidenav.toggle();!isSearchCollapsed?isSearchCollapsed = !isSearchCollapsed:null">
+                <fa-icon [icon]="menu_icon"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <br>
+          <!-- <div class="row p-0 m-0 w-100 justify-content-center text-center">
             <div class="col-md-2 col-sm-2 col">
               <div class="navbar-brand float-left" style="max-width: 5rem;">
                 <a routerLink="/">
@@ -158,7 +223,7 @@
               </div>
 
             </div>
-          </div>
+          </div> -->
         </nav>
         <div class="row font-title justify-content-center" style="background-color: #121212; color: white !important;">
           <div class="col-md-2 col-sm-auto col-auto my-auto">
