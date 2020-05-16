@@ -30,6 +30,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
+    console.log(this.screenHeight)
     this.produto_service.buscar().subscribe((res:any) => {
       console.log(res);
       this.produtos = res;

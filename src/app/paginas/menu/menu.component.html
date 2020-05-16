@@ -1,7 +1,5 @@
 
-<div  [attr.width]="this.screenWidth" [attr.height]="this.screenHeight">
-  <app-carousel  [show_captions]="true" [images]="carrousel_photos"></app-carousel>
-</div>
+    <app-carousel class="mt-1" [show_captions]="true" [images]="carrousel_photos"></app-carousel>
 <div *ngIf="produtos_promocao[0][0]"  >
   <div class="container-fluid mt-5 p-0" *ngFor="let promocao of promocoes;let i = index">
     <div class="row">

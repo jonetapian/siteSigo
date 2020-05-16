@@ -1,0 +1,42 @@
+<mat-sidenav-container class="example-container" style="left: 0px; z-index: 1010;"   >
+  <mat-sidenav class="p-3" style="max-width: 65%;" #sidenav mode="push" fullscreen
+  fixedInViewport="true" [(opened)]="filter_side">
+    <app-filter (filter_removed)="filterRemoved($event)" (filter_selected)="filterSelected($event)"></app-filter>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container-fluid">
+      <div class="row mt-3">
+        <div class="col">
+          <h1 class=" text-center mb-3 font-titlew">
+            Lançamentosx
+          </h1>
+        </div>
+      </div>
+      <app-white-divider></app-white-divider>
+
+        <div class="row pl-3">
+          <button (click)="sidenav.toggle()" mat-raised-button *ngIf="isSmallScreen">Filtros <fa-icon [icon]="filter_icon"></fa-icon></button>
+
+        </div>
+        <div class="row my-4 p-2"  >
+          <div class="col-md-3 col " *ngIf="!isSmallScreen">
+            <app-filter (filter_removed)="filterRemoved($event)" (filter_selected)="filterSelected($event)"></app-filter>
+          </div>
+          <div class="col-md-9 col-12">
+            <div class="container  " [ngClass]="{'scroll-horizontal' : isSmallScreen == true}" style="z-index: 1000;" >
+
+              <div class="row    " >
+                <div class="col-md-3 mt-2 col-sm-10 col-10"   *ngFor="let produto of products">
+                  <div class="card-group"   >
+                    <app-buy-card   [produto]="produto" ></app-buy-card>
+
+                  </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

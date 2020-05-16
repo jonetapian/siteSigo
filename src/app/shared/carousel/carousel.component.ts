@@ -9,9 +9,7 @@ export class CarouselComponent implements OnInit {
 
   @Input() images:any;
   @Input() show_captions:boolean;
-  @Input() width:any;
 
-  @Input() height:any;
 
   constructor() { }
 
