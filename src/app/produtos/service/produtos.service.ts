@@ -1,3 +1,4 @@
+import { Usuario } from 'src/app/usuario/model/usuarioModel';
 import { Produto } from './../model/produtoModel';
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
@@ -94,8 +95,8 @@ export class ProdutosService {
       });
   }
 
-  salvarCarrinho(produto){
-    this.db.list('usuarios/').push(produto)
+  salvarCarrinho(produto, usuario:Usuario){
+    this.db.list('usuarios/' + usuario).push(produto)
       .then((result: any) => {
 
       })

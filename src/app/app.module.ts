@@ -95,7 +95,11 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     ViewProductComponent,
     PagseguroComponent,
     CarrinhoCardComponent,
+<<<<<<< HEAD
+    EditarProdutoComponent
+=======
     LancamentosComponent
+>>>>>>> 815015fe07aabea46ac1b667c6df8df7870c06a3
    ],
   imports: [
     BrowserModule,

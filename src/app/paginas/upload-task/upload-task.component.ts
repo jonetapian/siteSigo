@@ -14,6 +14,7 @@ export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
   @Input() recebeProdutos;
+  @Output() removerFoto = new EventEmitter();
   @Output() enviarUrl = new EventEmitter();
   @Output() foto_removida = new EventEmitter();
 

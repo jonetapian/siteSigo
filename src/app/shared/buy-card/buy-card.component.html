@@ -26,13 +26,14 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-auto">
-      <button class="bg-preto-opaco text-white  btn btn-sm shadow-sm" (click)="adicionarCarrinho(); $event.stopPropagation();">
+      <button class="bg-preto-opaco text-white  btn btn-sm shadow-sm" (click)="adicionarCarrinho(); $event.stopPropagation();" *ngIf="!usuarioAtual.manager">
         Carrinho
         <span>
           <fa-icon [icon]="buy_icon" class="float-right" ></fa-icon>
         </span>
-
-
+      </button>
+      <button class="btn btn-success" (click)="editarProduto(produto, produto.key); $event.stopPropagation();" *ngIf="usuarioAtual.manager">
+          Editar
       </button>
     </div>
   </div>

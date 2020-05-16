@@ -1,3 +1,5 @@
+import { Usuario } from 'src/app/usuario/model/usuarioModel';
+import { UsuarioService } from './../../usuario/usuario.service';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { Tag } from './../tags/model/tag_model';
 import { Produto } from './../../produtos/model/produtoModel';
@@ -17,14 +19,16 @@ export class CamisetasComponent implements OnInit {
   filter_side:boolean ;
   isSmallScreen:boolean;
   filter_icon = faFilter;
+  usuarioAtual: Usuario;
 
-
-  constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService, breakpointObserver: BreakpointObserver) {
+  constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService, breakpointObserver: BreakpointObserver, private usuario: UsuarioService) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
    }
 
   ngOnInit() {
     this.getProducts();
+    this.usuarioAtual = this.usuario.UsuarioLogado();
+    console.log(this.usuario.UsuarioLogado());
   }
 
   deletar(key: string){
