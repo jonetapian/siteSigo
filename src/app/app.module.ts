@@ -60,6 +60,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
 
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
+import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 
 
 
@@ -93,7 +94,8 @@ import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho
     CalcularFreteComponent,
     ViewProductComponent,
     PagseguroComponent,
-    CarrinhoCardComponent
+    CarrinhoCardComponent,
+    LancamentosComponent
    ],
   imports: [
     BrowserModule,
