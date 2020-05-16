@@ -51,7 +51,7 @@ export class AdicionarProdutoComponent implements OnInit {
 
   ngOnInit() {
     this.getAllTags();
-    
+
     this.produto.time = this.date.getTime();
   }
 
@@ -169,12 +169,8 @@ export class AdicionarProdutoComponent implements OnInit {
     }
   }
 
-  deletarFoto(index){
+  FotoRemovida(index){
     this.files.splice(index,1);
-  }
-
-  removerItem(tipo, i){
-    tipo.splice(i,1);
   }
 
   tipo = ["Camiseta", "Shorts", "Tênis"];

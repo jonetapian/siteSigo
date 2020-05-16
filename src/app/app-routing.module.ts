@@ -1,4 +1,4 @@
-import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.component';
+import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
 import { ViewProductComponent } from './paginas/view-product/view-product.component';
 import { FinalizarCompraComponent } from './paginas/finalizar-compra/finalizar-compra.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'destaques', component: DestaquesComponent},
   {path: 'ver-produto/:key', component: ViewProductComponent},
   {path: 'pagseguro', component: PagseguroComponent},
-  {path: 'editar-produto/:key', component: EditarProdutoComponent},
+  {path: 'lancamentos', component: LancamentosComponent},
   {path: '', component: MenuComponent}
 ];
 

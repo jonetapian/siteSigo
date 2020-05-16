@@ -22,7 +22,7 @@
                         </tr>
                     </tbody>
                  </table>
-                
+
             </div>
             <div class="form-group col-6">
                 <label for="">Marca:</label>
@@ -111,7 +111,7 @@
 
                 <div *ngFor="let file of files; let i = index" class="float-left">
 
-                    <upload-task [file]="file" [recebeProdutos]="produto" (removerFoto)="deletarFoto(i)" (enviarUrl)="receberUrl($event)"></upload-task>
+                    <upload-task [file]="file" [recebeProdutos]="produto" (enviarUrl)="receberUrl($event)" (foto_removida)="FotoRemovida(i)"></upload-task>
                 </div>
             </div>
         </div>

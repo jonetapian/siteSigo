@@ -28,12 +28,33 @@ export class ProdutosService {
   }
 
   buscarPorid(produto_key){
-    return this.db.database.ref('/produtos/' + produto_key).once('value').then(function(snapshot) {
-      let product = new Produto(snapshot.val());
-      product.key = snapshot.key;
-      return product;
-      // ...
-    });
+    return this.db.database.ref('/produtos/' + produto_key).once('value').snapshotChanges()
+    .pipe(
+      map(changes => {
+        return changes.map(c => {
+          const key = c.payload.key;
+          const val = c.payload.val();
+          let product = new Produto(val);
+          product.key = key
+          return product
+        });
+      })
+    );
+  }
+  buscarPorTime(){
+    return this.db.list('/produtos', ref => ref.orderByChild("time"))
+    .snapshotChanges()
+    .pipe(
+      map(changes => {
+        return changes.map(c => {
+          const key = c.payload.key;
+          const val = c.payload.val();
+          let product = new Produto(val);
+          product.key = key
+          return product
+        });
+      })
+    );
   }
   buscar(){
     return this.db.list('produtos')
@@ -77,7 +98,7 @@ export class ProdutosService {
   salvarCarrinho(produto, usuario:Usuario){
     this.db.list('usuarios/' + usuario).push(produto)
       .then((result: any) => {
-        
+
       })
   }
 

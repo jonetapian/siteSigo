@@ -60,7 +60,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
 
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
-import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.component';
+import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 
 
 
@@ -95,7 +95,11 @@ import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.c
     ViewProductComponent,
     PagseguroComponent,
     CarrinhoCardComponent,
+<<<<<<< HEAD
     EditarProdutoComponent
+=======
+    LancamentosComponent
+>>>>>>> 815015fe07aabea46ac1b667c6df8df7870c06a3
    ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ export class Produto{
     categoria = '';
     foto:Array<string> = new Array<string>();
     key ='';
+    timestamp:number;
     quantidadeCarrinho = 1;
     time = 0;
 
