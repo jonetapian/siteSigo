@@ -14,6 +14,7 @@ export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
   @Input() recebeProdutos;
+  @Output() removerFoto = new EventEmitter();
   @Output() enviarUrl = new EventEmitter();
 
   key: string = '';
@@ -59,6 +60,10 @@ export class UploadTaskComponent implements OnInit {
     this.produtosService.deletarFoto(url, this.key, this.recebeProdutos);
     console.log("deletado")
     
+  }
+
+  remove(){
+    this.removerFoto.emit();
   }
   
   isActive(task){

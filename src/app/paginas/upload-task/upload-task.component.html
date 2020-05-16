@@ -1,24 +1,14 @@
 <div class="border border-dark p-2 rounded m-2" *ngIf="caminhoImagem as url">
   <div >
-    <span (click)="deletarFoto(url, file)">x</span>
+    <span (click)="deletarFoto(url, file); remove()" >x</span>
   </div>
-  <div *ngIf="uploadPercent | async">
-    {{file.name}}
-    <progress class="progress-bar" style="width: 100%" max="100" [value]="(uploadPercent | async)"></progress>
-    
-  </div>
-  
   
   <div *ngIf="caminhoImagem as url">
       
-      
     <img [src]="url" height="100px"><br>
-    <!--<a [href]="url" target="_blank" rel="noopener">Download Me!</a>-->
+    
   </div> 
   
-  <!--<button (click)="task.pause()" [disabled]="!isActive(snap)">Pause</button>
-  <button (click)="task.cancel()" [disabled]="!isActive(snap)">Cancel</button>
-  <button (click)="task.resume()" [disabled]="!(snap?.state === 'paused')">Resume</button>-->
 </div>
 
   

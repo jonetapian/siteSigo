@@ -1,6 +1,6 @@
-<p class="text-center h4 my-3">Adicionar novo Produto</p>
+<p class="text-center h4 my-3">Editar Produto</p>
 
-<form (ngSubmit)="onSubmit()">
+<form >
     <div class="container my-3 bg-light border rounded p-3">
         <div class="form-row">
             <div class="form-group col-6">
@@ -108,20 +108,21 @@
 
             <div class="form-group col-12">
                 <h3>Fotos:</h3>
-
-                <div *ngFor="let file of files; let i = index" class="float-left">
-
-                    <upload-task [file]="file" [recebeProdutos]="produto" (removerFoto)="deletarFoto(i)" (enviarUrl)="receberUrl($event)"></upload-task>
+                <div *ngFor="let foto of produto.foto" class="float-left">
+                    <div class="border border-dark p-2 rounded m-2">
+                        <img [src]="foto"  height="100px"><br>
+                        </div>
+                </div>
+                
+                <div *ngFor="let file of files" class="float-left">
+                    
+                    <upload-task [file]="file" [recebeProdutos]="produto" (enviarUrl)="receberUrl($event)"></upload-task>
                 </div>
             </div>
         </div>
-        <button class="btn btn-dark">Adicionar</button>
+        <button class="btn btn-dark" (click)="onSubmit()">Alterar</button>
 
 
 
     </div>
 </form>
-
-
-
-

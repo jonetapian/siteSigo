@@ -2,7 +2,7 @@ export class Usuario {
   email:string;
   uid:string;
   nome:string;
-  manager:boolean;
+  manager:boolean = false;
   constructor(private data?:any){
     if(data){
       this.fromJson(data);
