@@ -20,7 +20,7 @@ export class UsuarioService {
   }
   ArmazenarLocal(usuario:any){
     localStorage.setItem("usuario",JSON.stringify(usuario));
-    console.log("armazenou")
+    console.log(usuario)
   }
   DeletarLocal(){
     localStorage.removeItem("usuario");

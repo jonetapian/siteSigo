@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         console.log(val);
         this.OrganizaErro(val);
         this.usuario_service.PegarUsuarioProUid(val.user.uid).then(val => {
+          console.log(val);
           let usuario = new Usuario(val);
           this.usuario_service.ArmazenarLocal(usuario);
           this.router.navigate(['/']);

@@ -165,6 +165,10 @@ export class AdicionarProdutoComponent implements OnInit {
     }
   }
 
+  FotoRemovida(index){
+    this.files.splice(index,1);
+  }
+
   tipo = ["Camiseta", "Shorts", "Tênis"];
 
   categoria = ["Masculino", "Feminino"];
