@@ -82,9 +82,9 @@
             <div class="form-group col-12">
                 <h3>Fotos:</h3>
 
-                <div *ngFor="let file of files" class="float-left">
+                <div *ngFor="let file of files; let i = index" class="float-left">
 
-                    <upload-task [file]="file" [recebeProdutos]="produto" (enviarUrl)="receberUrl($event)"></upload-task>
+                    <upload-task [file]="file" [recebeProdutos]="produto" (enviarUrl)="receberUrl($event)" (foto_removida)="FotoRemovida(i)"></upload-task>
                 </div>
             </div>
         </div>

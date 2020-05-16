@@ -1,9 +1,12 @@
 
+<div  [attr.width]="this.screenWidth" [attr.height]="this.screenHeight">
+  <app-carousel  [show_captions]="true" [images]="carrousel_photos"></app-carousel>
+</div>
 <div *ngIf="produtos_promocao[0][0]"  >
   <div class="container-fluid mt-5 p-0" *ngFor="let promocao of promocoes;let i = index">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mb-3 font-sub">
+        <h1 class="text-center mb-3 font-title">
           Promoção -
           {{ promocao.nome }}
         </h1>
@@ -37,13 +40,16 @@
 
   <div class="row mt-5" *ngIf="destaques" >
     <div class="col">
-      <h1 class="text-center mb-3 font-sub">
-        Destaques
+      <h1 class="text-center mb-3 font-title">
+        Bem-Vindo a seleção premium
+        <span>
+          <fa-icon [icon]="icone_coroa"></fa-icon>
+        </span>
       </h1>
     </div>
   </div>
   <app-white-divider></app-white-divider>
-  <div class="container testimonial-group " >
+  <div class="container scroll-horizontal mb-5 " >
 
     <div class="row    " >
       <div class="col-md-3 mt-2 col-sm-6 col-6"   *ngFor="let produto of produtos_em_destaque">

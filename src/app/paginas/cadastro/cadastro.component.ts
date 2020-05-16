@@ -35,13 +35,19 @@ export class CadastroComponent implements OnInit {
           this.createAlert(error);
         }
       }).then(val =>{
+        console.log(val);
         if(val.user){
           let user = new Usuario(val.user);
+          console.log(user);
           user.nome = this.nome;
+          // user.email = val.user.email;
+          // user.uid = val.user.uid;
+          user.created_at = new Date();
+          console.log(user);
           this.createAndStorageUser(user);
           console.log(val)
         }else{
-          this.createAlert(val);  
+          this.createAlert(val);
         }
       } );
       // }).then(val => this.organizaErro(val));
@@ -65,11 +71,13 @@ export class CadastroComponent implements OnInit {
     });
   }
   createAndStorageUser(user:Usuario){
-    this.usuario.CriarUsuario(user);
-    this.usuario.ArmazenarLocal(user);
+    console.log(user);
+    let new_user = new Usuario(user);
+    this.usuario.CriarUsuario(new_user);
+    this.usuario.ArmazenarLocal(new_user);
     this.route.navigate(['']);
 
   }
-  
+
 
 }

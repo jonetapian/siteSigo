@@ -4,8 +4,9 @@ import { PromocoesService } from './../promocoes/service/promocoes.service';
 import { ProdutosService } from './../../produtos/service/produtos.service';
 import { ProdutosDataService } from './../../produtos/service/produtos-data.service';
 import { BuyCardComponent } from './../../shared/buy-card/buy-card.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Promocao } from '../promocoes/model/promocoes_model';
+import { faCrown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-menu',
@@ -13,16 +14,22 @@ import { Promocao } from '../promocoes/model/promocoes_model';
   styleUrls: ['./menu.component.css'],
 
 })
+@HostListener('window:resize', ['$event'])
+
 export class MenuComponent implements OnInit {
   produtos:Array<Produto> = new Array<Produto>();
   produtos_promocao:Produto[][] = [[],[]];
   promocoes:Array<Promocao> = new Array<Promocao>();
   destaques:Array<string> = new Array<string>();
   produtos_em_destaque:Array<Produto> = new Array<Produto>();
-
+  screenHeight:any;
+  screenWidth:any;
+  icone_coroa = faCrown;
   constructor(private produto_service:ProdutosService,private promotion_service:PromocoesService,private destaque_service:DestaquesService) { }
 
   ngOnInit() {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
     this.produto_service.buscar().subscribe((res:any) => {
       console.log(res);
       this.produtos = res;
@@ -81,9 +88,9 @@ export class MenuComponent implements OnInit {
       }
     }
   }
-  corrousel_photos = [
-    '../assets/imgs/model_1.jpg',
-    '../assets/imgs/model_2.jpg',
+  carrousel_photos = [
+    '../assets/imgs/tenis_carrousel.jpg',
+    '../assets/imgs/Layout_SIGOSUPPLY.jpg',
     '../assets/imgs/model_3.jpg'
   ]
 
