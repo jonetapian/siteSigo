@@ -1,3 +1,4 @@
+import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.component';
 import { PromocoesService } from './paginas/promocoes/service/promocoes.service';
 import { TagService } from './paginas/tags/service/tag.service';
 import { LoginService } from './paginas/login/service/login.service';
@@ -95,11 +96,8 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     ViewProductComponent,
     PagseguroComponent,
     CarrinhoCardComponent,
-<<<<<<< HEAD
-    EditarProdutoComponent
-=======
+    EditarProdutoComponent,
     LancamentosComponent
->>>>>>> 815015fe07aabea46ac1b667c6df8df7870c06a3
    ],
   imports: [
     BrowserModule,
