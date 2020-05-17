@@ -1,7 +1,10 @@
 <ngb-carousel >
-  <ng-template ngbSlide *ngFor="let img of images">
-    <div class="picsum-img-wrapper">
-      <img class="img-fluid"   [src]="img" alt="Random first slide">
+  <ng-template ngbSlide *ngFor="let img of images" >
+      <img class="img-fluid"    [src]="img" class="w-100" alt="Random first slide">
+    <div class="carousel-caption" *ngIf="show_captions" >
+      <button class="btn btn-outline-secondary">
+        <h4 class="font-sub">Compre Aqui</h4>
+      </button>
     </div>
   </ng-template>
 </ngb-carousel>

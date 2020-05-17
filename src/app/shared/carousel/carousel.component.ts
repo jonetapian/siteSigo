@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CarouselComponent implements OnInit {
 
   @Input() images:any;
+  @Input() show_captions:boolean;
+
+
   constructor() { }
 
   ngOnInit() {

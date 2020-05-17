@@ -14,7 +14,9 @@ export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
   @Input() recebeProdutos;
+  @Output() removerFoto = new EventEmitter();
   @Output() enviarUrl = new EventEmitter();
+  @Output() foto_removida = new EventEmitter();
 
   key: string = '';
 
@@ -36,31 +38,33 @@ export class UploadTaskComponent implements OnInit {
     if(this.recebeProdutos.nome){
       this.complete = false;
       const path = 'imagens/' + this.recebeProdutos.nome + "/" + this.file.name;
-  
+
       const fileRef = this.storage.ref(path);
-  
+
       this.task = this.storage.upload(path, this.file)
       this.uploadPercent = this.task.percentageChanges();
-  
+
       this.task.then(up => {
         fileRef.getDownloadURL().subscribe(url => {
           this.complete = true
           this.caminhoImagem = url;
           this.enviarUrl.emit(url);
           console.log(url);
-          
+
         })
       })
     }
-    
+
   }
 
   deletarFoto(url, file: File){
     this.produtosService.deletarFoto(url, this.key, this.recebeProdutos);
     console.log("deletado")
-    
+    this.foto_removida.emit();
+
+
   }
-  
+
   isActive(task){
     return task.state === 'running' && task.bytesTransferred < task.totalBytes;
   }

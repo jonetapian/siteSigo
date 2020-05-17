@@ -1,11 +1,12 @@
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { SizedProduct } from './../../produtos/model/sizedProduct';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ErrorHandler } from './../../shared/error-handler/error_handler';
-import { Tag } from "./../tags/model/tag_model";
+import { Tag } from './../../paginas/tags/model/tag_model';
 import { ProdutosDataService } from "./../../produtos/service/produtos-data.service";
 import { Produto } from "./../../produtos/model/produtoModel";
 import { ProdutosService } from "./../../produtos/service/produtos.service";
-import { TagService } from "./../tags/service/tag.service";
-import { Observable } from "rxjs";
+import { TagService } from "./../../paginas/tags/service/tag.service";
 import { Component, OnInit } from "@angular/core";
 import {
   AngularFireStorageModule,
@@ -15,11 +16,47 @@ import {
 import { error } from 'protractor';
 
 @Component({
-  selector: "adicionar-produto",
-  templateUrl: "./adicionar-produto.component.html",
-  styleUrls: ["./adicionar-produto.component.css"]
+  selector: 'app-editar-produto',
+  templateUrl: './editar-produto.component.html',
+  styleUrls: ['./editar-produto.component.css']
 })
-export class AdicionarProdutoComponent implements OnInit {
+export class EditarProdutoComponent implements OnInit {
+
+  
+
+  
+  key: string = "";
+  url: any;
+  product_key:string;
+  produto: SizedProduct = new SizedProduct();
+  delete_icon = faTimesCircle;
+
+  constructor(
+    private produtoService: ProdutosService,
+    private produtoDataService: ProdutosDataService,
+    private storage: AngularFireStorage,
+    private tags_service: TagService,
+    private active_route:ActivatedRoute,
+    private produto_service:ProdutosService
+  ) { }
+
+  ngOnInit() {
+    this.getAllTags();
+    this.active_route.params.subscribe((params:Params) =>{
+      this.product_key = params['key'];
+    });
+
+    this.getProduct();
+
+    this.produtoDataService.currentProdutos.subscribe(data => {
+      if (data.produtos && data.key) {
+        
+        this.produto.nome = data.produtos.nome;
+        this.key = data.key;
+      }
+    })
+  }
+
   isHovering: boolean;
   files: File[] = [];
   tags: any;
@@ -36,44 +73,35 @@ export class AdicionarProdutoComponent implements OnInit {
     console.log(this.files);
   }
 
-  produto: Produto = new Produto();
-  key: string = "";
-  url: any;
-  date = new Date();
-  delete_icon = faTimesCircle;
-
-  constructor(
-    private produtoService: ProdutosService,
-    private produtoDataService: ProdutosDataService,
-    private storage: AngularFireStorage,
-    private tags_service: TagService
-  ) {}
-
-  ngOnInit() {
-    this.getAllTags();
-
-    this.produto.time = this.date.getTime();
-  }
-
   receberUrl(url) {
     this.produto.foto.push(url);
   }
 
   onSubmit() {
     if (this.key) {
+      this.produtoService.alterar(this.produto, this.key);
+      console.log("alterou");
     } else {
-      this.produtoService.adicionar(this.produto).then(product =>{
-        this.produto.key = product.key;
+      this.produtoService.alterar(this.produto, this.key);
+      console.log("alterou2");
+        /*this.produto.key = product.key;
         console.log(product);
         this.sendTagsToDb(product.key);
         alert("Seu produto foi adicionado com sucesso")
         this.produto = new Produto();
-        this.files = [];
-      });
+        this.files = [];*/
+      
     }
-
-
   }
+
+  getProduct(){
+    this.produto_service.buscarPorid(this.product_key).then(res =>{
+      this.produto.fromJson(res);
+      console.log(this.produto.selected_size);
+
+    });
+  }
+
   getAllTags() {
     this.tags_service.getAllTags().then(tags => {
       console.log(tags);
@@ -169,8 +197,12 @@ export class AdicionarProdutoComponent implements OnInit {
     }
   }
 
-  FotoRemovida(index){
+  deletarFoto(index){
     this.files.splice(index,1);
+  }
+
+  removerItem(tipo, i){
+    tipo.splice(i,1);
   }
 
   tipo = ["Camiseta", "Shorts", "Tênis"];
@@ -178,4 +210,6 @@ export class AdicionarProdutoComponent implements OnInit {
   categoria = ["Masculino", "Feminino"];
 
   cor = ["azul", "branco"];
+
+
 }

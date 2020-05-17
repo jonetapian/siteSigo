@@ -1,3 +1,4 @@
+import { Usuario } from 'src/app/usuario/model/usuarioModel';
 import { Produto } from './../model/produtoModel';
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
@@ -33,6 +34,21 @@ export class ProdutosService {
       return product;
       // ...
     });
+  }
+  buscarPorTime(){
+    return this.db.list('/produtos', ref => ref.orderByChild("time"))
+    .snapshotChanges()
+    .pipe(
+      map(changes => {
+        return changes.map(c => {
+          const key = c.payload.key;
+          const val = c.payload.val();
+          let product = new Produto(val);
+          product.key = key
+          return product
+        });
+      })
+    );
   }
   buscar(){
     return this.db.list('produtos')
@@ -73,10 +89,10 @@ export class ProdutosService {
       });
   }
 
-  salvarCarrinho(produto){
-    this.db.list('usuarios/').push(produto)
+  salvarCarrinho(produto, usuario:Usuario){
+    this.db.list('usuarios/' + usuario).push(produto)
       .then((result: any) => {
-        
+
       })
   }
 

@@ -8,7 +8,9 @@ export class Produto{
     categoria = '';
     foto:Array<string> = new Array<string>();
     key ='';
+    timestamp:number;
     quantidadeCarrinho = 1;
+    time = 0;
 
     constructor(json?){
       if(json){
@@ -27,5 +29,6 @@ export class Produto{
       this.foto = val.foto;
       this.key = val.key;
       val.quantidadeCarrinho ? this.quantidadeCarrinho = val.quantidadeCarrinho : null;
+      this.time = val.time;
     }
 }
