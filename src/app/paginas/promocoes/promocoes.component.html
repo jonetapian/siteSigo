@@ -1,4 +1,4 @@
-<div class="container-fluid pb-3">
+<div class="container pb-3">
   <div class="row mt-3">
     <div class="col">
       <label class="font-title ">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="row justify-content-center" *ngIf="all_promotions" >
-    <div class="col-auto " *ngFor="let promotion of all_promotions ;let i = index">
+    <div class="col-auto my-3" *ngFor="let promotion of all_promotions ;let i = index">
       <div class="card font-sub" >
         <div class="card-body" >
           <h5 class="card-title">{{promotion.nome}}</h5>
@@ -25,7 +25,7 @@
           <li class=" list-group-item list-group-header"><strong>Produtos</strong></li>
           <li class="list-group-item" *ngFor="let produto of promotion.produtos">{{getProductName(produto)}}</li>
         </ul>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center p-2">
           <div class="col-auto">
             <button mat-raised-button class="bg-preto-opaco text-white btn" (click)="updatePromotion(i)">Editar</button>
           </div>
@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row my-3">
     <div class="col font-sub ">
       <p class="">
         Crie sua promoção e adicione os produtos que receberam este desconto
@@ -48,62 +48,63 @@
       </button>
     </div>
   </div>
-  <div class="row justify-content-center mt-3" *ngIf="show_input">
-    <div class="col-sm-8 col-12">
-      <label class="font-sub ">Nome:</label>
-      <input
-        type="text"
-        [(ngModel)]="new_promotion.nome"
-        placeholder="digite aqui..."
-        style="background: transparent; border: solid 1px black;"
-        class="form-control"
-      />
+  <div class="my-3" *ngIf="show_input">
+    <div class="row justify-content-center mt-3">
+      <div class="col-sm-8 col-12">
+        <label class="font-sub ">Nome:</label>
+        <input
+          type="text"
+          [(ngModel)]="new_promotion.nome"
+          placeholder="digite aqui..."
+          style="background: transparent; border: solid 1px black;"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-sm-8 col-12">
+        <label class="font-sub ">Descrição:</label>
+        <input
+          type="text"
+          [(ngModel)]="new_promotion.descricao"
+          placeholder="digite aqui..."
+          style="background: transparent; border: solid 1px black;"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-sm-8 col-12">
+        <label class="font-sub "
+          >Valor de desconto(insira a porcentagem que será abatida do valor do
+          produto):</label
+        >
+        <input
+          type="number"
+          [(ngModel)]="new_promotion.valor_porcentagem"
+          placeholder="digite aqui..."
+          style="background: transparent; border: solid 1px black;"
+          class="form-control"
+        />
+      </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-3" *ngIf="show_input">
-    <div class="col-sm-8 col-12">
-      <label class="font-sub ">Descrição:</label>
-      <input
-        type="text"
-        [(ngModel)]="new_promotion.descricao"
-        placeholder="digite aqui..."
-        style="background: transparent; border: solid 1px black;"
-        class="form-control"
-      />
-    </div>
-  </div>
-  <div class="row justify-content-center mt-3" *ngIf="show_input">
-    <div class="col-sm-8 col-12">
-      <label class="font-sub "
-        >Valor de desconto(insira a porcentagem que será abatida do valor do
-        produto):</label
-      >
-      <input
-        type="text"
-        [(ngModel)]="new_promotion.valor_porcentagem"
-        placeholder="digite aqui..."
-        style="background: transparent; border: solid 1px black;"
-        class="form-control"
-      />
+  <div class="row" *ngIf="show_input">
+    <div class="col-sm-2 col-6 float-left" *ngFor="let produto of produtos; let i = index">
+      <label class="btn-primary" style="width: 100%;" ngbButtonLabel>
+        <input type="checkbox"  [ngModel]="isChecked(produto.key)" ngbButton (change)="getKey(i)" [disabled]="!isChecked(produto.key) && produto.promocao">
+        Selecionar
+      </label>
+      <app-show-component  [produto]="produto"></app-show-component>
     </div>
   </div>
   <div class="row justify-content-center mt-2" *ngIf="show_input">
     <div class="col-auto">
       <button mat-raised-button
         class="btn bg-preto-opaco text-white "
-        (click)="makePromotion()"
-      >
+        (click)="makePromotion()">
         adicionar promoção
       </button>
-    </div>
-  </div>
-  <div class="row pl-1 pr-1 mt-3">
-    <div class="col-sm-2 col-6" *ngFor="let produto of produtos; let i = index">
-      <label class="btn-primary" style="width: 100%;" ngbButtonLabel>
-        <input type="checkbox"  [ngModel]="isChecked(produto.key)"  ngbButton (change)="getKey(i)">
-        Selecionar
-      </label>
-      <app-show-component (click)="getKey(i)" [produto]="produto"></app-show-component>
     </div>
   </div>
 </div>

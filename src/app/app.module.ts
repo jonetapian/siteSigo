@@ -25,8 +25,7 @@ import { ContatoComponent } from './paginas/contato/contato.component';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { AdicionarProdutoComponent } from './paginas/adicionar-produto/adicionar-produto.component';
 import { DropzoneDirective } from './dropzone/dropzone.directive';
-import { UploadTaskComponent } from './paginas/upload-task/upload-task.component';
-import { UploadTaskModule } from './paginas/upload-task/upload-task.module';
+import { UploadTaskComponent } from './shared/upload-task/upload-task.component';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
 import { FormsModule } from '@angular/forms';
@@ -97,7 +96,8 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     PagseguroComponent,
     CarrinhoCardComponent,
     EditarProdutoComponent,
-    LancamentosComponent
+    LancamentosComponent,
+    UploadTaskComponent
    ],
   imports: [
     BrowserModule,
@@ -107,7 +107,6 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     FormsModule,
-    UploadTaskModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
     FontAwesomeModule,

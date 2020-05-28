@@ -6,11 +6,13 @@ export class Produto{
     cor:Array<string> = new Array<string>();
     preco: number = 0;
     categoria = '';
-    foto:Array<string> = new Array<string>();
+    foto:Array<string> = new Array<string>('');
     key ='';
     timestamp:number;
     quantidadeCarrinho = 1;
     time = 0;
+    promocao = false;
+    valorPorcentagem = 0;
 
     constructor(json?){
       if(json){
@@ -30,5 +32,7 @@ export class Produto{
       this.key = val.key;
       val.quantidadeCarrinho ? this.quantidadeCarrinho = val.quantidadeCarrinho : null;
       this.time = val.time;
+      this.promocao = val.promocao;
+      this.valorPorcentagem = val.valorPorcentagem;
     }
 }

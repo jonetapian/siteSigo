@@ -23,16 +23,14 @@ export class LancamentosComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-    this.produtosService.buscarPorTime().subscribe(val =>{
-      console.log(val);
-    });
+
   }
 
   deletar(key: string){
 
   }
   getProducts(){
-    this.produtosService.buscar().subscribe((res:any) =>{
+    this.produtosService.buscarPorTime().subscribe((res:any) =>{
       this.products = res;
       this.showing_products = res;
     });
