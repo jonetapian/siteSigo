@@ -1,3 +1,4 @@
+import { Produto } from 'src/app/produtos/model/produtoModel';
 import { map } from 'rxjs/operators';
 import { Promocao } from './../model/promocoes_model';
 import { Injectable } from '@angular/core';
@@ -34,4 +35,25 @@ export class PromocoesService {
         })
       );
   }
+  adicionarPromocao(key:string, valorPorcentagem){
+    this.db.list(`produtos/${key}`).set("promocao",true)
+    .catch((error: any) => {
+      console.error(error);
+    });
+    this.db.list(`produtos/${key}`).set("valorPorcentagem", valorPorcentagem)
+    .catch((error: any) => {
+      console.error(error);
+    });
+  }
+  removerPromocao(key:string){
+    this.db.list(`produtos/${key}`).set("promocao",false)
+    .catch((error: any) => {
+      console.error(error);
+    });
+    this.db.list(`produtos/${key}`).set("valorPorcentagem", 0)
+    .catch((error: any) => {
+      console.error(error);
+    });
+  }
+  
 }

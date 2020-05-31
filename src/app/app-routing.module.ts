@@ -1,3 +1,4 @@
+import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.component';
 import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
 import { ViewProductComponent } from './paginas/view-product/view-product.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'ver-produto/:key', component: ViewProductComponent},
   {path: 'pagseguro', component: PagseguroComponent},
   {path: 'lancamentos', component: LancamentosComponent},
+  {path: 'editar-produto/:key', component: EditarProdutoComponent},
   {path: '', component: MenuComponent}
 ];
 

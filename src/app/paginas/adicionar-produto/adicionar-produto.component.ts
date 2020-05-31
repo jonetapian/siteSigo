@@ -20,6 +20,20 @@ import { error } from 'protractor';
   styleUrls: ["./adicionar-produto.component.css"]
 })
 export class AdicionarProdutoComponent implements OnInit {
+  
+  constructor(
+    private produtoService: ProdutosService,
+    private produtoDataService: ProdutosDataService,
+    private storage: AngularFireStorage,
+    private tags_service: TagService
+  ) {}
+
+  ngOnInit() {
+    this.getAllTags();
+
+    this.produto.time = this.date.getTime();
+  }
+  
   isHovering: boolean;
   files: File[] = [];
   tags: any;
@@ -41,19 +55,6 @@ export class AdicionarProdutoComponent implements OnInit {
   url: any;
   date = new Date();
   delete_icon = faTimesCircle;
-
-  constructor(
-    private produtoService: ProdutosService,
-    private produtoDataService: ProdutosDataService,
-    private storage: AngularFireStorage,
-    private tags_service: TagService
-  ) {}
-
-  ngOnInit() {
-    this.getAllTags();
-
-    this.produto.time = this.date.getTime();
-  }
 
   receberUrl(url) {
     this.produto.foto.push(url);
@@ -169,8 +170,13 @@ export class AdicionarProdutoComponent implements OnInit {
     }
   }
 
-  FotoRemovida(index){
+  fotoRemovida(index){
     this.files.splice(index,1);
+    this.produto.foto.splice(index,1);
+  }
+
+  removerItem(tipo, i){
+    tipo.splice(i,1);
   }
 
   tipo = ["Camiseta", "Shorts", "Tênis"];

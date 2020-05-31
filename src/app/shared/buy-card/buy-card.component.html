@@ -6,10 +6,10 @@
       </div>
     </ng-template>
   </ngb-carousel>
-  <div class="card-body" *ngIf="promocao">
+  <div class="card-body" *ngIf="produto.promocao">
     <h5 class="card-title text-break" style="white-space: normal;">{{ produto.nome }}</h5>
     <p class="card-text font-sub">
-        <s *ngIf="promocao" >De - R$ {{ produto.preco }}</s>
+        <s >De - R$ {{ produto.preco }}</s>
         <br>
         <strong>
           Por - R$ {{ getDiscount() }}
@@ -17,7 +17,7 @@
     </p>
 
   </div>
-  <div class="card-body " *ngIf="!promocao">
+  <div class="card-body " *ngIf="!produto.promocao">
 
     <h5 class="card-title text-break" style="white-space: normal;">{{ produto.nome }}</h5>
     <p class="card-text font-sub">

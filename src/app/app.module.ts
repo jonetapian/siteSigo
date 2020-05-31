@@ -1,3 +1,4 @@
+import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.component';
 import { PromocoesService } from './paginas/promocoes/service/promocoes.service';
 import { TagService } from './paginas/tags/service/tag.service';
 import { LoginService } from './paginas/login/service/login.service';
@@ -24,8 +25,7 @@ import { ContatoComponent } from './paginas/contato/contato.component';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { AdicionarProdutoComponent } from './paginas/adicionar-produto/adicionar-produto.component';
 import { DropzoneDirective } from './dropzone/dropzone.directive';
-import { UploadTaskComponent } from './paginas/upload-task/upload-task.component';
-import { UploadTaskModule } from './paginas/upload-task/upload-task.module';
+import { UploadTaskComponent } from './shared/upload-task/upload-task.component';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
 import { FormsModule } from '@angular/forms';
@@ -95,6 +95,9 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     ViewProductComponent,
     PagseguroComponent,
     CarrinhoCardComponent,
+    EditarProdutoComponent,
+    LancamentosComponent,
+    UploadTaskComponent
     LancamentosComponent
    ],
   imports: [
@@ -105,7 +108,6 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     FormsModule,
-    UploadTaskModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
     FontAwesomeModule,

@@ -1,7 +1,7 @@
 import { Usuario } from 'src/app/usuario/model/usuarioModel';
 import { Produto } from './../model/produtoModel';
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/database';
+import {AngularFireDatabase, SnapshotAction} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
 
@@ -10,7 +10,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class ProdutosService {
 
-  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
+  constructor(public db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   adicionar(produtos: Produto){
     return this.db.list('produtos').push(produtos)
@@ -66,20 +66,28 @@ export class ProdutosService {
       );
   }
 
-  deletar(key: string){
-    this.db.object(`produtos/${key}`).remove();
+  deletar(produto: Produto){
+    
+    let db = this.db;
+    this.db.object(`produtos/${produto.key}`).remove().then(result => {
+      console.log("entrou1");
+      this.deletarCor(produto, db);
+      this.deletarTamanho(produto, db);
+      this.deletarMarca(produto, db);
+      this.deletarTipo(produto, db);
+    });
+    
   }
 
-  adicionarFoto(files: string, produtos: Produto){
-    this.db.list('fotos/' + produtos.nome).push(files)
-      .then((result: any) => {
-        console.log(result.key);
-      });
-  }
-
-  deletarFoto(url, key: string, produtos: Produto){
-    return this.storage.storage.refFromURL(url).delete(),
-    this.db.object('fotos/' + produtos.nome + `${key}`).remove();
+  deletarFoto(url, key: string, produto: Produto){
+    this.storage.storage.refFromURL(url).delete();
+    let db = this.db;
+    
+    this.db.object(`produtos/${key}/foto/`).query.on('value',function(snapshot){
+      let index = snapshot.val().indexOf(url);
+      db.object(`produtos/${key}/foto/${index}`).remove();
+    });
+    
   }
 
   adicionarCarrinho(produto){
@@ -94,6 +102,39 @@ export class ProdutosService {
       .then((result: any) => {
 
       })
+  }
+
+  deletarCor(produto: Produto, db){
+    for(let i = 0; i < produto.cor.length; i++){
+      this.db.object(`tags/cor/${produto.cor[i]}/produtos/`).query.on('value',function(snapshot){
+        let index = snapshot.val().indexOf(produto.key);
+        db.object(`tags/cor/${produto.cor[i]}/produtos/${index}`).remove();
+      });
+    }
+  }
+  deletarTamanho(produto: Produto, db){
+    for(let i = 0; i < produto.tamanho.length; i++){
+      this.db.object(`tags/tamanho/${produto.tamanho[i]}/produtos/`).query.on('value',function(snapshot){
+        let index = snapshot.val().indexOf(produto.key);
+        db.object(`tags/tamanho/${produto.tamanho[i]}/produtos/${index}`).remove();
+      });
+    }
+  }
+  deletarMarca(produto: Produto, db){
+    
+    this.db.object(`tags/marca/${produto.marca}/produtos/`).query.on('value',function(snapshot){
+      let index = snapshot.val().indexOf(produto.key);
+      db.object(`tags/marca/${produto.marca}/produtos/${index}`).remove();
+    });
+    
+  }
+  deletarTipo(produto: Produto, db){
+    for(let i = 0; i < produto.tipo.length; i++){
+      this.db.object(`tags/tipo/${produto.tipo[i]}/produtos/`).query.on('value',function(snapshot){
+        let index = snapshot.val().indexOf(produto.key);
+        db.object(`tags/tipo/${produto.tipo[i]}/produtos/${index}`).remove();
+      });
+    }
   }
 
 }
