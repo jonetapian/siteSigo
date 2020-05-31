@@ -98,6 +98,7 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     EditarProdutoComponent,
     LancamentosComponent,
     UploadTaskComponent
+    LancamentosComponent
    ],
   imports: [
     BrowserModule,
