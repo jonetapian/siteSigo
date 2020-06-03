@@ -19,6 +19,7 @@ import { CadastroComponent } from './paginas/cadastro/cadastro.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { AdicionarProdutoComponent } from './paginas/adicionar-produto/adicionar-produto.component';
+import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
 
 const routes: Routes = [
   {path: 'cadastro', component: CadastroComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'pagseguro', component: PagseguroComponent},
   {path: 'lancamentos', component: LancamentosComponent},
   {path: 'editar-produto/:key', component: EditarProdutoComponent},
+  {path: 'pesquisar', component: PesquisarComponent},
   {path: '', component: MenuComponent}
 ];
 

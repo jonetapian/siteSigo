@@ -14,6 +14,8 @@ import {
   // ...
 } from '@angular/animations';
 import { faBars, faSearch, faTshirt, faUser, faSignOutAlt, faShoppingBag, faCartPlus, faTools, faCreditCard, faTruck, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+import { PesquisarService } from './shared/pesquisar/service/pesquisar.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -71,8 +73,12 @@ export class AppComponent {
   events: string[] = [];
   opened: boolean;
 
+  pesquisarProdutos;
+  startAt = new Subject();
+  endAt = new Subject();
 
-  constructor(private usuarioService:UsuarioService, private cadastroService:CadastroService, private router:Router){
+
+  constructor(private usuarioService:UsuarioService, private cadastroService:CadastroService, private router:Router, private pesquisarService: PesquisarService){
     this.EstaLogado();
   }
   ngOnInit(): void {
@@ -84,6 +90,10 @@ export class AppComponent {
         console.log("sdadsa")
       }
     });
+
+    /*this.pesquisarService.getProdutos(this.startAt.toString(), this.endAt.toString()).subscribe(res => {
+      this.pesquisarProdutos = res;
+    })*/
   }
   animationFineshed(event){
    // alert(event);
@@ -124,4 +134,15 @@ export class AppComponent {
       window.open('https://www.instagram.com/sigo.style/?hl=pt-br');
     }
   }
+
+  pesquisar($event){
+    let q = $event.target.value;
+    this.startAt.next(q);
+    this.endAt.next(q+"\uf8ff");
+    /*this.pesquisarService.getProdutos(this.startAt.toString(), this.endAt.toString()).subscribe(res => {
+      this.pesquisarProdutos = res;
+      console.log(res)
+    })*/
   }
+
+}

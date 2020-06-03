@@ -28,8 +28,8 @@ import { DropzoneDirective } from './dropzone/dropzone.directive';
 import { UploadTaskComponent } from './shared/upload-task/upload-task.component';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
-import { FormsModule } from '@angular/forms';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormAlertComponent } from './shared/form-alert/form-alert.component';
@@ -58,9 +58,11 @@ import { ViewProductComponent } from './paginas/view-product/view-product.compon
 import {MatExpansionModule} from '@angular/material/expansion';
 import {LayoutModule} from '@angular/cdk/layout';
 import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule, MatInputModule} from '@angular/material';
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
+import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
 
 
 
@@ -97,8 +99,9 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     CarrinhoCardComponent,
     EditarProdutoComponent,
     LancamentosComponent,
-    UploadTaskComponent
-    LancamentosComponent
+    UploadTaskComponent,
+    LancamentosComponent,
+    PesquisarComponent
    ],
   imports: [
     BrowserModule,
@@ -120,6 +123,10 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     MatFabMenuModule,
     MatExpansionModule,
     LayoutModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],

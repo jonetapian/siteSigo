@@ -25,6 +25,8 @@ export class ViewProductComponent implements OnInit {
       this.getCarrinhoProducts();
       this.checkIfIsInCarrinho();
     });
+    const par = this.active_route.snapshot.paramMap.get('key');
+        console.log(par)
   }
   getProduct(){
     this.produto_service.buscarPorid(this.product_key).then(res =>{

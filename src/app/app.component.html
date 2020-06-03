@@ -224,16 +224,13 @@
                 [ngbCollapse]="isSearchCollapsed"
                 class="collapse navbar-collapse"
                 style="min-width: 10rem;"
-               >
+                >
                   <div class="">
-                    <input
-                    class="input-text form-control border-left-0 border-top-0 border-right-0"
-                    type="search"
-                    placeholder="Diga o que está pensando..."
-                    aria-label="Search"
-                   />
+                    <app-pesquisar></app-pesquisar>
                   </div>
-               </div>
+
+                  
+                </div>
               </div>
               <div class="col-auto ml-0 pl-0">
                 <button
@@ -264,7 +261,7 @@
                   >Fazer Login !</a
                 >
               </div>
-              <div class="col-auto my-auto" *ngIf="estaLogado">
+              <div class="col-auto" *ngIf="estaLogado">
                 <button mat-icon-button (click)="sidenav.toggle();!isSearchCollapsed?isSearchCollapsed = !isSearchCollapsed:null">
                   <fa-icon [icon]="menu_icon"></fa-icon>
                 </button>
