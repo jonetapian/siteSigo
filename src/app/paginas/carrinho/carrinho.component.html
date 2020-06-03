@@ -59,18 +59,18 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Subtotal: R$:{{precoTotal}}</li>
-                    <li class="list-group-item">
+                    <!-- <li class="list-group-item">
                         <div class="input-group">
-                            
-                            <app-calcular-frete (enviarFrete)="receberFrete($event)"></app-calcular-frete>
+
+                            <app-calcular-frete (enviarFrete)="receberFrete($event)" (cep)="frete.cep = $event"></app-calcular-frete>
 
                         </div>
                     </li>
-                    <li class="list-group-item">Frete: {{frete}}</li>
-                    <li class="list-group-item">Total: {{precoTotal + frete}}</li>
+                    <li class="list-group-item">Frete: {{frete.preco}}</li>
+                    <li class="list-group-item">Total: {{precoTotal + frete.preco}}</li> -->
                   </ul>
             </div>
-            <button class="btn btn-dark w-100 mt-2" (click)="checkIfAllHaveSize()" >Finalizar Compra</button>
+            <button class="btn btn-dark w-100 mt-2" (click)="checkIfAllHaveSize()"  >Finalizar Compra</button>
         </div>
     </div>
 </div>

@@ -1,3 +1,7 @@
+import { ComprasService } from './paginas/finalizar-compra/services/compras/compras.service';
+import { CepService } from './paginas/finalizar-compra/services/cep.service';
+import { FormularioCompradorComponent } from './paginas/finalizar-compra/formulario-comprador/formulario-comprador.component';
+import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.component';
 import { MercadoPago } from 'mercadopago';
 import { PromocoesService } from './paginas/promocoes/service/promocoes.service';
 import { TagService } from './paginas/tags/service/tag.service';
@@ -63,7 +67,14 @@ import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 
-
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formulario-endereco/formulario-endereco.component';
 
 
 @NgModule({
@@ -96,9 +107,14 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     ViewProductComponent,
     PagseguroComponent,
     CarrinhoCardComponent,
-    LancamentosComponent
+    LancamentosComponent,
+    EditarProdutoComponent,
+    FormularioCompradorComponent,
+    FormularioEnderecoComponent
+
    ],
   imports: [
+    NgxMaskModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -118,9 +134,17 @@ import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancame
     HttpClientModule,
     MatFabMenuModule,
     MatExpansionModule,
-    LayoutModule
+    LayoutModule,
+    MatTabsModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    CdkStepperModule,
+    TextFieldModule,
+    ReactiveFormsModule
+
   ],
-  providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
+  providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService,CepService,ComprasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
