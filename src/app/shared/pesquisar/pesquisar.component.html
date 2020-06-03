@@ -1,0 +1,42 @@
+<!--<input
+    [ngModel] = "startAt"
+    (ngModelChange)="pesquisar($event)"
+    class="input-text form-control border-left-0 border-top-0 border-right-0"
+    type="search"
+    placeholder="Pesquisar..."
+    aria-label="Search"/>
+    
+<div class="position-absolute bg-white col-12 my-2 border rounded shadow-lg card px-0" style="z-index: 2000;" *ngIf="startAt">
+    
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let produto of produtos" class="list-group-item p-0 py-2 lista-pesquisa" (click)="selecionarProduto(produto)">
+            <img [src]="produto.foto[0]" class="col-4 float-left"/>
+            <p class="col-8 float-left my-auto">{{produto.nome}}</p>
+        </li>
+    </ul>
+        
+</div>-->
+
+
+<form>
+  <mat-form-field style="width: 100%;">
+    <input type="text"
+      placeholder="Pesquisar..."
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    >
+    <mat-autocomplete #auto="matAutocomplete" class="col-12 px-0">
+      <mat-option class="px-1 m-0 border-bottom row no-gutters" *ngFor="let nomeProduto of filtrarNomes | async" [value]="nomeProduto" (click)="selecionarProduto(nomeProduto)">
+        <div *ngIf="filtrarNomes">
+          <img [src]="foto(nomeProduto)" alt="" class="col-3 float-left p-0 rounded">
+          <div class="col-9 float-left p-auto">
+            <p class="my-auto h6">{{nomeProduto}}</p>
+          </div>
+        </div>
+          
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
