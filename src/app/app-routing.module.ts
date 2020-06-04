@@ -1,3 +1,4 @@
+import { ConfiguracoesComponent } from './paginas/configuracoes/configuracoes.component';
 import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.component';
 import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'lancamentos', component: LancamentosComponent},
   {path: 'editar-produto/:key', component: EditarProdutoComponent},
   {path: 'pesquisar', component: PesquisarComponent},
+  {path: 'configuracoes', component: ConfiguracoesComponent},
   {path: '', component: MenuComponent}
 ];
 

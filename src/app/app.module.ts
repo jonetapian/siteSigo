@@ -63,6 +63,7 @@ import {MatFormFieldModule, MatInputModule} from '@angular/material';
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
+import { ConfiguracoesComponent } from './paginas/configuracoes/configuracoes.component';
 
 
 
@@ -101,7 +102,8 @@ import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
     LancamentosComponent,
     UploadTaskComponent,
     LancamentosComponent,
-    PesquisarComponent
+    PesquisarComponent,
+    ConfiguracoesComponent
    ],
   imports: [
     BrowserModule,
@@ -126,7 +128,8 @@ import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService],
