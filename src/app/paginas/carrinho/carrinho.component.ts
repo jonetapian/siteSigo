@@ -1,3 +1,4 @@
+import { Frete } from './../finalizar-compra/models/frete-model';
 import { Router } from '@angular/router';
 import { SizedProduct } from './../../produtos/model/sizedProduct';
 import { ProdutosService } from './../../produtos/service/produtos.service';
@@ -12,7 +13,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CarrinhoComponent implements OnInit {
 
-  frete = 0;
+  frete: Frete = new Frete();
   produtos: Produto[];
   listaProdutos: Array<SizedProduct> = [];
   contador = 1;
@@ -30,10 +31,12 @@ export class CarrinhoComponent implements OnInit {
     console.log(this.produtos);
   }
 
-  receberFrete(frete){
-    console.log(frete);
-    this.frete = parseFloat(frete.Valor[0]);
-  }
+  // receberFrete(frete){
+  //   console.log(frete);
+  //   this.frete.prazo = Number(frete.PrazoEntrega[0]);
+  //   this.frete.preco =  parseFloat(frete.Valor[0]);
+  //   this.frete.produtos = this.listaProdutos;
+  // }
 
   increment(produto: Produto){
     produto.quantidadeCarrinho++;
@@ -92,7 +95,8 @@ export class CarrinhoComponent implements OnInit {
         return;
       }
     }
-
+    // this.frete.produtos = this.listaProdutos;
+    localStorage.setItem("carrinho", JSON.stringify(this.listaProdutos));
     this.router.navigate(['finalizar-compra']);
   }
 
@@ -100,6 +104,9 @@ export class CarrinhoComponent implements OnInit {
     this.listaProdutos[index] = produto;
     localStorage.setItem("carrinho", JSON.stringify(this.listaProdutos));
     this.show_size_alert = false;
+  }
+  FinalizarCompra(){
+
   }
 
 }

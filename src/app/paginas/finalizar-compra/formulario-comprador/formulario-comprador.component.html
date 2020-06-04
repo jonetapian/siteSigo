@@ -1,0 +1,67 @@
+<form [formGroup]="compradorForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Digite seu nome" id="nome" name="name"  formControlName="nome" required>
+          <mat-hint *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+          <mat-error *ngIf="nome.errors.required">
+            Por favor insira um nome.
+          </mat-error>
+        </mat-hint>
+    </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" >
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Digite seu email" id="email" name="email"  formControlName="email" required>
+          <mat-hint *ngIf="email.invalid && (email.dirty || email.touched)">
+            <mat-error *ngIf="email.errors.required">
+              Por favor insira um email.
+            </mat-error>
+            <mat-error *ngIf="email.errors.emailValidator">
+              Por favor insira um email válido.
+            </mat-error>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100" >
+          <mat-label>CPF</mat-label>
+          <input matInput placeholder="Digite seu cpf" id="cpf" name="cpf"  formControlName="cpf" required mask="000.000.000-00">
+          <mat-hint *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">
+            <mat-error *ngIf="cpf.errors.required">
+              Por favor insira um cpf.
+            </mat-error>
+            <mat-error *ngIf="cpf.errors.cpfValidator">
+              Por favor insira um cpf válido.
+            </mat-error>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" >
+          <mat-label>Telefone</mat-label>
+          <input matInput placeholder="Digite seu telefone" id="telefone" name="telefone"  formControlName="telefone" required mask="(00)000000000">
+          <mat-hint *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)">
+            <mat-error *ngIf="telefone.errors.required">
+              Por favor insira um telefone.
+            </mat-error>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <button type="submit" class="btn bg-preto-opaco text-white" [disabled]="!compradorForm.valid">
+            Próximo
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
