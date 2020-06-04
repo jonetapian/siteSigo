@@ -1,3 +1,4 @@
+
 import { ComprasService } from './paginas/finalizar-compra/services/compras/compras.service';
 import { CepService } from './paginas/finalizar-compra/services/cep.service';
 import { FormularioCompradorComponent } from './paginas/finalizar-compra/formulario-comprador/formulario-comprador.component';
@@ -29,12 +30,11 @@ import { ContatoComponent } from './paginas/contato/contato.component';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { AdicionarProdutoComponent } from './paginas/adicionar-produto/adicionar-produto.component';
 import { DropzoneDirective } from './dropzone/dropzone.directive';
-import { UploadTaskComponent } from './paginas/upload-task/upload-task.component';
-import { UploadTaskModule } from './paginas/upload-task/upload-task.module';
+import { UploadTaskComponent } from './shared/upload-task/upload-task.component';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
 import { FormsModule } from '@angular/forms';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormAlertComponent } from './shared/form-alert/form-alert.component';
@@ -63,9 +63,10 @@ import { ViewProductComponent } from './paginas/view-product/view-product.compon
 import {MatExpansionModule} from '@angular/material/expansion';
 import {LayoutModule} from '@angular/cdk/layout';
 import { PagseguroComponent } from './paginas/pagseguro/pagseguro.component';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
+import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -111,7 +112,9 @@ import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formular
     EditarProdutoComponent,
     FormularioCompradorComponent,
     FormularioEnderecoComponent
-
+    UploadTaskComponent,
+    LancamentosComponent,
+    PesquisarComponent
    ],
   imports: [
     NgxMaskModule.forRoot(),
@@ -122,7 +125,6 @@ import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formular
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     FormsModule,
-    UploadTaskModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
@@ -142,6 +144,10 @@ import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formular
     CdkStepperModule,
     TextFieldModule,
     ReactiveFormsModule
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService,CepService,ComprasService],

@@ -26,7 +26,7 @@ export class BuyCardComponent implements OnInit {
     this.usuarioAtual = this.usuario.UsuarioLogado();
   }
   getDiscount(){
-    return ((this.produto.preco) - (this.produto.preco) * parseInt(this.promocao.valor_porcentagem)  / 100).toFixed(2);
+    return ((this.produto.preco) - (this.produto.preco) * this.produto.valorPorcentagem  / 100).toFixed(2);
   }
 
   adicionarCarrinho(){

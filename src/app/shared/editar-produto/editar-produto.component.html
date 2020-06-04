@@ -1,96 +1,92 @@
 <p class="text-center h4 my-3">Editar Produto</p>
 
 <form >
-    <div class="container my-3 bg-light border rounded p-3">
-        <div class="form-row">
-            <div class="form-group col-6">
-                <label for="">Nome:</label>
-                <input class="form-control" type="text" [(ngModel)]="produto.nome" name="nome"/>
+    <div class="container col-6 my-3 bg-light border rounded p-3">
+        <div class="form-row justify-content-center">
+            <div class="form-group col-12 text-center">
+                <label for="nome" class="h6">Nome</label>
+                <input class="form-control " type="text" [(ngModel)]="produto.nome" name="nome" id="nome" ngModel required/>
             </div>
-            <div class="form-group col-6">
-                <label for="">Tipo:</label>
-                <select class="form-control" (change)="addTipo($event.target.value)" name="tipo" *ngIf="tags" >
+        </div>
+        <div class="form-row">
+            <div class="form-group col-6 text-center">
+                <label for="tipo" class="h6">Tipo</label>
+                <select class="form-control" (change)="addTipo($event.target.value)" name="tipo" id="tipo" *ngIf="tags" ngModel required>
                   <option value="default">Selecione um tipo</option>
                   <option *ngFor="let tag of tags.tipo | keyvalue" [value]="tag.key">{{tag.key}}</option>
                 </select>
                 <br *ngIf="produto.tipo.length > 0">
-                 <table class="table table-striped" *ngIf="produto.tipo.length > 0">
-                    <tbody>
-                        <tr *ngFor="let tipo of produto.tipo; let i = index">
-                            <th scope="col"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.tipo, i)"></fa-icon></th>
-                            <th scope="col">{{tipo}}</th>
-                        </tr>
-                    </tbody>
-                 </table>
-                
+                <div class="border border-dark rounded" *ngIf="produto.tipo.length > 0">
+                    
+                    <div *ngFor="let tipo of produto.tipo; let i = index">
+                        <span class="float-left ml-3"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.tipo, i)"></fa-icon></span>
+                        <p class="m-1">{{tipo}}</p>
+                    </div>
+                    
+                </div>
+
             </div>
-            <div class="form-group col-6">
-                <label for="">Marca:</label>
-                <select class="form-control" [(ngModel)]="produto.marca" name="marca" *ngIf="tags" >
+            <div class="form-group col-6 text-center">
+                <label for="marca" class="h6">Marca</label>
+                <select class="form-control" [(ngModel)]="produto.marca" name="marca" id="marca" *ngIf="tags" ngModel required>
                     <option>Selecione uma marca</option>
                   <option *ngFor="let tag of tags.marca | keyvalue" [value]="tag.key">{{tag.key}}</option>
                 </select>
                 <br *ngIf="produto.marca">
-                <table class="table table-striped" *ngIf="produto.marca.length > 0">
-                    <tbody>
-                        <tr>
-                            <th scope="col"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.marca, 0)"></fa-icon></th>
-                            <th scope="col">{{produto.marca}}</th>
-                        </tr>
-                    </tbody>
-                 </table>
+                <div class="border border-dark rounded" *ngIf="produto.marca">
+                    
+                    <span class="float-left ml-3"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.marca, 0)"></fa-icon></span>
+                    <p class="m-1">{{produto.marca}}</p>
+                    
+                </div>
             </div>
-            <div class="form-group col-6">
-                <label for="">Tamanho:</label>
-                <select class="form-control"(change)="addTamanho($event.target.value)"  *ngIf="tags" name="tamanho" >
+            <div class="form-group col-6 text-center">
+                <label for="tamanho" class="h6">Tamanho</label>
+                <select class="form-control"(change)="addTamanho($event.target.value)"  *ngIf="tags" name="tamanho" id="tamanho" ngModel required>
                   <option value="default">Selecione um tamanho</option>
                   <option *ngFor="let tag of tags.tamanho | keyvalue" [value]="tag.key">{{tag.key}}</option>
                 </select>
                 <br *ngIf="produto.tamanho.length > 0">
-                <table class="table table-striped" *ngIf="produto.tamanho.length > 0">
-                    <tbody>
-                        <tr *ngFor="let tamanho of produto.tamanho; let i = index">
-                            <th scope="col"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.tamanho, i)"></fa-icon></th>
-                            <th scope="col">{{tamanho}}</th>
-                        </tr>
-                    </tbody>
-                 </table>
+                <div class="border border-dark rounded" *ngIf="produto.tamanho.length > 0">
+                    
+                    <div *ngFor="let tamanho of produto.tamanho; let i = index">
+                        <span class="float-left ml-3"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.tamanho, i)"></fa-icon></span>
+                        <p class="m-1">{{tamanho}}</p>
+                    </div>
+                    
+                </div>
             </div>
-            <div class="form-group col-6">
-                <!--<label for="">Cores:</label>
-                <br>
-                <div class="form-check form-check-inline" *ngFor="let item of cor" >
-                    <input class="form-check-input" type="checkbox" [value]="item" [(ngModel)]="produto.cor" name="cor" [id]="item">
-                    <label class="form-check-label" [for]="item">{{ item }}</label>
-
-                </div>-->
-                <label for="">Cor:</label>
-                <select class="form-control" (change)="addColor($event.target.value)"  *ngIf="tags" name="cor">
+            <div class="form-group col-6 text-center">
+                
+                <label for="cor" class="h6">Cor</label>
+                <select class="form-control" (change)="addColor($event.target.value)"  *ngIf="tags" name="cor" id="cor" ngModel required>
                     <option value="default">Selecione uma cor</option>
                     <option *ngFor="let tag of tags.cor | keyvalue" [value]="tag.key" >{{tag.key}}</option>
                 </select>
                 <br *ngIf="produto.cor.length > 0">
-                <table class="table table-striped" *ngIf="produto.cor.length > 0">
-                    <tbody>
-                        <tr *ngFor="let cor of produto.cor; let i = index">
-                            <th scope="col"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.cor, i)"></fa-icon></th>
-                            <th scope="col">{{cor}}</th>
-                        </tr>
-                    </tbody>
-                 </table>
+                <div class="border border-dark rounded" *ngIf="produto.cor.length > 0">
+                    
+                    <div *ngFor="let cor of produto.cor; let i = index">
+                        <span class="float-left ml-3"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.cor, i)"></fa-icon></span>
+                        <p class="m-1">{{cor}}</p>
+                    </div>
+                    
+                </div>
 
             </div>
-            <div class="form-group col-6">
-                <label for="">Preço:</label>
-                <input class="form-control " type="text" [(ngModel)]="produto.preco" name="preco" data-mask="00/00/0000"/>
+            <div class="form-group col-6 text-center">
+                <label for="preco" class="h6">Preço</label>
+                <input class="form-control " type="text" [(ngModel)]="produto.preco" name="preco" id="preco" data-mask="00/00/0000" ngModel required/>
             </div>
-            <div class="form-group col-6">
-                <label for="">Categoria:</label>
-                <select class="form-control" [(ngModel)]="produto.categoria" name="categoria">
+            <div class="form-group col-6 text-center">
+                <label for="categoria" class="h6">Categoria</label>
+                <select class="form-control" [(ngModel)]="produto.categoria" name="categoria" id="categoria" ngModel required>
                     <option *ngFor="let item of categoria" [value]="item">{{item}}</option>
                 </select>
             </div>
-            <div class="form-group col-6">
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-6 text-center">
                 <label for="">Foto:</label>
                 <div class="custom-file">
                     <div class="form-control dropzone text-center"
@@ -105,22 +101,33 @@
 
                 </div>
             </div>
-
+        </div>
+        <div class="form-row justify-content-center">
+            <h3>Todas as fotos:</h3>
             <div class="form-group col-12">
-                <h3>Fotos:</h3>
-                <div *ngFor="let foto of produto.foto" class="float-left">
+
+                <div *ngFor="let foto of produto.foto; let i of index" class="float-left">
+                    
+
                     <div class="border border-dark p-2 rounded m-2">
+                        <div >
+                            <span><fa-icon [icon]="delete_icon" (click)="fotoRemovida(i, foto, produto)"></fa-icon></span>
+                        </div>
                         <img [src]="foto"  height="100px"><br>
                         </div>
                 </div>
                 
-                <div *ngFor="let file of files" class="float-left">
+            </div>
+            <h3>Fotos novas:</h3>
+            <div class="form-group col-12">
+                <div *ngFor="let file of files; let i of index" class="float-left">
                     
-                    <upload-task [file]="file" [recebeProdutos]="produto" (enviarUrl)="receberUrl($event)"></upload-task>
+                    <app-upload-task [file]="file" [recebeProdutos]="produto" (enviarUrl)="receberUrl($event)" (foto_removida)="fotoRemovida(i)"></app-upload-task>
                 </div>
             </div>
         </div>
-        <button class="btn btn-dark" (click)="onSubmit()">Alterar</button>
+        <button class="btn btn-success m-2" (click)="onSubmit()">Alterar</button>
+        <button class="btn btn-danger m-2" (click)="excluir()">Excluir</button>
 
 
 

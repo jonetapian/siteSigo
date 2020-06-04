@@ -21,9 +21,6 @@ import { error } from 'protractor';
   styleUrls: ['./editar-produto.component.css']
 })
 export class EditarProdutoComponent implements OnInit {
-
-  
-
   
   key: string = "";
   url: any;
@@ -37,7 +34,7 @@ export class EditarProdutoComponent implements OnInit {
     private storage: AngularFireStorage,
     private tags_service: TagService,
     private active_route:ActivatedRoute,
-    private produto_service:ProdutosService
+    
   ) { }
 
   ngOnInit() {
@@ -74,30 +71,36 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   receberUrl(url) {
-    this.produto.foto.push(url);
+    if(this.produto.foto){
+      this.produto.foto.push(url);
+    }else{
+      this.produto.foto = [url];
+    }
   }
 
   onSubmit() {
     if (this.key) {
-      this.produtoService.alterar(this.produto, this.key);
+      this.produtoService.alterar(this.produto, this.produto.key);
       console.log("alterou");
     } else {
       this.produtoService.alterar(this.produto, this.key);
       console.log("alterou2");
-        /*this.produto.key = product.key;
-        console.log(product);
-        this.sendTagsToDb(product.key);
+        this.sendTagsToDb(this.produto.key);
         alert("Seu produto foi adicionado com sucesso")
-        this.produto = new Produto();
-        this.files = [];*/
+        this.produto = new SizedProduct();
+        this.files = [];
       
     }
   }
 
+  excluir(){
+    this.produtoService.deletar(this.produto);
+  }
+
   getProduct(){
-    this.produto_service.buscarPorid(this.product_key).then(res =>{
+    this.produtoService.buscarPorid(this.product_key).then(res =>{
       this.produto.fromJson(res);
-      console.log(this.produto.selected_size);
+      console.log(this.produto);
 
     });
   }
@@ -197,8 +200,9 @@ export class EditarProdutoComponent implements OnInit {
     }
   }
 
-  deletarFoto(index){
+  fotoRemovida(index, url, produto){
     this.files.splice(index,1);
+    this.produtoService.deletarFoto(url, produto.key, produto);
   }
 
   removerItem(tipo, i){

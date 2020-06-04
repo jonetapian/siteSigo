@@ -1,11 +1,12 @@
-import { ProdutosService } from './../../produtos/service/produtos.service';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { ProdutosService } from '../../produtos/service/produtos.service';
 import { tap, finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 
 @Component({
-  selector: 'upload-task',
+  selector: 'app-upload-task',
   templateUrl: './upload-task.component.html',
   styleUrls: ['./upload-task.component.css']
 })
@@ -26,6 +27,7 @@ export class UploadTaskComponent implements OnInit {
   task: AngularFireUploadTask;
   complete: boolean;
   caminhoImagem: string;
+  delete_icon = faTimesCircle;
 
   constructor(private storage: AngularFireStorage, private produtosService: ProdutosService) { }
 
@@ -53,6 +55,8 @@ export class UploadTaskComponent implements OnInit {
 
         })
       })
+    }else{
+      alert("a");
     }
 
   }
@@ -62,8 +66,8 @@ export class UploadTaskComponent implements OnInit {
     console.log("deletado")
     this.foto_removida.emit();
 
-
   }
+
 
   isActive(task){
     return task.state === 'running' && task.bytesTransferred < task.totalBytes;
