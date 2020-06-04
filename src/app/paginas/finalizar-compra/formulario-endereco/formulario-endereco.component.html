@@ -1,0 +1,89 @@
+<form [formGroup]="enderecoForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100">
+          <mat-label>Cep</mat-label>
+          <input matInput placeholder="Digite seu cep" id="cep" name="cep"  formControlName="cep" required (change)="buscarCEP($event.target.value)">
+          <mat-hint *ngIf="cep.invalid && (cep.dirty || cep.touched)">
+          <mat-error *ngIf="cep.errors.required">
+            Por favor insira um cep.
+          </mat-error>
+        </mat-hint>
+    </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" >
+          <mat-label>Rua</mat-label>
+          <input matInput placeholder="Digite sua rua" id="rua" name="rua"  formControlName="rua" required>
+          <mat-hint *ngIf="rua.invalid && (rua.dirty || rua.touched)">
+            <mat-error *ngIf="rua.errors.required">
+              Por favor insira uma rua.
+            </mat-error>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100" >
+          <mat-label>Cidade</mat-label>
+          <input matInput placeholder="Digite sua cidade" id="cidade" name="cidade"  formControlName="cidade" required >
+          <mat-hint *ngIf="cidade.invalid && (cidade.dirty || cidade.touched)">
+            <mat-error *ngIf="cidade.errors.required">
+              Por favor insira uma Cidade.
+            </mat-error>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-100" >
+          <mat-label>Bairro</mat-label>
+          <input matInput placeholder="Digite seu bairro" id="bairro" name="bairro"  formControlName="bairro" required >
+          <mat-hint *ngIf="bairro.invalid && (bairro.dirty || bairro.touched)">
+            <mat-error *ngIf="bairro.errors.required">
+              Por favor insira um bairro.
+            </mat-error>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100" >
+          <mat-label>Estado</mat-label>
+          <input matInput placeholder="Digite seu estado" id="estado" name="estado"  formControlName="estado" required >
+          <mat-hint *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+            <mat-error *ngIf="estado.errors.required">
+              Por favor insira uma Estado.
+            </mat-error>wa
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-50" >
+          <mat-label>Número</mat-label>
+          <input matInput placeholder="Digite o número" id="numero" name="numero"  formControlName="numero" required >
+          <mat-hint *ngIf="numero.invalid && (numero.dirty || numero.touched)">
+            <mat-error *ngIf="numero.errors.required">
+              Por favor insira um número.
+            </mat-error>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field class="w-50" >
+          <mat-label>Complemento</mat-label>
+          <input matInput placeholder="Digite o complemento" id="complemento" name="complemento"  formControlName="complemento" >
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <button type="submit" class="btn bg-preto-opaco text-white" [disabled]="!enderecoForm.valid">
+            Próximo
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
