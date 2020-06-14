@@ -77,6 +77,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formulario-endereco/formulario-endereco.component';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 
 @NgModule({
@@ -112,7 +113,7 @@ import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formular
     LancamentosComponent,
     EditarProdutoComponent,
     FormularioCompradorComponent,
-    FormularioEnderecoComponent
+    FormularioEnderecoComponent,
     UploadTaskComponent,
     LancamentosComponent,
     PesquisarComponent,
@@ -145,12 +146,13 @@ import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formular
     MatInputModule,
     CdkStepperModule,
     TextFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    CurrencyMaskModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService,CepService,ComprasService],

@@ -15,6 +15,10 @@ export class ViewProductComponent implements OnInit {
   produtos_carrinho:Array<Produto>;
   size:string = "default";
   button_string:string = "Adicionar o carrinho";
+  produtosRelacionados: Produto[];
+  tipos: string[] = [];
+  filtrarTipos;
+
   constructor(private active_route:ActivatedRoute, private produto_service:ProdutosService,private route:Router) { }
 
   ngOnInit() {
@@ -24,6 +28,7 @@ export class ViewProductComponent implements OnInit {
       this.getProduct();
       this.getCarrinhoProducts();
       this.checkIfIsInCarrinho();
+      
     });
     const par = this.active_route.snapshot.paramMap.get('key');
         console.log(par)
@@ -32,8 +37,9 @@ export class ViewProductComponent implements OnInit {
     this.produto_service.buscarPorid(this.product_key).then(res =>{
       this.product.fromJson(res);
       console.log(this.product.selected_size);
-
+      this.buscarProdutosRelacionados(this.product);
     });
+    
   }
 
   getCarrinhoProducts(){
@@ -59,5 +65,25 @@ export class ViewProductComponent implements OnInit {
       this.adicionarCarrinho();
     }
     this.route.navigate(['carrinho']);
+  }
+
+  buscarProdutosRelacionados(produto: Produto){
+    this.produto_service.buscarRelacionados(produto).subscribe(res => {
+      this.produtosRelacionados = res;
+      
+    });
+    
+    
+  }
+
+  produtos(){
+    let produtos = [];
+    for(let produto of this.produtosRelacionados){
+      if(this.product.tipo[0] == produto.tipo[0] && this.product.key != produto.key){
+        produtos.push(produto)
+      }
+
+    }
+    return produtos;
   }
 }

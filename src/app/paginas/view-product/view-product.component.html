@@ -1,7 +1,7 @@
 <div class="container-fluid py-3">
   <div class="row justify-content-center" *ngIf="product"  >
     <div class="col-md-6">
-      <ngb-carousel style="width: 400px;" >
+      <ngb-carousel class="tamanho-foto">
         <ng-template  ngbSlide *ngFor="let foto of product.foto" >
           <div class="picsum-img-wrapper" >
 
@@ -35,6 +35,19 @@
           <label class="float-right ">R${{product.preco}}</label>
         </button>
       </div>
+    </div>
+  </div>
+  <hr class="divider">
+  <div class="mt-2 container-fluid">
+    <p class="h4 text-center"><u>Relacionados</u></p>
+    <div class="row">
+      
+      <div class="col-xl-2 col-lg-3 col-md-4 mt-2"*ngFor="let produto of produtos()">
+        <app-buy-card [produto]="produto" ></app-buy-card>
+      </div>
+      
+      
+      
     </div>
   </div>
 </div>
