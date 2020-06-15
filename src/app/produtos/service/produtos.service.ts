@@ -50,6 +50,28 @@ export class ProdutosService {
       })
     );
   }
+  buscarRelacionados(produto: Produto){
+    /*return this.db.list('/produtos/').query.orderByChild('tipo').once('value').then(function(snapshot) {
+      console.log(snapshot.val());
+      let produto = new Produto(snapshot.val());
+      return produto
+    });*/
+    for(let i = 0; i < produto.tipo.length; i++){
+      return this.db.list('/produtos', ref => ref.orderByChild("tipo").limitToFirst(10))
+      .snapshotChanges()
+      .pipe(
+        map(changes => {
+          return changes.map(c => {
+            const key = c.payload.key;
+            const val = c.payload.val();
+            let product = new Produto(val);
+            product.key = key
+            return product
+          });
+        })
+      );
+    }
+  }
   buscar(){
     return this.db.list('produtos')
       .snapshotChanges()

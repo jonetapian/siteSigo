@@ -1,3 +1,4 @@
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formulario-endereco/formulario-endereco.component';
 import { FormularioCompradorComponent } from './paginas/finalizar-compra/formulario-comprador/formulario-comprador.component';
 import { ComprasService } from './paginas/ver-compras/services/compras/compras.service';
@@ -68,6 +69,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
+import { ConfiguracoesComponent } from './paginas/configuracoes/configuracoes.component';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -124,7 +126,8 @@ registerLocaleData(localePt);
     PesquisarComponent,
     ListaComprasComponent,
     VerCompraComponent,
-    DepoisDaCompraComponent
+    DepoisDaCompraComponent,
+    ConfiguracoesComponent
    ],
   imports: [
     NgxMaskModule.forRoot(),
@@ -157,7 +160,9 @@ registerLocaleData(localePt);
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
+    CurrencyMaskModule
 
   ],
   providers: [

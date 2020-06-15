@@ -6,7 +6,7 @@ export class Produto{
     cor:Array<string> = new Array<string>();
     preco: number = 0;
     categoria = '';
-    foto:Array<string> = new Array<string>('');
+    foto:Array<string> = new Array<string>();
     key ='';
     timestamp:number;
     quantidadeCarrinho = 1;

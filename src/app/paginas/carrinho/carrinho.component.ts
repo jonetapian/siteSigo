@@ -25,7 +25,7 @@ export class CarrinhoComponent implements OnInit {
   constructor(private produtosService: ProdutosService,private router:Router) { }
 
   ngOnInit() {
-
+    
     this.atualizarCarrinho();
     this.onCarrinhoVazio();
   }
@@ -70,13 +70,22 @@ export class CarrinhoComponent implements OnInit {
   atualizarCarrinho(){
     this.produtos = JSON.parse(localStorage.getItem("carrinho"));
 
-    for(let i = 0; i < this.produtos.length; i++){
+    for(let produto of this.produtos){
 
-      this.produtos[i].quantidadeCarrinho = 1;
-      this.precoTotal += this.produtos[i].preco * 1;
+      produto.quantidadeCarrinho = 1;
+      if(produto.promocao){
+        produto.preco = ((produto.preco) - (produto.preco) * produto.valorPorcentagem  / 100);
+      }else{
+        produto.preco = produto.preco;
+      }
+      this.precoTotal += produto.preco * 1;
 
-      this.listaProdutos.push(new SizedProduct(this.produtos[i]));
+      this.listaProdutos.push(new SizedProduct(produto));
+
+      
     }
+
+    
   }
 
   onCarrinhoVazio(){

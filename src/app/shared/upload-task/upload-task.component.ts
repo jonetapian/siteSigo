@@ -28,6 +28,7 @@ export class UploadTaskComponent implements OnInit {
   complete: boolean;
   caminhoImagem: string;
   delete_icon = faTimesCircle;
+  data = new Date();
 
   constructor(private storage: AngularFireStorage, private produtosService: ProdutosService) { }
 
@@ -38,7 +39,7 @@ export class UploadTaskComponent implements OnInit {
   upload() {
     if(this.recebeProdutos.nome){
       this.complete = false;
-      const path = 'imagens/' + this.recebeProdutos.nome + "/" + this.file.name;
+      const path = 'imagens/' + this.recebeProdutos.nome + "/" + this.file.name + this.data.getTime();
 
       const fileRef = this.storage.ref(path);
 
@@ -54,7 +55,7 @@ export class UploadTaskComponent implements OnInit {
         })
       })
     }else{
-      alert("a");
+      alert("É preciso adicionar um nome ao seu produto");
     }
 
   }
