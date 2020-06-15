@@ -37,14 +37,12 @@ export class LancamentosComponent implements OnInit {
   }
 
   filterSelected(tag){
-    console.log(tag);
     this.getTagByFilter(tag);
   }
   filterRemoved(tag){
     this.showing_products = this.products;
   }
   getTagByFilter(filter){
-    console.log(filter);
     let filtered_array:any =[];
     for(let filtered_product of filter.produtos){
       for(let product of this.showing_products){

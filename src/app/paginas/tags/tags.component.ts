@@ -66,7 +66,6 @@ export class TagsComponent implements OnInit {
   }
   getTags(){
     this.tag_service.getAllTags().then(val =>{
-      console.log(val);
       this.tags_in_db = val;
     });
   }

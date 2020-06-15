@@ -20,7 +20,6 @@ export class CarrinhoCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.produto)
   }
   emitDecrese(){
     this.decrese.emit(this.produto)

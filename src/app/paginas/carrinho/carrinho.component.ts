@@ -28,7 +28,6 @@ export class CarrinhoComponent implements OnInit {
 
     this.atualizarCarrinho();
     this.onCarrinhoVazio();
-    console.log(this.produtos);
   }
 
   // receberFrete(frete){
@@ -63,7 +62,6 @@ export class CarrinhoComponent implements OnInit {
     deletarProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
     deletarProduto.splice(index, 1);
 
-    console.log("produto" + deletarProduto);
 
     localStorage.setItem("carrinho", JSON.stringify(deletarProduto));
     this.listaProdutos.splice(index, 1);

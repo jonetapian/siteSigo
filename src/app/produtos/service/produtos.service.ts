@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase, SnapshotAction} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,6 @@ export class ProdutosService {
   adicionar(produtos: Produto){
     return this.db.list('produtos').push(produtos)
       .then((result: any) => {
-        console.log(result.key);
         return new Produto(result);
       });
   }
@@ -28,7 +28,7 @@ export class ProdutosService {
   }
 
   buscarPorid(produto_key){
-    return this.db.database.ref('/produtos/' + produto_key).once('value').then(function(snapshot) {
+    return this.db.database.ref(environment.database.produto + produto_key).once('value').then(function(snapshot) {
       let product = new Produto(snapshot.val());
       product.key = snapshot.key;
       return product;
@@ -36,7 +36,7 @@ export class ProdutosService {
     });
   }
   buscarPorTime(){
-    return this.db.list('/produtos', ref => ref.orderByChild("time"))
+    return this.db.list(environment.database.produto, ref => ref.orderByChild("time"))
     .snapshotChanges()
     .pipe(
       map(changes => {
@@ -67,33 +67,31 @@ export class ProdutosService {
   }
 
   deletar(produto: Produto){
-    
+
     let db = this.db;
-    this.db.object(`produtos/${produto.key}`).remove().then(result => {
-      console.log("entrou1");
+    this.db.object(environment.database.produto +`${produto.key}`).remove().then(result => {
       this.deletarCor(produto, db);
       this.deletarTamanho(produto, db);
       this.deletarMarca(produto, db);
       this.deletarTipo(produto, db);
     });
-    
+
   }
 
   deletarFoto(url, key: string, produto: Produto){
     this.storage.storage.refFromURL(url).delete();
     let db = this.db;
-    
+
     this.db.object(`produtos/${key}/foto/`).query.on('value',function(snapshot){
       let index = snapshot.val().indexOf(url);
       db.object(`produtos/${key}/foto/${index}`).remove();
     });
-    
+
   }
 
   adicionarCarrinho(produto){
     this.db.list('carrinho/').push(produto)
       .then((result: any) => {
-        console.log(result.key);
       });
   }
 
@@ -121,12 +119,12 @@ export class ProdutosService {
     }
   }
   deletarMarca(produto: Produto, db){
-    
+
     this.db.object(`tags/marca/${produto.marca}/produtos/`).query.on('value',function(snapshot){
       let index = snapshot.val().indexOf(produto.key);
       db.object(`tags/marca/${produto.marca}/produtos/${index}`).remove();
     });
-    
+
   }
   deletarTipo(produto: Produto, db){
     for(let i = 0; i < produto.tipo.length; i++){

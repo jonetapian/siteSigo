@@ -27,7 +27,6 @@ export class TenisComponent implements OnInit {
   ngOnInit() {
     this.getTenisTag();
     this.produtosService.buscarPorTime().subscribe(val =>{
-      console.log(val);
     });
   }
 
@@ -37,7 +36,6 @@ export class TenisComponent implements OnInit {
   getTenisTag(){
     let tag = new Tag({nome:"Tênis", tipo:"tipo"})
     this.tag_service.getTag(tag).then(res =>{
-      console.log(res);
       this.tenis_product_keys = res;
       this.getProducts();
 
@@ -47,7 +45,6 @@ export class TenisComponent implements OnInit {
     this.produtosService.buscar().subscribe((res:any) =>{
       res.forEach(element =>{
         for(let filtered_key of this.tenis_product_keys){
-          console.log("chave da tag" + filtered_key + "chave do produto:" + element.key)
           if(element.key == filtered_key){
             this.products.push(element);
             this.showing_products.push(element);
@@ -59,14 +56,12 @@ export class TenisComponent implements OnInit {
   }
 
   filterSelected(tag){
-    console.log(tag);
     this.getTagByFilter(tag);
   }
   filterRemoved(tag){
     this.showing_products = this.products;
   }
   getTagByFilter(filter){
-    console.log(filter);
     let filtered_array:any =[];
     for(let filtered_product of filter.produtos){
       for(let product of this.showing_products){

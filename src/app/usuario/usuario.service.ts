@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,26 +15,24 @@ export class UsuarioService {
    usuarioAtual:Usuario;
 
    UsuarioLogado(){
-     console.log(JSON.parse(localStorage.getItem("usuario")));
     return new Usuario(JSON.parse(localStorage.getItem("usuario")));
 
   }
   ArmazenarLocal(usuario:any){
     localStorage.setItem("usuario",JSON.stringify(usuario));
-    console.log(usuario)
   }
   DeletarLocal(){
     localStorage.removeItem("usuario");
   }
 
   CriarUsuario(usuario:Usuario){
-    this.database.object('usuarios/'+ usuario.uid).set(usuario);
+    this.database.object(environment.database.usuario+ usuario.uid).set(usuario);
   }
   RemoverUsuario(usuario:Usuario){
-    this.database.object('usuarios/'+usuario.uid).remove();
+    this.database.object(environment.database.usuario+usuario.uid).remove();
   }
   PegarUsuarioProUid(uid){
-    return this.database.database.ref('/usuarios/' + uid).once('value').then(function(snapshot) {
+    return this.database.database.ref(environment.database.usuario + uid).once('value').then(function(snapshot) {
       return snapshot.val();
       // ...
     });

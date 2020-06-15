@@ -25,7 +25,6 @@ export class FilterComponent implements OnInit {
   getAlltags(){
     this.tag_service.getAllTags().then(res =>{
       this.tags = res;
-      console.log(res);
     });
   }
   selectedFilterChanged(event){
@@ -39,7 +38,6 @@ export class FilterComponent implements OnInit {
     }
   }
   filterSelected(selected_tag){
-    console.log(selected_tag);
     let index = this.selected_tags.indexOf(selected_tag);
     if(index === -1){
       this.selected_tags.push(selected_tag);

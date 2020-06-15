@@ -23,4 +23,9 @@ export class Frete {
     this.complemento = data.complemento;
     this.numero = data.numero;
   }
+
+
+  GetEnderecoComoString(){
+    return this.rua + ", " + this.numero + ", - " + this.bairro + ", "  + this.cidade + "-" + this.estado + ", " + this.cep;
+  }
 }

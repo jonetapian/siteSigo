@@ -32,7 +32,6 @@ export class DestaquesComponent implements OnInit {
   getDestaques(){
     this.destaques_service.getDestaques().then((res:any) =>{
       this.destaques = res;
-      console.log(res)
     });
   }
   getDestaquesProducts(reset?){
@@ -62,7 +61,6 @@ export class DestaquesComponent implements OnInit {
       this.destaques.push(this.produtos[index].key);
     }
 
-    console.log(this.destaques)
   }
   isChecked(key){
     if(this.destaques){
