@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid">
     <p class="text-center h4 my-3">Configurações</p>
     <mat-tab-group dynamicHeight>
         <mat-tab label="Informações da conta">
-            
-            <div class="container col-md-6 my-5 bg-light border rounded p-3">
+
+            <div class="container col my-5 bg-light border rounded p-3">
                 <div class="form-row">
                     <div class="col-8 float-left">
                         <h5>Nome</h5>
@@ -12,7 +12,7 @@
                             <input type="text" class="form-control mb-2" [(ngModel)]="usuario.nome">
                             <button class="btn btn-success col-12" (click)="atualizarNome()">Salvar alterações</button>
                         </div>
-                        
+
                     </div>
                     <div class="col-4">
                         <button class="btn btn-light float-right" (click)="onEditar(alterarNome)">Editar</button>
@@ -52,10 +52,10 @@
                     </div>
                 </div>-->
             </div>
-            
+
         </mat-tab>
-        
-        
+
+
       </mat-tab-group>
-    
+
 </div>
