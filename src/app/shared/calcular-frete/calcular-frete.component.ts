@@ -40,9 +40,7 @@ export class CalcularFreteComponent implements OnInit {
   }
 
   calcularFrete(cepDestino){
-    console.log(cepDestino);
     this.http.get(`https://cors-anywhere.herokuapp.com/http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx/CalcPrecoPrazo?nCdEmpresa=${this.nCdEmpresa}&sDsSenha=${this.sDsSenha}&nCdServico=${this.nCdServico}&sCepOrigem=${this.cepOrigem}&sCepDestino=${cepDestino}&nVlPeso=${this.nVlPeso}&nCdFormato=${this.nCdFormato}&nVlComprimento=${this.nVlComprimento}&nVlAltura=${this.nVlAltura}&nVlLargura=${this.nVlLargura}&nVlDiametro=${this.nVlDiametro}&sCdMaoPropria=${this.sCdMaoPropria}&nVlValorDeclarado=${this.nVlValorDeclarado}&sCdAvisoRecebimento=${this.sCdAvisoRecebimento}`, { responseType: 'text' }).subscribe(dados => {
-      console.log(dados);
       this.cep.emit(cepDestino);
       this.converterXml(dados);
     }, err => {

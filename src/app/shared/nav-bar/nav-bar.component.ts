@@ -39,7 +39,6 @@ export class NavBarComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event.constructor.name === "NavigationEnd") {
         this.EstaLogado();
-        console.log("sdadsa")
       }
     });
   }

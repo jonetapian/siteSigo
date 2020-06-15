@@ -22,7 +22,6 @@ export class BuyCardComponent implements OnInit {
   constructor(private route:Router, private usuario: UsuarioService, private produtoDataService: ProdutosDataService) { }
 
   ngOnInit() {
-    console.log(this.produto);
     this.usuarioAtual = this.usuario.UsuarioLogado();
   }
   getDiscount(){
@@ -33,7 +32,6 @@ export class BuyCardComponent implements OnInit {
     let addProduto: Produto[] = [];
     addProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
     addProduto.push(this.produto);
-    console.log("produto" + addProduto);
     localStorage.setItem("carrinho", JSON.stringify(addProduto));
   }
   goToProductPage(){

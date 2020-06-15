@@ -13,7 +13,19 @@ export const environment = {
     messagingSenderId: "747709319714",
     appId: "1:747709319714:web:283ed535c492206bd2d87b",
     measurementId: "G-JYWFWZL6SW"
+  },
+  sandbox:{
+    auth: "https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?",
+    send_code:"https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?",
+    transaction:"https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/"
+  },
+  database:{
+    tag:"tags/",
+    usuario:"usuarios/",
+    produto:"produtos/"
   }
+  ,
+  cors: "https://cors-anywhere.herokuapp.com/"
 };
 
 /*

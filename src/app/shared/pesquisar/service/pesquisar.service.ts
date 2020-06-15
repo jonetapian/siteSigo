@@ -25,14 +25,12 @@ export class PesquisarService {
       let produto = new Produto(snapshot.val());
       return produto
     });*/
-    console.log("d")
     return this.db.list('/produtos/', ref => ref.orderByChild('nome'))
     .snapshotChanges()
     .pipe(
       map(changes => {
         return changes.map(c => {
           const val = c.payload.val();
-          console.log(c.payload.val())
           let produto = new Produto(val);
           return produto
         });

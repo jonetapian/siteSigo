@@ -12,7 +12,6 @@ export class VendedorService {
   adicionar(vendedor:Vendedor){
     return this.db.list('vendedor').push(vendedor)
       .then((result: any) => {
-        console.log(result.key);
         return new Vendedor(result);
       });
   }

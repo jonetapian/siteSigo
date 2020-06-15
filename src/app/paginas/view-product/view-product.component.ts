@@ -23,15 +23,13 @@ export class ViewProductComponent implements OnInit {
 
   ngOnInit() {
     this.active_route.params.subscribe((params:Params) =>{
-      console.log(params)
       this.product_key = params['key'];
       this.getProduct();
       this.getCarrinhoProducts();
       this.checkIfIsInCarrinho();
-      
+
     });
     const par = this.active_route.snapshot.paramMap.get('key');
-        console.log(par)
   }
   getProduct(){
     this.produto_service.buscarPorid(this.product_key).then(res =>{
@@ -39,23 +37,28 @@ export class ViewProductComponent implements OnInit {
       console.log(this.product.selected_size);
       this.buscarProdutosRelacionados(this.product);
     });
-    
+
   }
 
   getCarrinhoProducts(){
     this.produtos_carrinho = JSON.parse(localStorage.getItem("carrinho"));
-    console.log(this.produtos_carrinho);
   }
   checkIfIsInCarrinho(){
-    for(let produto of this.produtos_carrinho){
-      if(produto.key == this.product_key){
-        this.button_string = "Finalizar Compra"
-        return true;
+    if(this.produtos_carrinho){
+      for(let produto of this.produtos_carrinho){
+        if(produto.key == this.product_key){
+          this.button_string = "Finalizar Compra"
+          return true;
+        }
       }
     }
+
     return false;
   }
   adicionarCarrinho(){
+    if(!this.produtos_carrinho){
+      this.produtos_carrinho = new Array();
+    }
     this.produtos_carrinho.push(this.product);
     localStorage.setItem("carrinho", JSON.stringify(this.produtos_carrinho));
   }
@@ -70,10 +73,10 @@ export class ViewProductComponent implements OnInit {
   buscarProdutosRelacionados(produto: Produto){
     this.produto_service.buscarRelacionados(produto).subscribe(res => {
       this.produtosRelacionados = res;
-      
+
     });
-    
-    
+
+
   }
 
   produtos(){

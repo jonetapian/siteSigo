@@ -21,7 +21,7 @@ import { error } from 'protractor';
   styleUrls: ['./editar-produto.component.css']
 })
 export class EditarProdutoComponent implements OnInit {
-  
+
   key: string = "";
   url: any;
   product_key:string;
@@ -47,7 +47,7 @@ export class EditarProdutoComponent implements OnInit {
 
     this.produtoDataService.currentProdutos.subscribe(data => {
       if (data.produtos && data.key) {
-        
+
         this.produto.nome = data.produtos.nome;
         this.key = data.key;
       }
@@ -67,7 +67,6 @@ export class EditarProdutoComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
     }
-    console.log(this.files);
   }
 
   receberUrl(url) {
@@ -85,7 +84,7 @@ export class EditarProdutoComponent implements OnInit {
       alert("Seu produto foi alterado com sucesso");
       this.route.navigate(["/"]);
     } else {
-      
+
     }
   }
 
@@ -96,19 +95,16 @@ export class EditarProdutoComponent implements OnInit {
   getProduct(){
     this.produtoService.buscarPorid(this.product_key).then(res =>{
       this.produto.fromJson(res);
-      console.log(this.produto);
 
     });
   }
 
   getAllTags() {
     this.tags_service.getAllTags().then(tags => {
-      console.log(tags);
       this.tags = tags;
     });
   }
   addColor(value?) {
-    console.log(value);
     if (!this.checkIfExist(value, this.produto.cor) && value !== "default") {
       this.produto.cor.push(value);
     }
@@ -138,13 +134,11 @@ export class EditarProdutoComponent implements OnInit {
     if(this.tags.marca[this.produto.marca].produtos){
       marca_tag.produtos = this.tags.marca[this.produto.marca].produtos;
     }
-    console.log(marca_tag.produtos);
     marca_tag.produtos.push(produto_key);
     this.tags_service.createTaggedProduct(marca_tag).catch(error =>{
       console.log(error);
       error? ErrorHandler.organizaErro(error):null;
     }).then(res =>{
-      console.log(res);
     });
 
     for (let color of this.produto.cor) {
@@ -159,7 +153,6 @@ export class EditarProdutoComponent implements OnInit {
         console.log(error);
         error? ErrorHandler.organizaErro(error):null;
       }).then(res =>{
-        console.log(res);
       });
     }
 
@@ -175,7 +168,6 @@ export class EditarProdutoComponent implements OnInit {
         console.log(error);
         error? ErrorHandler.organizaErro(error):null;
       }).then(res =>{
-        console.log(res);
       });
     }
     for(let tipo of this.produto.tipo){
@@ -191,7 +183,6 @@ export class EditarProdutoComponent implements OnInit {
         console.log(error);
         error? ErrorHandler.organizaErro(error):null;
       }).then(res =>{
-        console.log(res);
       });
     }
   }

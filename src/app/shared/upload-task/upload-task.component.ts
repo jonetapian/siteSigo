@@ -33,7 +33,6 @@ export class UploadTaskComponent implements OnInit {
   constructor(private storage: AngularFireStorage, private produtosService: ProdutosService) { }
 
   ngOnInit() {
-    console.log(this.recebeProdutos);
     this.upload();
   }
 
@@ -52,7 +51,6 @@ export class UploadTaskComponent implements OnInit {
           this.complete = true
           this.caminhoImagem = url;
           this.enviarUrl.emit(url);
-          console.log(url);
 
         })
       })

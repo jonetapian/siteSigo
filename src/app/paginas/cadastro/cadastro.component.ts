@@ -20,11 +20,9 @@ export class CadastroComponent implements OnInit {
   showAlert:boolean;
   AlertText:string;
   ngOnInit() {
-    console.log(this.usuario.UsuarioLogado());
   }
   login(){
     if(this.email.length != 0 && this.senha.length != 0 && this.nome.length != 0 ){
-      console.log(this.email + this.senha)
       let user_data = {
         email: this.email,
         senha: this.senha,
@@ -35,17 +33,13 @@ export class CadastroComponent implements OnInit {
           this.createAlert(error);
         }
       }).then(val =>{
-        console.log(val);
         if(val.user){
           let user = new Usuario(val.user);
-          console.log(user);
           user.nome = this.nome;
           // user.email = val.user.email;
           // user.uid = val.user.uid;
           user.created_at = new Date();
-          console.log(user);
           this.createAndStorageUser(user);
-          console.log(val)
         }else{
           this.createAlert(val);
         }
@@ -63,7 +57,6 @@ export class CadastroComponent implements OnInit {
   googleLogin(){
     this.cadastro.doGoogleLogin().then((user:Usuario) =>{
       if(user.uid){
-        console.log(user)
         this.createAndStorageUser(user);
       }else{
         this.createAlert(user);
@@ -71,7 +64,6 @@ export class CadastroComponent implements OnInit {
     });
   }
   createAndStorageUser(user:Usuario){
-    console.log(user);
     let new_user = new Usuario(user);
     this.usuario.CriarUsuario(new_user);
     this.usuario.ArmazenarLocal(new_user);

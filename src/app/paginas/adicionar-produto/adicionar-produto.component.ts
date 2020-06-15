@@ -20,7 +20,7 @@ import { error } from 'protractor';
   styleUrls: ["./adicionar-produto.component.css"]
 })
 export class AdicionarProdutoComponent implements OnInit {
-  
+
   constructor(
     private produtoService: ProdutosService,
     private produtoDataService: ProdutosDataService,
@@ -33,7 +33,7 @@ export class AdicionarProdutoComponent implements OnInit {
 
     this.produto.time = this.date.getTime();
   }
-  
+
   isHovering: boolean;
   files: File[] = [];
   tags: any;
@@ -47,7 +47,6 @@ export class AdicionarProdutoComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
     }
-    console.log(this.files);
   }
 
   produto: Produto = new Produto();
@@ -65,7 +64,6 @@ export class AdicionarProdutoComponent implements OnInit {
     } else {
       this.produtoService.adicionar(this.produto).then(product =>{
         this.produto.key = product.key;
-        console.log(product);
         this.sendTagsToDb(product.key);
         alert("Seu produto foi adicionado com sucesso")
         this.produto = new Produto();
@@ -77,12 +75,10 @@ export class AdicionarProdutoComponent implements OnInit {
   }
   getAllTags() {
     this.tags_service.getAllTags().then(tags => {
-      console.log(tags);
       this.tags = tags;
     });
   }
   addColor(value?) {
-    console.log(value);
     if (!this.checkIfExist(value, this.produto.cor) && value !== "default") {
       this.produto.cor.push(value);
     }
@@ -112,13 +108,10 @@ export class AdicionarProdutoComponent implements OnInit {
     if(this.tags.marca[this.produto.marca].produtos){
       marca_tag.produtos = this.tags.marca[this.produto.marca].produtos;
     }
-    console.log(marca_tag.produtos);
     marca_tag.produtos.push(produto_key);
     this.tags_service.createTaggedProduct(marca_tag).catch(error =>{
-      console.log(error);
       error? ErrorHandler.organizaErro(error):null;
     }).then(res =>{
-      console.log(res);
     });
 
     for (let color of this.produto.cor) {
@@ -130,10 +123,8 @@ export class AdicionarProdutoComponent implements OnInit {
       }
       color_tag.produtos.push(produto_key);
       this.tags_service.createTaggedProduct(color_tag).catch(error =>{
-        console.log(error);
         error? ErrorHandler.organizaErro(error):null;
       }).then(res =>{
-        console.log(res);
       });
     }
 
@@ -149,7 +140,6 @@ export class AdicionarProdutoComponent implements OnInit {
         console.log(error);
         error? ErrorHandler.organizaErro(error):null;
       }).then(res =>{
-        console.log(res);
       });
     }
     for(let tipo of this.produto.tipo){
@@ -165,7 +155,6 @@ export class AdicionarProdutoComponent implements OnInit {
         console.log(error);
         error? ErrorHandler.organizaErro(error):null;
       }).then(res =>{
-        console.log(res);
       });
     }
   }

@@ -1,7 +1,9 @@
-
-import { ComprasService } from './paginas/finalizar-compra/services/compras/compras.service';
-import { CepService } from './paginas/finalizar-compra/services/cep.service';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formulario-endereco/formulario-endereco.component';
 import { FormularioCompradorComponent } from './paginas/finalizar-compra/formulario-comprador/formulario-comprador.component';
+import { ComprasService } from './paginas/ver-compras/services/compras/compras.service';
+
+import { CepService } from './paginas/finalizar-compra/services/cep.service';
 import { EditarProdutoComponent } from './shared/editar-produto/editar-produto.component';
 import { MercadoPago } from 'mercadopago';
 import { PromocoesService } from './paginas/promocoes/service/promocoes.service';
@@ -10,7 +12,7 @@ import { LoginService } from './paginas/login/service/login.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { CadastroService } from './paginas/cadastro/service/cadastro.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -76,9 +78,14 @@ import {MatInputModule} from '@angular/material/input';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formulario-endereco/formulario-endereco.component';
-import { CurrencyMaskModule } from "ng2-currency-mask";
+import { ListaComprasComponent } from './paginas/ver-compras/lista-compras/lista-compras.component';
+import { VerCompraComponent } from './paginas/ver-compras/ver-compra/ver-compra.component';
+import { DepoisDaCompraComponent } from './paginas/depois-da-compra/depois-da-compra/depois-da-compra.component';
 
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -117,6 +124,9 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     UploadTaskComponent,
     LancamentosComponent,
     PesquisarComponent,
+    ListaComprasComponent,
+    VerCompraComponent,
+    DepoisDaCompraComponent,
     ConfiguracoesComponent
    ],
   imports: [
@@ -155,7 +165,17 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     CurrencyMaskModule
 
   ],
-  providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService,CepService,ComprasService],
+  providers: [
+    CadastroService,
+    UsuarioService,
+    LoginService,
+    TagService,
+    PromocoesService,
+    CepService,
+    ComprasService,
+    {provide: LOCALE_ID, useValue: 'pt'},
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

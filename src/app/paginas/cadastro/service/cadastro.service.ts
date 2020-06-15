@@ -35,7 +35,6 @@ export class CadastroService {
       this.firebaseService.auth
       .signInWithPopup(provider)
       .then((res:any) => {
-        console.log(res)
         if(res.user){
           let user = new Usuario (res.user);
           user.nome = res.user.displayName;

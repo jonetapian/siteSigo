@@ -20,21 +20,20 @@ export class PesquisarComponent implements OnInit {
   nomes: string[] = [];
   myControl = new FormControl();
   filtrarNomes: Observable<string[]>;
-  
+
 
   constructor(private pesquisarService: PesquisarService, private route: Router) { }
-  
+
 
   ngOnInit() {
-    console.log(this.startAt)
 
     this.pesquisarService.getProdutos(this.startAt).subscribe(produtos => {
       this.produtos = produtos;
       for(let produto of produtos){
-        
+
         this.nomes.push(produto.nome);
       }
-      
+
     })
 
     this.filtrarNomes = this.myControl.valueChanges
@@ -54,10 +53,10 @@ export class PesquisarComponent implements OnInit {
     for(let produto of this.produtos){
       if(nomeProduto == produto.nome){
         this.route.navigate(["ver-produto" , produto.key]);
-        
+
       }
     }
-    
+
   }
 
   foto(nomeProduto){
@@ -66,7 +65,7 @@ export class PesquisarComponent implements OnInit {
         return produto.foto[0];
       }
     }
-    
+
   }
 
 }

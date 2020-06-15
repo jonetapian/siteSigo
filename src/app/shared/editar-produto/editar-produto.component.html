@@ -17,12 +17,12 @@
                 </select>
                 <br *ngIf="produto.tipo.length > 0">
                 <div class="border border-dark rounded" *ngIf="produto.tipo.length > 0">
-                    
+
                     <div *ngFor="let tipo of produto.tipo; let i = index">
                         <span class="float-left ml-3"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.tipo, i)"></fa-icon></span>
                         <p class="m-1">{{tipo}}</p>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -34,10 +34,10 @@
                 </select>
                 <br *ngIf="produto.marca">
                 <div class="border border-dark rounded" *ngIf="produto.marca">
-                    
+
                     <span class="float-left ml-3"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.marca, 0)"></fa-icon></span>
                     <p class="m-1">{{produto.marca}}</p>
-                    
+
                 </div>
             </div>
             <div class="form-group col-md-6 text-center">
@@ -48,16 +48,16 @@
                 </select>
                 <br *ngIf="produto.tamanho.length > 0">
                 <div class="border border-dark rounded" *ngIf="produto.tamanho.length > 0">
-                    
+
                     <div *ngFor="let tamanho of produto.tamanho; let i = index">
                         <span class="float-left ml-3"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.tamanho, i)"></fa-icon></span>
                         <p class="m-1">{{tamanho}}</p>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="form-group col-md-6 text-center">
-                
+
                 <label for="cor" class="h6">Cor</label>
                 <select class="form-control" (change)="addColor($event.target.value)"  *ngIf="tags" name="cor" id="cor" ngModel required>
                     <option value="default">Selecione uma cor</option>
@@ -65,12 +65,12 @@
                 </select>
                 <br *ngIf="produto.cor.length > 0">
                 <div class="border border-dark rounded" *ngIf="produto.cor.length > 0">
-                    
+
                     <div *ngFor="let cor of produto.cor; let i = index">
                         <span class="float-left ml-3"><fa-icon [icon]="delete_icon" (click)="removerItem(produto.cor, i)"></fa-icon></span>
                         <p class="m-1">{{cor}}</p>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -93,10 +93,10 @@
                         dropzone
                         (hovered)="toggleHover($event)"
                         (dropped)="onDrop($event)" id="dropzone" style="height: 100%;">
-                        
+
                         <label for="foto" class="h5 h-100 w-100 m-0 centralizar-texto">Arraste as fotos até aqui<br>ou<br>Clique aqui, para selecionar as fotos!</label>
-                        <input type="file" id="foto" class="d-none" (change)="onDrop($event.target.files)" multiple>    
-                        
+                        <input type="file" id="foto" class="d-none" (change)="onDrop($event.target.files)" multiple>
+
                     </div>
 
 
@@ -109,7 +109,7 @@
             <div class="form-group col-12">
 
                 <div *ngFor="let foto of produto.foto; let i of index" class="float-left">
-                    
+
 
                     <div class="border border-dark p-2 rounded m-2">
                         <div >
@@ -118,12 +118,12 @@
                         <img [src]="foto"  height="100px"><br>
                         </div>
                 </div>
-                
+
             </div>
             <h3>Fotos novas:</h3>
             <div class="form-group col-12">
                 <div *ngFor="let file of files; let i of index" class="float-left">
-                    
+
                     <app-upload-task [file]="file" [recebeProdutos]="produto" (enviarUrl)="receberUrl($event)" (foto_removida)="fotoRemovida(i)"></app-upload-task>
                 </div>
             </div>

@@ -16,7 +16,7 @@ export class LoginService {
         console.log(val);
       }).catch(error => {return error});
     }).catch(error => {return error})
-    
+
   }
 
 }
