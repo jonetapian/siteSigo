@@ -1,8 +1,8 @@
-<div class="card px-1 py-2 m-0 bg-branco-opaco shadow" (click)="goToProductPage()">
+<div class="card px-1 py-2 m-0 bg-branco-opaco shadow" >
   <ngb-carousel  >
     <ng-template ngbSlide *ngFor="let img of produto.foto">
       <div class="picsum-img-wrapper" >
-        <img class="card-img-top" style="border-radius: 10px;"   [src]="img" alt="Random first slide">
+        <img class="card-img-top" style="border-radius: 10px;"   [src]="img" alt="Random first slide" (click)="goToProductPage()">
       </div>
     </ng-template>
   </ngb-carousel>

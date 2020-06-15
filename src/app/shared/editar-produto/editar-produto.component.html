@@ -1,15 +1,15 @@
 <p class="text-center h4 my-3">Editar Produto</p>
 
 <form >
-    <div class="container col-6 my-3 bg-light border rounded p-3">
+    <div class="container col-md-6 my-3 bg-light border rounded p-3">
         <div class="form-row justify-content-center">
-            <div class="form-group col-12 text-center">
+            <div class="form-group col-md-12 text-center">
                 <label for="nome" class="h6">Nome</label>
                 <input class="form-control " type="text" [(ngModel)]="produto.nome" name="nome" id="nome" ngModel required/>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-6 text-center">
+            <div class="form-group col-md-6 text-center">
                 <label for="tipo" class="h6">Tipo</label>
                 <select class="form-control" (change)="addTipo($event.target.value)" name="tipo" id="tipo" *ngIf="tags" ngModel required>
                   <option value="default">Selecione um tipo</option>
@@ -26,7 +26,7 @@
                 </div>
 
             </div>
-            <div class="form-group col-6 text-center">
+            <div class="form-group col-md-6 text-center">
                 <label for="marca" class="h6">Marca</label>
                 <select class="form-control" [(ngModel)]="produto.marca" name="marca" id="marca" *ngIf="tags" ngModel required>
                     <option>Selecione uma marca</option>
@@ -40,7 +40,7 @@
                     
                 </div>
             </div>
-            <div class="form-group col-6 text-center">
+            <div class="form-group col-md-6 text-center">
                 <label for="tamanho" class="h6">Tamanho</label>
                 <select class="form-control"(change)="addTamanho($event.target.value)"  *ngIf="tags" name="tamanho" id="tamanho" ngModel required>
                   <option value="default">Selecione um tamanho</option>
@@ -56,7 +56,7 @@
                     
                 </div>
             </div>
-            <div class="form-group col-6 text-center">
+            <div class="form-group col-md-6 text-center">
                 
                 <label for="cor" class="h6">Cor</label>
                 <select class="form-control" (change)="addColor($event.target.value)"  *ngIf="tags" name="cor" id="cor" ngModel required>
@@ -74,11 +74,11 @@
                 </div>
 
             </div>
-            <div class="form-group col-6 text-center">
+            <div class="form-group col-md-6 text-center">
                 <label for="preco" class="h6">Preço</label>
-                <input class="form-control " type="text" [(ngModel)]="produto.preco" name="preco" id="preco" data-mask="00/00/0000" ngModel required/>
+                <input class="form-control text-left" type="text" [(ngModel)]="produto.preco" name="preco" id="preco" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" ngModel required/>
             </div>
-            <div class="form-group col-6 text-center">
+            <div class="form-group col-md-6 text-center">
                 <label for="categoria" class="h6">Categoria</label>
                 <select class="form-control" [(ngModel)]="produto.categoria" name="categoria" id="categoria" ngModel required>
                     <option *ngFor="let item of categoria" [value]="item">{{item}}</option>
@@ -86,21 +86,23 @@
             </div>
         </div>
         <div class="form-row justify-content-center">
-            <div class="form-group col-6 text-center">
-                <label for="">Foto:</label>
-                <div class="custom-file">
-                    <div class="form-control dropzone text-center"
+            <div class="form-group col-md-12 text-center">
+                <label class="h6">Foto</label>
+                <div class="custom-file" style="height: 200px">
+                    <div class="form-control dropzone text-center p-0"
                         dropzone
                         (hovered)="toggleHover($event)"
-                        (dropped)="onDrop($event)" id="dropzone">
-
-
-                        <h3 class="dz-message">Arraste as fotos até aqui</h3>
+                        (dropped)="onDrop($event)" id="dropzone" style="height: 100%;">
+                        
+                        <label for="foto" class="h5 h-100 w-100 m-0 centralizar-texto">Arraste as fotos até aqui<br>ou<br>Clique aqui, para selecionar as fotos!</label>
+                        <input type="file" id="foto" class="d-none" (change)="onDrop($event.target.files)" multiple>    
+                        
                     </div>
 
 
                 </div>
             </div>
+
         </div>
         <div class="form-row justify-content-center">
             <h3>Todas as fotos:</h3>

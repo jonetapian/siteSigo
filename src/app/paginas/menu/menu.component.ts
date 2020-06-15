@@ -90,9 +90,9 @@ export class MenuComponent implements OnInit {
     }
   }
   carrousel_photos = [
-    '../assets/imgs/tenis_carrousel.jpg',
+    //'../assets/imgs/tenis_carrousel.jpg',
     '../assets/imgs/Layout_SIGOSUPPLY.jpg',
-    '../assets/imgs/model_3.jpg'
+    //'../assets/imgs/model_3.jpg'
   ]
 
 

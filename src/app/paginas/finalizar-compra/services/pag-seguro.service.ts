@@ -125,13 +125,13 @@ export class PagSeguroService {
       body.set('itemQuantity' + item_counter, String(produto.quantidadeCarrinho) );
       item_counter += 1;
     }
-    body.set('reference' , compra.key)
+    //body.set('reference' , compra.key)
     body.set('senderName' , compra.comprador.nome);
     body.set('senderCPF' , String(compra.comprador.cpf));
     body.set('senderAreaCode' , String(compra.comprador.telefone).substring(0,2));
     body.set('senderPhone',String(compra.comprador.telefone).substring(2));
     body.set('senderEmail', compra.comprador.email);
-    body.set('senderHash' , compra.comprador.hash);
+   // body.set('senderHash' , compra.comprador.hash);
     body.set('shippingAddressRequired', 'true');
     body.set('shippingAddressStreet', compra.frete.rua);
     body.set('shippingAddressNumber', String(compra.frete.numero));
@@ -143,15 +143,15 @@ export class PagSeguroService {
     body.set('shippingAddressCountry', 'BRA');
     body.set('shippingType' ,'1');
     // body.set('shippingCost=1.00
-    body.set('creditCardToken', compra.cartao.token);
-    body.set('installmentQuantity', String(compra.parcela.quantidade));
-    body.set('installmentValue', String(compra.parcela.valor));
+    //body.set('creditCardToken', compra.cartao.token);
+    //body.set('installmentQuantity', String(compra.parcela.quantidade));
+    //body.set('installmentValue', String(compra.parcela.valor));
     // body.set('noInterestInstallmentQuantity={valor_maxInstallmentNoInterest_incluido_no_passo_2.5}
-    body.set('creditCardHolderName' , compra.cartao.nome);
-    body.set('creditCardHolderCPF' , String(compra.cartao.cpf));
-    body.set('creditCardHolderBirthDate' , compra.cartao.aniversario );
-    body.set('creditCardHolderAreaCode' , String(compra.cartao.telefone).substring(0,2));
-    body.set('creditCardHolderPhone' , String(compra.cartao.telefone));
+    //body.set('creditCardHolderName' , compra.cartao.nome);
+    //body.set('creditCardHolderCPF' , String(compra.cartao.cpf));
+    //body.set('creditCardHolderBirthDate' , compra.cartao.aniversario );
+    //body.set('creditCardHolderAreaCode' , String(compra.cartao.telefone).substring(0,2));
+    //body.set('creditCardHolderPhone' , String(compra.cartao.telefone));
     body.set('billingAddressStreet' , compra.frete.rua);
     body.set('billingAddressNumber' , String(compra.frete.numero));
     body.set('billingAddressComplement' , compra.frete.complemento);

@@ -67,6 +67,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CarrinhoCardComponent } from './paginas/carrinho/carrinho-card/carrinho-card.component';
 import { LancamentosComponent } from './paginas/lançamentos/lancamentos/lancamentos.component';
 import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
+import { ConfiguracoesComponent } from './paginas/configuracoes/configuracoes.component';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -76,6 +77,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formulario-endereco/formulario-endereco.component';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 
 @NgModule({
@@ -111,10 +113,11 @@ import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formular
     LancamentosComponent,
     EditarProdutoComponent,
     FormularioCompradorComponent,
-    FormularioEnderecoComponent
+    FormularioEnderecoComponent,
     UploadTaskComponent,
     LancamentosComponent,
-    PesquisarComponent
+    PesquisarComponent,
+    ConfiguracoesComponent
    ],
   imports: [
     NgxMaskModule.forRoot(),
@@ -143,11 +146,13 @@ import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formular
     MatInputModule,
     CdkStepperModule,
     TextFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
+    CurrencyMaskModule
 
   ],
   providers: [CadastroService,UsuarioService,LoginService,TagService,PromocoesService,CepService,ComprasService],

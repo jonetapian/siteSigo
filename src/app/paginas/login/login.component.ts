@@ -1,3 +1,4 @@
+import { ConfiguracoesService } from './../configuracoes/service/configuracoes.service';
 import { FormAlertComponent } from './../../shared/form-alert/form-alert.component';
 import { Router } from '@angular/router';
 import { UsuarioService } from './../../usuario/usuario.service';
@@ -12,11 +13,12 @@ import { Usuario } from 'src/app/usuario/model/usuarioModel';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService:LoginService, private usuario_service:UsuarioService, private router:Router) { }
+  constructor(private loginService:LoginService, private usuario_service:UsuarioService, private router:Router, private configuracoesService: ConfiguracoesService) { }
   email:string = '';
   senha:string = '';
   showAlert:boolean;
   AlertText:string;
+  emailSenha: string = "";
   ngOnInit() {
   }
   Logar(){
@@ -54,5 +56,9 @@ export class LoginComponent implements OnInit {
   createAlert(text){
     this.AlertText = text;
     this.showAlert = true;
+  }
+
+  reenviarSenha(email){
+    this.configuracoesService.resetSenha(email);
   }
 }

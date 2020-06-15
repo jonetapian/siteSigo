@@ -1,6 +1,6 @@
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { SizedProduct } from './../../produtos/model/sizedProduct';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ErrorHandler } from './../../shared/error-handler/error_handler';
 import { Tag } from './../../paginas/tags/model/tag_model';
 import { ProdutosDataService } from "./../../produtos/service/produtos-data.service";
@@ -34,7 +34,7 @@ export class EditarProdutoComponent implements OnInit {
     private storage: AngularFireStorage,
     private tags_service: TagService,
     private active_route:ActivatedRoute,
-    
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -79,16 +79,12 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.key) {
+    if (this.produto.key) {
       this.produtoService.alterar(this.produto, this.produto.key);
-      console.log("alterou");
+      this.sendTagsToDb(this.produto.key);
+      alert("Seu produto foi alterado com sucesso");
+      this.route.navigate(["/"]);
     } else {
-      this.produtoService.alterar(this.produto, this.key);
-      console.log("alterou2");
-        this.sendTagsToDb(this.produto.key);
-        alert("Seu produto foi adicionado com sucesso")
-        this.produto = new SizedProduct();
-        this.files = [];
       
     }
   }
@@ -201,7 +197,7 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   fotoRemovida(index, url, produto){
-    this.files.splice(index,1);
+    this.produto.foto.splice(index,1);
     this.produtoService.deletarFoto(url, produto.key, produto);
   }
 
