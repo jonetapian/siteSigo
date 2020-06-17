@@ -4,19 +4,14 @@
     <form>
       <ng-template matStepLabel>Dados do comprador</ng-template>
         <app-formulario-comprador (goToNextStep)="CompradorPronto($event)"></app-formulario-comprador>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
+
     </form>
   </mat-step>
   <mat-step >
     <form >
       <ng-template matStepLabel>Dados de entrega</ng-template>
       <app-formulario-endereco (goToNextStep)="EntregaPronto($event)"></app-formulario-endereco>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
+
     </form>
   </mat-step>
   <mat-step>
@@ -24,14 +19,11 @@
     <p>Para finalizar sua compra, você será redirecionado para um ambiente seguro da PagSeguro</p>
     <div class="row justify-content-end">
       <div class="col-auto">
-        <button  class="btn bg-preto-opaco text-white" (click)="AbrirLightBox()" >
+        <button  class="btn bg-preto-opaco text-white" (click)="AbrirLightBox()" [disabled]="!compra.comprador || !frete.cep" >
           Próximo
       </button>
       </div>
     </div>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
+
   </mat-step>
 </mat-horizontal-stepper>
