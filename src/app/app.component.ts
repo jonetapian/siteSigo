@@ -43,7 +43,6 @@ export class AppComponent {
   endAt = new Subject();
   show_list:boolean;
   plus_circle = faPlusCircle;
-  
 
   constructor(private usuarioService:UsuarioService, private cadastroService:CadastroService, private router:Router, private pesquisarService: PesquisarService){
     this.EstaLogado();
@@ -76,6 +75,7 @@ export class AppComponent {
     this.cadastroService.DestroyAuth();
     this.usuarioService.DeletarLocal();
     this.EstaLogado();
+    this.opened = false;
   }
   toogleButtons(){
     this.showingButtons = !this.showingButtons;
