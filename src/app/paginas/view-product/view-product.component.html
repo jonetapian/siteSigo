@@ -32,7 +32,8 @@
       <div class="row mt-5 px-2 font-title">
         <button  class="btn bg-preto-opaco shadow-sm btn-block text-white " (click)="buttonClicked()"  >
           <label class="float-left ">{{button_string}}</label>
-          <label class="float-right ">R${{product.preco}}</label>
+          <label class="float-right " *ngIf="!product.promocao">R${{product.preco}}</label>
+          <label class="float-right " *ngIf="product.promocao">R${{((this.product.preco) - ((this.product.preco * this.product.valorPorcentagem)  / 100))}}</label>
         </button>
       </div>
     </div>
@@ -42,7 +43,7 @@
     <p class="h4 text-center"><u>Relacionados</u></p>
     <div class="row">
       
-      <div class="col-xl-2 col-lg-3 col-md-4 mt-2"*ngFor="let produto of produtos()">
+      <div class="col-xl-2 col-lg-3 col-md-4 mt-2" *ngFor="let produto of produtos()">
         <app-buy-card [produto]="produto" ></app-buy-card>
       </div>
       

@@ -1,5 +1,6 @@
+import { UsuarioService } from './../../usuario/usuario.service';
 import { Frete } from './../finalizar-compra/models/frete-model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SizedProduct } from './../../produtos/model/sizedProduct';
 import { ProdutosService } from './../../produtos/service/produtos.service';
 import { Observable } from 'rxjs';
@@ -22,7 +23,7 @@ export class CarrinhoComponent implements OnInit {
   carrinhoVazio = true;
   show_size_alert:boolean = false;
 
-  constructor(private produtosService: ProdutosService,private router:Router) { }
+  constructor(private produtosService: ProdutosService,private router:Router, private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     
@@ -39,7 +40,11 @@ export class CarrinhoComponent implements OnInit {
 
   increment(produto: Produto){
     produto.quantidadeCarrinho++;
-    this.precoTotal += produto.preco * 1;
+    if(produto.promocao){
+      this.precoTotal += ((produto.preco) - ((produto.preco * produto.valorPorcentagem)  / 100));
+    }else{
+      this.precoTotal += produto.preco * 1;
+    }
   }
 
   decrement(produto: Produto){
@@ -48,7 +53,11 @@ export class CarrinhoComponent implements OnInit {
 
     }else{
       produto.quantidadeCarrinho--;
-      this.precoTotal -= produto.preco * 1;
+      if(produto.promocao){
+        this.precoTotal -= ((produto.preco) - ((produto.preco * produto.valorPorcentagem)  / 100));
+      }else{
+        this.precoTotal -= produto.preco * 1;
+      }
     }
   }
 
@@ -56,15 +65,21 @@ export class CarrinhoComponent implements OnInit {
     localStorage.clear();
   }
 
-  deletar(index){
+  deletar(produto, index){
     let deletarProduto: Produto[] = [];
 
     deletarProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
+    
     deletarProduto.splice(index, 1);
 
 
     localStorage.setItem("carrinho", JSON.stringify(deletarProduto));
     this.listaProdutos.splice(index, 1);
+    if(produto.promocao){
+      this.precoTotal -= ((produto.preco) - ((produto.preco * produto.valorPorcentagem)  / 100)) * produto.quantidadeCarrinho;
+    }else{
+      this.precoTotal -= produto.preco * produto.quantidadeCarrinho;
+    }
   }
 
   atualizarCarrinho(){
@@ -74,17 +89,19 @@ export class CarrinhoComponent implements OnInit {
 
       produto.quantidadeCarrinho = 1;
       if(produto.promocao){
-        produto.preco = ((produto.preco) - (produto.preco) * produto.valorPorcentagem  / 100);
+        this.precoTotal += ((produto.preco) - ((produto.preco * produto.valorPorcentagem)  / 100));
       }else{
-        produto.preco = produto.preco;
+        this.precoTotal += produto.preco * 1;
       }
-      this.precoTotal += produto.preco * 1;
+
+      
 
       this.listaProdutos.push(new SizedProduct(produto));
 
       
     }
 
+    
     
   }
 
@@ -102,18 +119,29 @@ export class CarrinhoComponent implements OnInit {
         return;
       }
     }
-    // this.frete.produtos = this.listaProdutos;
+    
     localStorage.setItem("carrinho", JSON.stringify(this.listaProdutos));
-    this.router.navigate(['finalizar-compra']);
+    if(this.usuarioService.UsuarioLogado().uid){
+      this.router.navigate(['finalizar-compra']);
+    }else{
+      
+      this.router.navigate(['login', {id: "carrinho"}]);
+
+    }
   }
 
   UpdateCarrinho(produto, index){
     this.listaProdutos[index] = produto;
+    
     localStorage.setItem("carrinho", JSON.stringify(this.listaProdutos));
     this.show_size_alert = false;
   }
   FinalizarCompra(){
 
+  }
+
+  somarPrecoTotal(){
+    
   }
 
 }

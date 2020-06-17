@@ -1,6 +1,6 @@
 import { ConfiguracoesService } from './../configuracoes/service/configuracoes.service';
 import { FormAlertComponent } from './../../shared/form-alert/form-alert.component';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from './../../usuario/usuario.service';
 import { LoginService } from './service/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,13 +13,16 @@ import { Usuario } from 'src/app/usuario/model/usuarioModel';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService:LoginService, private usuario_service:UsuarioService, private router:Router, private configuracoesService: ConfiguracoesService) { }
+  constructor(private loginService:LoginService, private usuario_service:UsuarioService, private router:Router, private configuracoesService: ConfiguracoesService, private route: ActivatedRoute) { }
   email:string = '';
   senha:string = '';
   showAlert:boolean;
   AlertText:string;
   emailSenha: string = "";
+  parametro;
   ngOnInit() {
+    this.parametro = this.route.snapshot.paramMap.get('id');
+    console.log(this.parametro);
   }
   Logar(){
     if(this.email.length > 0 && this.senha.length >0 ){
@@ -31,7 +34,11 @@ export class LoginComponent implements OnInit {
         this.usuario_service.PegarUsuarioProUid(val.user.uid).then(val => {
           let usuario = new Usuario(val);
           this.usuario_service.ArmazenarLocal(usuario);
-          this.router.navigate(['/']);
+          if(this.parametro == "carrinho"){
+            this.router.navigate(['carrinho']);
+          }else{
+            this.router.navigate(['/']);
+          }
         }).catch(error => this.OrganizaErro(error));
       });
     }else{

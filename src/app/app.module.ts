@@ -1,3 +1,4 @@
+import { ToastService } from './shared/toast/service/toast.service';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { FormularioEnderecoComponent } from './paginas/finalizar-compra/formulario-endereco/formulario-endereco.component';
 import { FormularioCompradorComponent } from './paginas/finalizar-compra/formulario-comprador/formulario-comprador.component';
@@ -81,9 +82,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListaComprasComponent } from './paginas/ver-compras/lista-compras/lista-compras.component';
 import { VerCompraComponent } from './paginas/ver-compras/ver-compra/ver-compra.component';
 import { DepoisDaCompraComponent } from './paginas/depois-da-compra/depois-da-compra/depois-da-compra.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { ToastComponent } from './shared/toast/toast.component';
 
 registerLocaleData(localePt);
 
@@ -127,7 +130,8 @@ registerLocaleData(localePt);
     ListaComprasComponent,
     VerCompraComponent,
     DepoisDaCompraComponent,
-    ConfiguracoesComponent
+    ConfiguracoesComponent,
+    ToastComponent
    ],
   imports: [
     NgxMaskModule.forRoot(),
@@ -162,7 +166,8 @@ registerLocaleData(localePt);
     ReactiveFormsModule,
     MatInputModule,
     MatTabsModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    MatBadgeModule
 
   ],
   providers: [
@@ -173,6 +178,7 @@ registerLocaleData(localePt);
     PromocoesService,
     CepService,
     ComprasService,
+    ToastService,
     {provide: LOCALE_ID, useValue: 'pt'},
 
   ],

@@ -24,6 +24,7 @@ import { LoginComponent } from './paginas/login/login.component';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { AdicionarProdutoComponent } from './paginas/adicionar-produto/adicionar-produto.component';
 import { PesquisarComponent } from './shared/pesquisar/pesquisar.component';
+import { ToastComponent } from './shared/toast/toast.component';
 
 const routes: Routes = [
   {path: 'cadastro', component: CadastroComponent},
@@ -46,7 +47,7 @@ const routes: Routes = [
   {path: 'compras' , component: ListaComprasComponent},
   {path: 'compras/:key', component: VerCompraComponent},
   {path: 'compra_pag_seguro', component: DepoisDaCompraComponent},
-
+  {path: 'toast', component: ToastComponent},
   {path: 'configuracoes', component: ConfiguracoesComponent},
   {path: '', component: MenuComponent}
 ];

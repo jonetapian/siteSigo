@@ -57,9 +57,7 @@ export class AppComponent {
       }
     });
 
-    /*this.pesquisarService.getProdutos(this.startAt.toString(), this.endAt.toString()).subscribe(res => {
-      this.pesquisarProdutos = res;
-    })*/
+    this.carrinho();
   }
   animationFineshed(event){
    // alert(event);
@@ -109,6 +107,11 @@ export class AppComponent {
       this.pesquisarProdutos = res;
       console.log(res)
     })*/
+  }
+
+  carrinho(){
+    let contador = JSON.parse(localStorage.getItem("carrinho"));
+    return contador.length;
   }
 
 }

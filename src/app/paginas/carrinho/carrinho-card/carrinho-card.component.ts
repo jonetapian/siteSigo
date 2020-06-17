@@ -1,3 +1,4 @@
+import { ToastService } from './../../../shared/toast/service/toast.service';
 import { SizedProduct } from './../../../produtos/model/sizedProduct';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from './../../../produtos/model/produtoModel';
@@ -16,10 +17,12 @@ export class CarrinhoCardComponent implements OnInit {
   @Output() update_in_local = new EventEmitter();
   @Output() remove = new EventEmitter();
   delete_icon = faTimesCircle;
+  preco;
 
-  constructor() { }
+  constructor(public toastService: ToastService) { }
 
   ngOnInit() {
+    this.preco = ((this.produto.preco) - ((this.produto.preco * this.produto.valorPorcentagem)  / 100));
   }
   emitDecrese(){
     this.decrese.emit(this.produto)
@@ -40,6 +43,10 @@ export class CarrinhoCardComponent implements OnInit {
   emitUpdate(){
     this.update_in_local.emit();
     this.show_size_alert = false;
+  }
+
+  onToast() {
+    this.toastService.show('Produto removido do carrinho!', { classname: 'bg-success text-light', delay: 5000 });
   }
 
 }
