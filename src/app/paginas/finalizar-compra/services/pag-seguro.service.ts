@@ -47,7 +47,7 @@ export class PagSeguroService {
     for(let produto of produtos){
       params['itemId' + item_counter] =  produto.key;
       params['itemDescription' + item_counter] = produto.nome;
-      params['itemAmount' + item_counter] = String(produto.preco);
+      params['itemAmount' + item_counter] = String(Number(produto.preco).toFixed(2));
       params['itemQuantity' + item_counter ] = String(produto.quantidadeCarrinho) ;
       params['itemWeight' + item_counter] = String(200) ;
 

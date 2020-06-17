@@ -15,7 +15,7 @@ export class ViewProductComponent implements OnInit {
   produtos_carrinho:Array<Produto>;
   size:string = "default";
   button_string:string = "Adicionar o carrinho";
-  produtosRelacionados: Produto[];
+  produtosRelacionados: Produto[] = new Array();
   tipos: string[] = [];
   filtrarTipos;
 

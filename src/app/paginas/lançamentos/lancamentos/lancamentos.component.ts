@@ -1,3 +1,4 @@
+import { Tag } from './../../tags/model/tag_model';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from './../../../produtos/model/produtoModel';
 import { ProdutosService } from './../../../produtos/service/produtos.service';
@@ -15,6 +16,8 @@ export class LancamentosComponent implements OnInit {
   filter_side:boolean ;
   isSmallScreen:boolean;
   filter_icon = faFilter;
+
+  all_filters:Array<Tag> = new Array<Tag>();
 
 
   constructor(private produtosService: ProdutosService, private breakpointObserver: BreakpointObserver) {
@@ -38,9 +41,20 @@ export class LancamentosComponent implements OnInit {
 
   filterSelected(tag){
     this.getTagByFilter(tag);
+    this.all_filters.push(tag);
   }
   filterRemoved(tag){
     this.showing_products = this.products;
+    let tag_index = this.all_filters.indexOf(tag);
+    if(tag_index !== -1){
+      this.all_filters.splice(tag_index,1);
+    }
+    if(this.all_filters.length > 0){
+      for(let old of this.all_filters){
+        this.getTagByFilter(old);
+      }
+    }
+
   }
   getTagByFilter(filter){
     let filtered_array:any =[];
