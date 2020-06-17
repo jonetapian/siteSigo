@@ -43,6 +43,8 @@ export class AppComponent {
   endAt = new Subject();
   show_list:boolean;
   plus_circle = faPlusCircle;
+  
+
   constructor(private usuarioService:UsuarioService, private cadastroService:CadastroService, private router:Router, private pesquisarService: PesquisarService){
     this.EstaLogado();
   }
@@ -56,9 +58,7 @@ export class AppComponent {
       }
     });
 
-    /*this.pesquisarService.getProdutos(this.startAt.toString(), this.endAt.toString()).subscribe(res => {
-      this.pesquisarProdutos = res;
-    })*/
+    this.carrinho();
   }
   animationFineshed(event){
    // alert(event);
@@ -107,6 +107,11 @@ export class AppComponent {
       this.pesquisarProdutos = res;
       console.log(res)
     })*/
+  }
+
+  carrinho(){
+    let contador = JSON.parse(localStorage.getItem("carrinho"));
+    return contador.length;
   }
 
 }

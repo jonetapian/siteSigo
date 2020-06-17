@@ -35,6 +35,7 @@ export class ViewProductComponent implements OnInit {
   getProduct(){
     this.produto_service.buscarPorid(this.product_key).then(res =>{
       this.product.fromJson(res);
+      
       console.log(this.product.selected_size);
       
     });

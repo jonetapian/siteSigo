@@ -32,7 +32,8 @@
       <div class="row mt-5 px-2 font-title">
         <button  class="btn bg-preto-opaco shadow-sm btn-block text-white " (click)="buttonClicked()"  >
           <label class="float-left ">{{button_string}}</label>
-          <label class="float-right ">R${{product.preco}}</label>
+          <label class="float-right " *ngIf="!product.promocao">R${{product.preco}}</label>
+          <label class="float-right " *ngIf="product.promocao">R${{((this.product.preco) - ((this.product.preco * this.product.valorPorcentagem)  / 100))}}</label>
         </button>
       </div>
     </div>

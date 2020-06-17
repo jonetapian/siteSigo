@@ -10,27 +10,27 @@
         </strong>
 
       </a>
-      <span class="float-right"><fa-icon [icon]="delete_icon " (click)="removeProduct()"></fa-icon></span>
+      <span class="float-right"><fa-icon [icon]="delete_icon " (click)="removeProduct(); onToast()"></fa-icon></span>
       <p class="px-sm-2 px-md-0">
-        R$ {{produto.preco}}
+        R$ {{preco}}
         <br>
         <label  *ngIf="isSizedProduct()">
-          Tamanho :{{produto.selected_size}}
+          Tamanho: {{produto.selected_size}}
         </label>
         <br>
 
         <label>
-          Marca : {{produto.marca}}
+          Marca: {{produto.marca}}
         </label>
         <br>
 
-        <select class="form-control "  *ngIf="show_size_alert && !isSizedProduct()" [(ngModel)]="produto.selected_size" (change)="emitUpdate()">
+        <select class="form-control "  *ngIf="!isSizedProduct()" [(ngModel)]="produto.selected_size" (change)="emitUpdate()">
           <option value="">tamanho</option>
           <option [value]="tamanho" *ngFor="let tamanho of produto.tamanho" >{{tamanho}}</option>
         </select>
 
 
-            Quantidade :
+            Quantidade:
               <button class="btn-sm btn btn-outline-dark" (click)="emitDecrese()">-</button>
             <span class="mx-1">{{produto.quantidadeCarrinho}}</span>
             <button class="btn btn-sm btn-outline-dark" (click)="emitIncrise()">+</button>

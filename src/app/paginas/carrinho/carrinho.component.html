@@ -12,45 +12,10 @@
             <div class="col-md-6 mt-2" *ngFor="let produto of listaProdutos; let i = index" >
               <app-carrinho-card [show_size_alert]="show_size_alert" [produto]="produto"
               (decrese)="decrement($event)" (increse)="increment($event)"
-              (remove)="deletar(i)" (update_in_local)="UpdateCarrinho(produto,i)"></app-carrinho-card>
+              (remove)="deletar(produto,i)" (update_in_local)="UpdateCarrinho(produto,i)"></app-carrinho-card>
             </div>
           </div>
-            <!-- <table class="table bg-card-produto text-center">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col">Produto</th>
-                        <th scope="col">Preço</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col">Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let produto of listaProdutos">
-                        <td (click)="deletar(produto)">&times;</td>
-                        <td>
-                            <ngb-carousel>
-                              <ng-template ngbSlide *ngFor="let img of produto.foto">
-
-                                <div class="picsum-img-wrapper" >
-                                  <img class="card-img-top" style="border-radius: 10px; height: 100px; width: 100px;" [src]="img" >
-                                </div>
-                              </ng-template>
-                            </ngb-carousel>
-                        </td>
-                        <td>{{produto.nome}}</td>
-                        <td>{{produto.preco * 1}}</td>
-                        <td class="px-0">
-                            <button class="col-3 btn btn-outline-light" (click)="decrement(produto)">-</button>
-                            <span class="col">{{produto.quantidadeCarrinho}}</span>
-                            <button class="col-3 btn btn-outline-light" (click)="increment(produto)">+</button>
-                        </td>
-                        <td>{{produto.preco * produto.quantidadeCarrinho}}</td>
-                    </tr>
-                </tbody>
-            </table> -->
-
+            
         </div>
         <div class="col-md-4">
             <div class="card text-dark">
@@ -59,15 +24,7 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Subtotal: R$:{{precoTotal.toFixed(2)}}</li>
-                    <!-- <li class="list-group-item">
-                        <div class="input-group">
-
-                            <app-calcular-frete (enviarFrete)="receberFrete($event)" (cep)="frete.cep = $event"></app-calcular-frete>
-
-                        </div>
-                    </li>
-                    <li class="list-group-item">Frete: {{frete.preco}}</li>
-                    <li class="list-group-item">Total: {{precoTotal + frete.preco}}</li> -->
+                    
                   </ul>
             </div>
             <button class="btn btn-dark w-100 mt-2" (click)="checkIfAllHaveSize()"  >Finalizar Compra</button>
@@ -79,3 +36,5 @@
     <div class="alert alert-danger">Seu carrinho está vazio, volte para à loja e selecione algum produto.</div>
     <a class="btn btn-light" routerLink="/camisetas">Voltar às compras</a>
 </div>
+
+<app-toast aria-live="polite" aria-atomic="true"></app-toast>
