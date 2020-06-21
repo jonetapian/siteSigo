@@ -76,6 +76,7 @@ export class AppComponent {
     this.cadastroService.DestroyAuth();
     this.usuarioService.DeletarLocal();
     this.EstaLogado();
+    this.opened = false;
   }
   toogleButtons(){
     this.showingButtons = !this.showingButtons;
@@ -95,7 +96,7 @@ export class AppComponent {
       window.open('https://wa.me/5511959006519');
     }
     if(value == 2){
-      window.open('https://www.instagram.com/sigo.style/?hl=pt-br');
+      window.open('https://www.instagram.com/sigosupply/?hl=pt-br');
     }
   }
 

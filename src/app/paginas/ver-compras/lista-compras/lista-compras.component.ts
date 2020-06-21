@@ -26,6 +26,7 @@ export class ListaComprasComponent implements OnInit {
   entregue = faHome;
   transacoes:Array<Transacao> = new Array<Transacao>();
   compras_finalizas: Array<CompraFinalizada> = new Array<CompraFinalizada>();
+
   ngOnInit() {
     this.pegarVendedor();
     this.BuscarCompras();

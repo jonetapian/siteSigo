@@ -1,0 +1,51 @@
+<div class="container">
+    <p class="h3 text-center my-2">Todas as compras</p>
+    
+    
+    <p class="h4 my-4">Compras pendentes (Aguardando pagamento)</p>
+    <div class="row">
+        <div class="col-3" *ngFor="let compra of comprasFinalizadas" [hidden]="compra.transacao.status != 1">
+            <div class="card" >
+                <div class="card-body">
+                    <h5 class="card-title">Comprador: {{compra.compra.comprador.nome}}</h5>
+                    <hr class="divider">
+                    <p class="card-text" *ngFor="let produto of compra.compra.produtos">
+                        <b>Produto:</b> {{produto.nome}}, {{produto.selected_size}}, Qnt: {{produto.quantidadeCarrinho}}
+                    </p>
+                    <p><b>forma de pagamento</b> - {{getTipoPeloNumero(compra.transacao.metodo_pagamento.tipo)}}</p>
+                    <p><b>Endereço</b> - {{getEnderecoComoString(compra.compra.frete)}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="h4 my-4">Compras com pagamento realizado</p>
+    <div class="row">
+        <div class="col-12 mb-2" *ngFor="let compra of comprasFinalizadas" [hidden]="compra.transacao.status != 4 ">
+            
+            <div class="card" >
+                
+                <div class="card-body col-12">
+                    <h5 class="card-title">Comprador: {{compra.compra.comprador.nome}} | Código da transação: {{compra.compra.codigo_transacao}}</h5>
+                    <hr class="divider">
+                    <div class="col-6 float-left" *ngFor="let produto of compra.compra.produtos; let i = index">
+                        <p class="card-text" >
+                            <b>Produto:</b> {{produto.nome}}, {{produto.selected_size}}, Qnt: {{produto.quantidadeCarrinho}}
+                        </p>
+                        <p><b>forma de pagamento</b> - {{getTipoPeloNumero(compra.transacao.metodo_pagamento.tipo)}}</p>
+                        <p><b>Endereço</b> - {{getEnderecoComoString(compra.compra.frete)}}</p>
+                        <div #addCodigo [hidden]="true">
+                            <label>Código</label>
+                            <input type="text" class="form-control mb-2" [(ngModel)]="produto.rastreio">
+                            <button class="btn btn-success mb-2" (click)="onAddCodigo(produto.rastreio, compra.compra, i)">Salvar código de rastreio</button>
+                        </div>
+                        <a class="btn btn-primary" (click)="onMostrarCampo(addCodigo)">Adicionar código de rastreio</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+</div>

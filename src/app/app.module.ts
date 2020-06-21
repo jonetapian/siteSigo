@@ -87,6 +87,8 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { ToastComponent } from './shared/toast/toast.component';
+import { RastreioComponent } from './paginas/rastreio/rastreio.component';
+import { CardRastreioComponent } from './paginas/rastreio/card-rastreio/card-rastreio.component';
 
 registerLocaleData(localePt);
 
@@ -131,7 +133,9 @@ registerLocaleData(localePt);
     VerCompraComponent,
     DepoisDaCompraComponent,
     ConfiguracoesComponent,
-    ToastComponent
+    ToastComponent,
+    RastreioComponent,
+    CardRastreioComponent
    ],
   imports: [
     NgxMaskModule.forRoot(),

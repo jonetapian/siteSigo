@@ -24,7 +24,8 @@
             <mat-icon matListIcon><fa-icon [icon]="signIn"></fa-icon></mat-icon>
             <h3 matLine>{{ usuarioAtual.nome }}</h3>
             <p matLine>
-              <a routerLink="/configuracoes" (click)="sidenav.toggle()"> Ver Configuração da conta</a>
+              <a routerLink="/configuracoes"   routerLinkActive="selecionado"
+                    class="text-dark" (click)="sidenav.toggle()"> Ver Configuração da conta</a>
             </p>
           </mat-list-item>
           <mat-list-item *ngIf="!show_list"  >
@@ -86,6 +87,16 @@
                   routerLink="/destaques"
                   (click)="sidenav.toggle()"
                   >Destaques</a
+                >
+              </h3>
+            </mat-list-item>
+            <mat-list-item>
+              <h3 matLine>
+                <a
+                  class="text-dark"
+                  routerLink="/rastreio"
+                  (click)="sidenav.toggle()"
+                  >Todas as compras</a
                 >
               </h3>
             </mat-list-item>
@@ -305,7 +316,7 @@
 
       </mat-sidenav-content>
     </mat-sidenav-container>
-
+    <app-toast aria-live="polite" aria-atomic="true"></app-toast>
   </body>
 
 </html>
