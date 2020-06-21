@@ -43,7 +43,6 @@ export class AppComponent {
   endAt = new Subject();
   show_list:boolean;
   plus_circle = faPlusCircle;
-  
 
   constructor(private usuarioService:UsuarioService, private cadastroService:CadastroService, private router:Router, private pesquisarService: PesquisarService){
     this.EstaLogado();
