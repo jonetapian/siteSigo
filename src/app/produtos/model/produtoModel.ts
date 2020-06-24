@@ -37,4 +37,12 @@ export class Produto{
       this.valorPorcentagem = val.valorPorcentagem;
       this.rastreio = val.rastreio;
     }
+
+    static GetValorComPromocao(produto:Produto){
+      if(produto.promocao){
+        return produto.preco - ((produto.preco * produto.valorPorcentagem )/ 100)
+      }else{
+        return produto.preco;
+      }
+    }
 }

@@ -36,8 +36,8 @@ export class CadastroComponent implements OnInit {
         if(val.user){
           let user = new Usuario(val.user);
           user.nome = this.nome;
-          // user.email = val.user.email;
-          // user.uid = val.user.uid;
+          user.email = val.user.email;
+          user.uid = val.user.uid;
           user.created_at = new Date();
           this.createAndStorageUser(user);
         }else{
@@ -57,6 +57,7 @@ export class CadastroComponent implements OnInit {
   googleLogin(){
     this.cadastro.doGoogleLogin().then((user:Usuario) =>{
       if(user.uid){
+        user.created_at = new Date();
         this.createAndStorageUser(user);
       }else{
         this.createAlert(user);
