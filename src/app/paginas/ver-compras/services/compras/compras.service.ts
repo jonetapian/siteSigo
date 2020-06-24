@@ -51,4 +51,40 @@ export class ComprasService {
     );
 
   }
+
+  buscarTodasCompras(){
+    return this.db.list('compras')
+    .snapshotChanges()
+    .pipe(
+      map(changes => {
+        return changes.map(c => {
+          const key = c.payload.key;
+          const val = c.payload.val();
+          let compra = new Compra(val);
+
+          return compra;
+        });
+      })
+    );
+  }
+
+  adicionarCodigo(rastreio, compra: Compra, i){
+    let db = this.db
+    this.db.object(`compras/`).query.orderByChild('codigo_transacao').equalTo(compra.codigo_transacao).on('value',function(snapshot){
+      let val = snapshot.val();
+      console.log(val)
+      db.list(`compras/${val}/produtos/`).update(i,{"rastreio": rastreio});
+    });
+  
+    /*this.db.list(`compras/`, ref => ref.orderByChild('codigo_transacao').equalTo(compra.codigo_transacao))
+    .snapshotChanges()
+    .pipe(
+      map(changes => {
+         changes.map(c => {
+          console.log(i);
+          this.db.list(`compras/${c.key}/produtos/${i}`).set("rastreio", rastreio);
+        });
+      })
+    )*/
+  }
 }

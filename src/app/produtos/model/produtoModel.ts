@@ -13,6 +13,7 @@ export class Produto{
     time = 0;
     promocao = false;
     valorPorcentagem = 0;
+    rastreio = '';
 
     constructor(json?){
       if(json){
@@ -34,6 +35,7 @@ export class Produto{
       this.time = val.time;
       this.promocao = val.promocao;
       this.valorPorcentagem = val.valorPorcentagem;
+      this.rastreio = val.rastreio;
     }
 
     static GetValorComPromocao(produto:Produto){

@@ -57,9 +57,7 @@ export class AppComponent {
       }
     });
 
-    /*this.pesquisarService.getProdutos(this.startAt.toString(), this.endAt.toString()).subscribe(res => {
-      this.pesquisarProdutos = res;
-    })*/
+    this.carrinho();
   }
   animationFineshed(event){
    // alert(event);
@@ -97,7 +95,7 @@ export class AppComponent {
       window.open('https://wa.me/5511959006519');
     }
     if(value == 2){
-      window.open('https://www.instagram.com/sigo.style/?hl=pt-br');
+      window.open('https://www.instagram.com/sigosupply/?hl=pt-br');
     }
   }
 
@@ -109,6 +107,11 @@ export class AppComponent {
       this.pesquisarProdutos = res;
       console.log(res)
     })*/
+  }
+
+  carrinho(){
+    let contador = JSON.parse(localStorage.getItem("carrinho"));
+    return contador.length;
   }
 
 }

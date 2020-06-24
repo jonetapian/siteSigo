@@ -1,3 +1,4 @@
+import { ToastService } from './../toast/service/toast.service';
 import { ProdutosDataService } from './../../produtos/service/produtos-data.service';
 import { UsuarioService } from './../../usuario/usuario.service';
 import { Usuario } from 'src/app/usuario/model/usuarioModel';
@@ -19,7 +20,7 @@ export class BuyCardComponent implements OnInit {
   buy_icon = faCartPlus;
   usuarioAtual: Usuario;
 
-  constructor(private route:Router, private usuario: UsuarioService, private produtoDataService: ProdutosDataService) { }
+  constructor(private route:Router, private usuario: UsuarioService, private produtoDataService: ProdutosDataService, public toastService: ToastService) { }
 
   ngOnInit() {
     this.usuarioAtual = this.usuario.UsuarioLogado();
@@ -42,6 +43,10 @@ export class BuyCardComponent implements OnInit {
     console.log(produto);
     this.produtoDataService.changeContato(produto, key);
     this.route.navigate(["editar-produto" , this.produto.key]);
+  }
+
+  onToast() {
+    this.toastService.show('Adicionado ao carrinho!', { classname: 'bg-success text-light', delay: 5000 });
   }
 
 }

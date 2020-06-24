@@ -27,6 +27,7 @@ export class ViewProductComponent implements OnInit {
       this.getProduct();
       this.getCarrinhoProducts();
       this.checkIfIsInCarrinho();
+      this.buscarProdutosRelacionados();
 
     });
     const par = this.active_route.snapshot.paramMap.get('key');
@@ -34,8 +35,9 @@ export class ViewProductComponent implements OnInit {
   getProduct(){
     this.produto_service.buscarPorid(this.product_key).then(res =>{
       this.product.fromJson(res);
+      
       console.log(this.product.selected_size);
-      this.buscarProdutosRelacionados(this.product);
+      
     });
 
   }
@@ -70,23 +72,27 @@ export class ViewProductComponent implements OnInit {
     this.route.navigate(['carrinho']);
   }
 
-  buscarProdutosRelacionados(produto: Produto){
-    this.produto_service.buscarRelacionados(produto).subscribe(res => {
+  buscarProdutosRelacionados(){
+    
+    this.produto_service.buscarRelacionados().subscribe(res => {
       this.produtosRelacionados = res;
-
     });
-
 
   }
 
   produtos(){
+    
     let produtos = [];
+    
     for(let produto of this.produtosRelacionados){
+      
       if(this.product.tipo[0] == produto.tipo[0] && this.product.key != produto.key){
         produtos.push(produto)
       }
 
     }
     return produtos;
+    
+    
   }
 }

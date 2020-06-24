@@ -90,6 +90,16 @@
                 >
               </h3>
             </mat-list-item>
+            <mat-list-item>
+              <h3 matLine>
+                <a
+                  class="text-dark"
+                  routerLink="/rastreio"
+                  (click)="sidenav.toggle()"
+                  >Todas as compras</a
+                >
+              </h3>
+            </mat-list-item>
           </div>
           <mat-list-item *ngIf="!estaLogado" (click)="Deslogar()">
             <mat-icon matListIcon><fa-icon [icon]="signIn"></fa-icon></mat-icon>
@@ -149,8 +159,11 @@
                       [icon]="buyCart"
                       routerLinkActive="selecionado"
                     ></fa-icon>
+                    <mat-icon *ngIf="carrinho() > 0" [matBadge]="carrinho()" matBadgeColor="warn"></mat-icon>
                   </button>
+                  
                 </div>
+                
                 <div class="col-auto my-auto mx-0 px-0" *ngIf="!estaLogado">
                   <a
                     class="navbar-link text-dark"
@@ -237,6 +250,7 @@
                       [icon]="buyCart"
                       routerLinkActive="selecionado"
                     ></fa-icon>
+                    <mat-icon *ngIf="carrinho() > 0" [matBadge]="carrinho()" matBadgeColor="warn"></mat-icon>
                 </button>
               </div>
               <div class="col-auto my-auto " *ngIf="!estaLogado">
@@ -302,7 +316,7 @@
 
       </mat-sidenav-content>
     </mat-sidenav-container>
-
+    <app-toast aria-live="polite" aria-atomic="true"></app-toast>
   </body>
 
 </html>
