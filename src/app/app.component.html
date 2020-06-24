@@ -90,6 +90,16 @@
                 >
               </h3>
             </mat-list-item>
+            <mat-list-item>
+              <h3 matLine>
+                <a
+                  class="text-dark"
+                  routerLink="/rastreio"
+                  (click)="sidenav.toggle()"
+                  >Todas as compras</a
+                >
+              </h3>
+            </mat-list-item>
           </div>
           <mat-list-item *ngIf="!estaLogado" (click)="Deslogar()">
             <mat-icon matListIcon><fa-icon [icon]="signIn"></fa-icon></mat-icon>
@@ -306,7 +316,7 @@
 
       </mat-sidenav-content>
     </mat-sidenav-container>
-
+    <app-toast aria-live="polite" aria-atomic="true"></app-toast>
   </body>
 
 </html>

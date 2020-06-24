@@ -1,3 +1,4 @@
+import { RastreioComponent } from './paginas/rastreio/rastreio.component';
 import { DepoisDaCompraComponent } from './paginas/depois-da-compra/depois-da-compra/depois-da-compra.component';
 import { VerCompraComponent } from './paginas/ver-compras/ver-compra/ver-compra.component';
 import { ListaComprasComponent } from './paginas/ver-compras/lista-compras/lista-compras.component';
@@ -49,6 +50,7 @@ const routes: Routes = [
   {path: 'compra_pag_seguro', component: DepoisDaCompraComponent},
   {path: 'toast', component: ToastComponent},
   {path: 'configuracoes', component: ConfiguracoesComponent},
+  {path: 'rastreio', component: RastreioComponent},
   {path: '', component: MenuComponent}
 ];
 
