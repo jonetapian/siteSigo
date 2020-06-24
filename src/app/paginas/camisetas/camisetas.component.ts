@@ -1,3 +1,4 @@
+import { TagService } from './../tags/service/tag.service';
 import { Usuario } from 'src/app/usuario/model/usuarioModel';
 import { UsuarioService } from './../../usuario/usuario.service';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
@@ -20,31 +21,45 @@ export class CamisetasComponent implements OnInit {
   isSmallScreen:boolean;
   filter_icon = faFilter;
   usuarioAtual: Usuario;
+  all_filters:Array<Tag> = new Array<Tag>();
+  tenis_product_keys:Array<string> = new Array<string>();
 
-  constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService, breakpointObserver: BreakpointObserver, private usuario: UsuarioService) {
+
+  constructor(private produtosService: ProdutosService, private ProdutosDataService: ProdutosDataService, breakpointObserver: BreakpointObserver, private usuario: UsuarioService,
+    private tag_service:TagService) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
    }
 
-  ngOnInit() {
+   ngOnInit() {
     this.getProducts();
-    this.usuarioAtual = this.usuario.UsuarioLogado();
   }
 
   deletar(key: string){
 
   }
   getProducts(){
-    this.produtosService.buscar().subscribe((res:any) =>{
-      this.products = res;
+    this.produtosService.buscar().subscribe((res:Array<Produto>) =>{
+      this.products =  res;
       this.showing_products = res;
     });
   }
 
   filterSelected(tag){
     this.getTagByFilter(tag);
+    this.all_filters.push(tag);
   }
   filterRemoved(tag){
     this.showing_products = this.products;
+    let tag_index = this.all_filters.indexOf(tag);
+    if(tag_index !== -1){
+      this.all_filters.splice(tag_index,1);
+    }
+    if(this.all_filters.length > 0){
+      for(let old of this.all_filters){
+        this.getTagByFilter(old);
+      }
+    }
+
   }
   getTagByFilter(filter){
     let filtered_array:any =[];
@@ -57,7 +72,6 @@ export class CamisetasComponent implements OnInit {
     }
     this.showing_products = filtered_array;
   }
-
   adicionarCarrinho(produto){
     this.produtosService.adicionarCarrinho(produto);
   }

@@ -18,7 +18,7 @@ export class TenisComponent implements OnInit {
   isSmallScreen:boolean;
   filter_icon = faFilter;
   tenis_product_keys:Array<string> = new Array<string>();
-
+  all_filters:Array<Tag> = new Array<Tag>();
 
   constructor(private produtosService: ProdutosService, private breakpointObserver: BreakpointObserver,private tag_service:TagService) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
@@ -26,8 +26,6 @@ export class TenisComponent implements OnInit {
 
   ngOnInit() {
     this.getTenisTag();
-    this.produtosService.buscarPorTime().subscribe(val =>{
-    });
   }
 
   deletar(key: string){
@@ -56,10 +54,23 @@ export class TenisComponent implements OnInit {
   }
 
   filterSelected(tag){
+    console.log(tag);
+    console.log(this.showing_products)
     this.getTagByFilter(tag);
+    this.all_filters.push(tag);
   }
   filterRemoved(tag){
     this.showing_products = this.products;
+    let tag_index = this.all_filters.indexOf(tag);
+    if(tag_index !== -1){
+      this.all_filters.splice(tag_index,1);
+    }
+    if(this.all_filters.length > 0){
+      for(let old of this.all_filters){
+        this.getTagByFilter(old);
+      }
+    }
+
   }
   getTagByFilter(filter){
     let filtered_array:any =[];
@@ -70,9 +81,9 @@ export class TenisComponent implements OnInit {
         }
       }
     }
+    console.log(filtered_array)
     this.showing_products = filtered_array;
   }
-
   adicionarCarrinho(produto){
     this.produtosService.adicionarCarrinho(produto);
   }

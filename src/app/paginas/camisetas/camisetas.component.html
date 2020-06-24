@@ -26,10 +26,10 @@
             <div class="container  " [ngClass]="{'scroll-horizontal' : isSmallScreen == true}" style="z-index: 1000;" >
 
               <div class="row    " >
-                <div class="col-md-3 mt-2 col-sm-10 col-10"   *ngFor="let produto of products">
+                <div class="col-md-3 mt-2 col-sm-10 col-10"   *ngFor="let produto of showing_products">
                   <div class="card-group"   >
                     <app-buy-card [produto]="produto" ></app-buy-card>
-                    
+
 
                   </div>
                   </div>

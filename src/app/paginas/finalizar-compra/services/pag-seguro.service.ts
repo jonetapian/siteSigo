@@ -36,6 +36,7 @@ export class PagSeguroService {
       'shippingAddressState': compra.frete.estado,
       'shippingAddressCountry': 'BRA',
       'shippingType' : '1',
+      'shippingCost' : '0',
       'timeout' : '30',
       'maxUses' : '2',
       'maxAge': '300'
@@ -47,7 +48,7 @@ export class PagSeguroService {
     for(let produto of produtos){
       params['itemId' + item_counter] =  produto.key;
       params['itemDescription' + item_counter] = produto.nome;
-      params['itemAmount' + item_counter] = String(Number(produto.preco).toFixed(2));
+      params['itemAmount' + item_counter] = String(Number(Produto.GetValorComPromocao(produto)).toFixed(2));
       params['itemQuantity' + item_counter ] = String(produto.quantidadeCarrinho) ;
       params['itemWeight' + item_counter] = String(200) ;
 
