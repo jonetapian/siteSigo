@@ -26,7 +26,7 @@ export class ListaComprasComponent implements OnInit {
   entregue = faHome;
   transacoes:Array<Transacao> = new Array<Transacao>();
   compras_finalizas: Array<CompraFinalizada> = new Array<CompraFinalizada>();
-
+  show_ratreio_alert:boolean = false;
   ngOnInit() {
     this.pegarVendedor();
     this.BuscarCompras();
@@ -73,16 +73,25 @@ export class ListaComprasComponent implements OnInit {
     }
   }
 
-  GetPortugueseStatus(status){
+  GetPortugueseStatus(status, compra:Compra){
     switch (status) {
       case '1':
         return "Aguardando pagamento";
       case '2':
         return "Em análise";
       case '3':
+        if(!compra.rastreio){
+          this.show_ratreio_alert = true;
+        }
         return "Paga";
       case '4':
-        return "Disponível";
+        if(!compra.rastreio){
+          this.show_ratreio_alert = true;
+          return "Pago";
+
+        }else{
+          return "A caminho"
+        }
       case '5':
         return "Em disputa";
       case '6':

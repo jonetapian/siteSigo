@@ -22,6 +22,7 @@ export class RastreioComponent implements OnInit {
   constructor(private comprasService: ComprasService, private vendedorService: VendedorService) { }
 
   ngOnInit() {
+
     this.pegarVendedor();
     this.buscarCompras();
   }
@@ -29,9 +30,13 @@ export class RastreioComponent implements OnInit {
   buscarCompras(){
     this.comprasService.buscarTodasCompras().subscribe(res => {
       console.log(res);
+      this.transacoes = [];
+      this.compras = [];
+      this.comprasFinalizadas = [];
       this.compras = res;
+
       this.buscarTransacoes();
-    })
+    });
   }
 
   buscarTransacoes(){
@@ -95,8 +100,8 @@ export class RastreioComponent implements OnInit {
     addCodigo.hidden = !addCodigo.hidden;
   }
 
-  onAddCodigo(rastreio, compra, i){
-    this.comprasService.adicionarCodigo(rastreio, compra, i)
+  onAddCodigo(rastreio, compra){
+    this.comprasService.adicionarCodigo(rastreio, compra);
   }
-  
+
 }
