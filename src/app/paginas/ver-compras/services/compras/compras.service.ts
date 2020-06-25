@@ -33,6 +33,7 @@ export class ComprasService {
           const key = c.payload.key;
           const val = c.payload.val();
           let compra = new Compra(val);
+          compra.key = key;
 
           return compra;
         });
@@ -60,22 +61,26 @@ export class ComprasService {
         return changes.map(c => {
           const key = c.payload.key;
           const val = c.payload.val();
-          let compra = new Compra(val);
 
+          let compra = new Compra(val);
+          compra.key = key;
           return compra;
         });
       })
     );
   }
 
-  adicionarCodigo(rastreio, compra: Compra, i){
+  adicionarCodigo(rastreio, compra: Compra){
     let db = this.db
-    this.db.object(`compras/`).query.orderByChild('codigo_transacao').equalTo(compra.codigo_transacao).on('value',function(snapshot){
-      let val = snapshot.val();
-      console.log(val)
-      db.list(`compras/${val}/produtos/`).update(i,{"rastreio": rastreio});
+    compra.rastreio = rastreio;
+    console.log(compra)
+    this.db.list('compras').update(compra.key, compra).then(res =>{
+      console.log(res)
+    })
+    .catch((error: any) => {
+      console.error(error);
     });
-  
+
     /*this.db.list(`compras/`, ref => ref.orderByChild('codigo_transacao').equalTo(compra.codigo_transacao))
     .snapshotChanges()
     .pipe(

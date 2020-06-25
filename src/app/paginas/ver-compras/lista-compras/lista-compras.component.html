@@ -53,12 +53,12 @@
             <fa-icon [icon]="pago" class="circle-icon"  [ngClass]="{'completed' : compra.transacao.status > 1 && compra.transacao.status < 5}" style="font-size: 20px;"></fa-icon>
         </div>
         <div class="col px-0 mx-0">
-          <div style="height: 10px;width: 100%;background-color: grey;"  [ngClass]="{'completed' : compra.transacao.status > 2 && compra.transacao.status < 5}" class="align-middle mt-2" >
+          <div style="height: 10px;width: 100%;background-color: grey;"  [ngClass]="{'completed' : compra.compra.rastreio.length}" class="align-middle mt-2" >
 
          </div>
         </div>
         <div  class="col  mx-0  px-0">
-            <fa-icon [icon]="em_entrega" class="circle-icon" style="font-size: 20px;"  ></fa-icon>
+            <fa-icon [icon]="em_entrega" class="circle-icon" style="font-size: 20px;" [ngClass]="{'completed' : compra.compra.rastreio.length}" ></fa-icon>
         </div>
         <div class="col px-0 mx-0">
           <div style="height: 10px;width: 100%;background-color: green;" class="align-middle mt-2" >
@@ -71,7 +71,31 @@
       </div>
       <div class="row font-sub justify-content-center mt-2">
         <div class="col-auto">
-            Status - <strong>{{GetPortugueseStatus(compra.transacao.status)}}</strong>
+            Status - <strong>{{GetPortugueseStatus(compra.transacao.status, compra.compra)}}</strong>
+        </div>
+      </div>
+      <div class="row" *ngIf="compra.compra.rastreio" >
+        <div class="col">
+          Codigo de rastreio: {{compra.compra.rastreio}}
+          <br>
+          <small ><strong>A partir de agora, voce poderá acompanhar sua entrega atraves do site oficial dos correios</strong></small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" >site dos correios</a>
+        </div>
+      </div>
+      <div class="row mt-3" *ngIf="show_ratreio_alert" >
+        <div class="col">
+          <div class="alert alert-warning" role="alert">
+            Seu Produto ainda não foi postado,
+            assim que fizermos a postagem o codigo de rastreio
+            será disponibilizado aqui e também no seu email, e então poderá
+             acompanhar a entrega pelo site oficial dos correios
+             <br>
+            <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" >site dos correios</a>
+          </div>
         </div>
       </div>
       <div class="row mt-3 font-sub" >
