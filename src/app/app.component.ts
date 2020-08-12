@@ -111,7 +111,10 @@ export class AppComponent {
 
   carrinho(){
     let contador = JSON.parse(localStorage.getItem("carrinho"));
-    return contador.length;
+    if (contador){
+      return contador.length;
+
+    }
   }
 
 }
