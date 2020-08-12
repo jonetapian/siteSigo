@@ -26,9 +26,9 @@ export class CarrinhoComponent implements OnInit {
   constructor(private produtosService: ProdutosService,private router:Router, private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    
+
     this.atualizarCarrinho();
-    this.onCarrinhoVazio();
+    this.onCarrinhoVazio(this.produtos);
   }
 
   // receberFrete(frete){
@@ -69,7 +69,7 @@ export class CarrinhoComponent implements OnInit {
     let deletarProduto: Produto[] = [];
 
     deletarProduto = JSON.parse(localStorage.getItem("carrinho")) || [];
-    
+
     deletarProduto.splice(index, 1);
 
 
@@ -80,6 +80,8 @@ export class CarrinhoComponent implements OnInit {
     }else{
       this.precoTotal -= produto.preco * produto.quantidadeCarrinho;
     }
+
+    this.onCarrinhoVazio(this.listaProdutos);
   }
 
   atualizarCarrinho(){
@@ -94,19 +96,19 @@ export class CarrinhoComponent implements OnInit {
         this.precoTotal += produto.preco * 1;
       }
 
-      
+
 
       this.listaProdutos.push(new SizedProduct(produto));
 
-      
+
     }
 
-    
-    
+
+
   }
 
-  onCarrinhoVazio(){
-    if(this.produtos.length > 0){
+  onCarrinhoVazio(produtos){
+    if(produtos.length > 0){
       this.carrinhoVazio = false;
     }else{
       this.carrinhoVazio = true;
@@ -119,12 +121,12 @@ export class CarrinhoComponent implements OnInit {
         return;
       }
     }
-    
+
     localStorage.setItem("carrinho", JSON.stringify(this.listaProdutos));
     if(this.usuarioService.UsuarioLogado().uid){
       this.router.navigate(['finalizar-compra']);
     }else{
-      
+
       this.router.navigate(['login', {id: "carrinho"}]);
 
     }
@@ -132,7 +134,7 @@ export class CarrinhoComponent implements OnInit {
 
   UpdateCarrinho(produto, index){
     this.listaProdutos[index] = produto;
-    
+
     localStorage.setItem("carrinho", JSON.stringify(this.listaProdutos));
     this.show_size_alert = false;
   }
@@ -141,7 +143,7 @@ export class CarrinhoComponent implements OnInit {
   }
 
   somarPrecoTotal(){
-    
+
   }
 
 }
