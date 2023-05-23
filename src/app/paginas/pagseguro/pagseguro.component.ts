@@ -30,7 +30,7 @@ export class PagseguroComponent implements OnInit {
 
   checkout(){
     const headers = new HttpHeaders().append('Content-type', 'application/x-www-form-urlencoded');
-    this.http.post(`https://cors-anywhere.herokuapp.com/https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?email=${this.email}&token=${this.token}`, `email=${this.email}&token=${this.token}&currency=BRL&itemId1=001&itemDescription1=Item%201&itemAmount1=169.90&itemQuantity1=1&reference=124665c23f7896adff508377925&senderName=Natalie%20Green&senderAreaCode=51&senderPhone=988888888&senderEmail=emaildocomprador@pagseguro.com.br&shippingAddressRequired=true&extraAmount=0.00`, {headers: headers}).subscribe(dados => {
+    this.http.post(``, {headers: headers}).subscribe(dados => {
     }, err =>{
       console.log(err);
     });
